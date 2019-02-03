@@ -20,7 +20,7 @@
       <item>
        <widget class="QStackedWidget" name="stackedWidget">
         <property name="currentIndex">
-         <number>6</number>
+         <number>5</number>
         </property>
         <widget class="QWidget" name="page">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -482,19 +482,6 @@
             <property name="bottomMargin">
              <number>0</number>
             </property>
-            <item row="0" column="1">
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
             <item row="0" column="0">
              <widget class="QLabel" name="label_10">
               <property name="text">
@@ -509,17 +496,27 @@
               </property>
              </widget>
             </item>
+            <item row="0" column="1">
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
            </layout>
           </item>
           <item>
            <layout class="QGridLayout" name="gridLayout">
-            <item row="1" column="2">
-             <widget class="QPushButton" name="pushButton_10">
+            <item row="2" column="2">
+             <widget class="QPushButton" name="pushButton_6">
               <property name="text">
-               <string>Enable</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
+               <string>Configure</string>
               </property>
              </widget>
             </item>
@@ -530,27 +527,27 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="2">
-             <widget class="QPushButton" name="pushButton_6">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_21">
               <property name="text">
-               <string>Configure</string>
+               <string>Create a new post every</string>
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
-             <widget class="QSlider" name="horizontalSlider">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+            <item row="3" column="2">
+             <widget class="QLineEdit" name="lineEdit_3">
+              <property name="placeholderText">
+               <string>Leave blank for none</string>
               </property>
              </widget>
             </item>
-            <item row="0" column="2">
-             <widget class="QLabel" name="label_22">
+            <item row="1" column="2">
+             <widget class="QPushButton" name="pushButton_10">
               <property name="text">
-               <string>30 minutes</string>
+               <string>Enable</string>
               </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <property name="checkable">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -561,13 +558,6 @@
               </property>
              </widget>
             </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_21">
-              <property name="text">
-               <string>Create a new post every</string>
-              </property>
-             </widget>
-            </item>
             <item row="3" column="0">
              <widget class="QLabel" name="label_11">
               <property name="text">
@@ -575,12 +565,39 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="2">
-             <widget class="QLineEdit" name="lineEdit_3">
-              <property name="placeholderText">
-               <string>Leave blank for none</string>
+            <item row="0" column="2">
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QSlider" name="horizontalSlider">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_22">
+                <property name="text">
+                 <string>30 minutes</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="1">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
-             </widget>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </item>
