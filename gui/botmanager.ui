@@ -59,7 +59,8 @@
          <string>Create</string>
         </property>
         <property name="icon">
-         <iconset theme="add"/>
+         <iconset theme="add">
+          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
         </property>
        </widget>
       </item>
@@ -94,7 +95,8 @@
          <string>Deactivate</string>
         </property>
         <property name="icon">
-         <iconset theme="system-run"/>
+         <iconset theme="system-run">
+          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
         </property>
        </widget>
       </item>
@@ -104,7 +106,8 @@
          <string>Toot database</string>
         </property>
         <property name="icon">
-         <iconset theme="document-open"/>
+         <iconset theme="document-open">
+          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
         </property>
        </widget>
       </item>
@@ -114,7 +117,8 @@
          <string>More...</string>
         </property>
         <property name="icon">
-         <iconset theme="system"/>
+         <iconset theme="system">
+          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
         </property>
        </widget>
       </item>
