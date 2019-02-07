@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>576</width>
-    <height>407</height>
+    <height>416</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <item>
        <widget class="QStackedWidget" name="stackedWidget">
         <property name="currentIndex">
-         <number>5</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -750,7 +750,7 @@
           </property>
           <property name="icon">
            <iconset theme="cancel">
-            <normaloff>.</normaloff>.</iconset>
+            <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
           </property>
          </widget>
         </item>
@@ -761,7 +761,7 @@
           </property>
           <property name="icon">
            <iconset theme="back">
-            <normaloff>.</normaloff>.</iconset>
+            <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
           </property>
          </widget>
         </item>
@@ -772,7 +772,7 @@
           </property>
           <property name="icon">
            <iconset theme="next">
-            <normaloff>.</normaloff>.</iconset>
+            <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
           </property>
          </widget>
         </item>
