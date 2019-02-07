@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>593</width>
+    <height>482</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QComboBox" name="comboBox"/>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="tableWidget">
+      <row>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>user</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>url</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>subject</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>content</string>
+       </property>
+      </column>
+      <item row="0" column="0">
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item row="0" column="1">
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item row="0" column="2">
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item row="0" column="3">
+       <property name="text">
+        <string>jdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajfjdlsafjeljfadlsfjeofjaslkfjlkajf</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>First</string>
+        </property>
+        <property name="icon">
+         <iconset theme="media-skip-backward">
+          <normaloff>../../../../../../</normaloff>../../../../../../</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Previous</string>
+        </property>
+        <property name="icon">
+         <iconset theme="previous">
+          <normaloff>../../../../../../</normaloff>../../../../../../</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="text">
+         <string>Next</string>
+        </property>
+        <property name="icon">
+         <iconset theme="next">
+          <normaloff>../../../../../../</normaloff>../../../../../../</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="text">
+         <string>Last</string>
+        </property>
+        <property name="icon">
+         <iconset theme="media-skip-forward">
+          <normaloff>../../../../../../</normaloff>../../../../../../</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="text">
+         <string>Delete</string>
+        </property>
+        <property name="icon">
+         <iconset theme="delete">
+          <normaloff>../../../../../../</normaloff>../../../../../../</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="text">
+         <string>Edit</string>
+        </property>
+        <property name="icon">
+         <iconset theme="edit">
+          <normaloff>../../../../../../</normaloff>../../../../../../</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="text">
+         <string>Save</string>
+        </property>
+        <property name="icon">
+         <iconset theme="document-save">
+          <normaloff>../../../../../../</normaloff>../../../../../../</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
