@@ -68,7 +68,7 @@
       <item>
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tabWidgetPage1" native="true">
          <attribute name="title">
@@ -137,7 +137,7 @@
           <item>
            <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The database your bot uses to post contains &lt;span style=&quot; font-weight:600;&quot;&gt;0&lt;/span&gt; entries. This is below the recommended minimum of &lt;span style=&quot; font-weight:600;&quot;&gt;100&lt;/span&gt;. Your bot may fail to post, or post repetitive content. The database is &lt;span style=&quot; font-weight:600;&quot;&gt;32KiB&lt;/span&gt; in size.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The database your bot uses to post contains &lt;span style=&quot; font-weight:600;&quot;&gt;0&lt;/span&gt; entries. This is below the recommended minimum of &lt;span style=&quot; font-weight:600;&quot;&gt;100&lt;/span&gt;. Your bot may fail to post, or post repetitive content. The database for all bots is &lt;span style=&quot; font-weight:600;&quot;&gt;32KiB&lt;/span&gt; in size.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
