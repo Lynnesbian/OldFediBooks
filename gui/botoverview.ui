@@ -66,50 +66,14 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QComboBox" name="comboBox">
-        <item>
-         <property name="text">
-          <string>Status</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Database</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Replies</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Sources</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Content warnings</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Timings</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Testing</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item>
-       <widget class="QStackedWidget" name="stackedWidget">
+       <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
          <number>0</number>
         </property>
-        <widget class="QWidget" name="page">
+        <widget class="QWidget" name="tabWidgetPage1" native="true">
+         <attribute name="title">
+          <string>Status</string>
+         </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
            <widget class="QLabel" name="label_2">
@@ -145,7 +109,8 @@
                <string>Deactivate</string>
               </property>
               <property name="icon">
-               <iconset theme="system-run"/>
+               <iconset theme="system-run">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -155,7 +120,8 @@
                <string>Specify rules</string>
               </property>
               <property name="icon">
-               <iconset theme="preferences-other"/>
+               <iconset theme="preferences-other">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -163,7 +129,10 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_2">
+        <widget class="QWidget" name="tabWidgetPage2" native="true">
+         <attribute name="title">
+          <string>Database</string>
+         </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <widget class="QLabel" name="label_3">
@@ -199,7 +168,8 @@
                <string>Open database location</string>
               </property>
               <property name="icon">
-               <iconset theme="zoom"/>
+               <iconset theme="zoom">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -209,7 +179,8 @@
                <string>Browse</string>
               </property>
               <property name="icon">
-               <iconset theme="document-open"/>
+               <iconset theme="document-open">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -217,7 +188,10 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_3">
+        <widget class="QWidget" name="tabWidgetPage3" native="true">
+         <attribute name="title">
+          <string>Replies</string>
+         </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
            <widget class="QLabel" name="label_4">
@@ -253,7 +227,8 @@
                <string>Disable replies</string>
               </property>
               <property name="icon">
-               <iconset theme="system-run"/>
+               <iconset theme="system-run">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -263,7 +238,8 @@
                <string>Specify rules</string>
               </property>
               <property name="icon">
-               <iconset theme="preferences-other"/>
+               <iconset theme="preferences-other">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -271,7 +247,10 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_4">
+        <widget class="QWidget" name="tabWidgetPage4" native="true">
+         <attribute name="title">
+          <string>Sources</string>
+         </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
            <widget class="QLabel" name="label_5">
@@ -292,13 +271,17 @@
              <string>Manage sources</string>
             </property>
             <property name="icon">
-             <iconset theme="preferences-other"/>
+             <iconset theme="preferences-other">
+              <normaloff>.</normaloff>.</iconset>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_5">
+        <widget class="QWidget" name="tabWidgetPage5" native="true">
+         <attribute name="title">
+          <string>Content warnings</string>
+         </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <item>
            <widget class="QLabel" name="label_6">
@@ -334,7 +317,8 @@
                <string>Set content warning</string>
               </property>
               <property name="icon">
-               <iconset theme="edit"/>
+               <iconset theme="edit">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -352,7 +336,10 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_6">
+        <widget class="QWidget" name="tabWidgetPage6" native="true">
+         <attribute name="title">
+          <string>Timing</string>
+         </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_8">
           <item>
            <widget class="QLabel" name="label_7">
@@ -373,13 +360,17 @@
              <string>Customise</string>
             </property>
             <property name="icon">
-             <iconset theme="preferences-other"/>
+             <iconset theme="preferences-other">
+              <normaloff>.</normaloff>.</iconset>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_7">
+        <widget class="QWidget" name="tabWidgetPage7" native="true">
+         <attribute name="title">
+          <string>Testing</string>
+         </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_9">
           <item>
            <widget class="QLabel" name="label_8">
@@ -425,7 +416,8 @@
                <string>Generate</string>
               </property>
               <property name="icon">
-               <iconset theme="system-run"/>
+               <iconset theme="system-run">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -435,7 +427,8 @@
                <string>Post</string>
               </property>
               <property name="icon">
-               <iconset theme="network"/>
+               <iconset theme="network">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -445,7 +438,8 @@
                <string>Chat</string>
               </property>
               <property name="icon">
-               <iconset theme="mail-message"/>
+               <iconset theme="mail-message">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
