@@ -29,7 +29,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Bot Overview</string>
+       <string>Main Menu</string>
       </property>
       <property name="textFormat">
        <enum>Qt::AutoText</enum>
