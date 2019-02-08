@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/wzd_createrule.ui',
 # licensing of 'gui/wzd_createrule.ui' applies.
 #
-# Created: Fri Feb  8 23:29:16 2019
+# Created: Sat Feb  9 00:59:28 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!

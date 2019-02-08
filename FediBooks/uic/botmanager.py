@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/botmanager.ui',
 # licensing of 'gui/botmanager.ui' applies.
 #
-# Created: Fri Feb  8 23:29:15 2019
+# Created: Sat Feb  9 00:59:27 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -79,3 +79,26 @@ class Ui_MainWindow(object):
         self.pushButton_3.setObjectName("pushButton_3")
         self.horizontalLayout_3.addWidget(self.pushButton_3)
         self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("."), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_4.setIcon(icon1)
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.horizontalLayout_3.addWidget(self.pushButton_4)
+        self.verticalLayout.addLayout(self.horizontalLayout_3)
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Bot Manager", None, -1))
+        self.label_13.setText(QtWidgets.QApplication.translate("MainWindow", "Bot Manager", None, -1))
+        self.pushButton.setText(QtWidgets.QApplication.translate("MainWindow", "Create", None, -1))
+        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Idle", None, -1))
+        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Status", None, -1))
+        self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "Last post", None, -1))
+        self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "2019-07-02 13:01:12", None, -1))
+        self.pushButton_2.setText(QtWidgets.QApplication.translate("MainWindow", "Deactivate", None, -1))
+        self.pushButton_3.setText(QtWidgets.QApplication.translate("MainWindow", "Toot database", None, -1))
+        self.pushButton_4.setText(QtWidgets.QApplication.translate("MainWindow", "More...", None, -1))
+

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Custom Rule Manager</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -125,7 +125,8 @@
          <string>Delete</string>
         </property>
         <property name="icon">
-         <iconset theme="delete"/>
+         <iconset theme="delete">
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>
@@ -135,7 +136,8 @@
          <string>Disable</string>
         </property>
         <property name="icon">
-         <iconset theme="system-run"/>
+         <iconset theme="system-run">
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>
@@ -145,7 +147,8 @@
          <string>Edit</string>
         </property>
         <property name="icon">
-         <iconset theme="edit"/>
+         <iconset theme="edit">
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>
@@ -155,7 +158,8 @@
          <string>New</string>
         </property>
         <property name="icon">
-         <iconset theme="document-new"/>
+         <iconset theme="document-new">
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>

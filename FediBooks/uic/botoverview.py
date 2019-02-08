@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/botoverview.ui',
 # licensing of 'gui/botoverview.ui' applies.
 #
-# Created: Fri Feb  8 23:29:15 2019
+# Created: Sat Feb  9 00:59:27 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -213,7 +213,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
+        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Bot Overview", None, -1))
         self.label_13.setText(QtWidgets.QApplication.translate("MainWindow", "Bot Overview", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Managing [bot name]", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "<html><head/><body><p>[bot name] is <span style=\" font-weight:600;\">active</span>, and replies are <span style=\" font-weight:600;\">enabled</span>. Its most recent post was 12 minutes ago.</p><p>[bot name] posts <span style=\" font-weight:600;\">every 30 minutes</span>. Filtering is <span style=\" font-weight:600;\">disabled</span>. There are <span style=\" font-weight:600;\">0</span> custom posting rules, and <span style=\" font-weight:600;\">0</span> custom reply rules.</p></body></html>", None, -1))

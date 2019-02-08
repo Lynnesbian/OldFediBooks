@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/rulemanager.ui',
 # licensing of 'gui/rulemanager.ui' applies.
 #
-# Created: Fri Feb  8 23:29:15 2019
+# Created: Sat Feb  9 00:59:27 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -79,3 +79,41 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("."), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton.setIcon(icon)
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout_2.addWidget(self.pushButton)
+        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_4.setIcon(icon)
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.horizontalLayout_2.addWidget(self.pushButton_4)
+        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_3.setIcon(icon)
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.horizontalLayout_2.addWidget(self.pushButton_3)
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setIcon(icon)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.horizontalLayout_2.addWidget(self.pushButton_2)
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Custom Rule Manager", None, -1))
+        self.label_13.setText(QtWidgets.QApplication.translate("MainWindow", "Custom Rule Manager", None, -1))
+        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Editing custom", None, -1))
+        self.comboBox.setItemText(0, QtWidgets.QApplication.translate("MainWindow", "reply", None, -1))
+        self.comboBox.setItemText(1, QtWidgets.QApplication.translate("MainWindow", "posting", None, -1))
+        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "rules for", None, -1))
+        self.tableWidget.horizontalHeaderItem(0).setText(QtWidgets.QApplication.translate("MainWindow", "Name", None, -1))
+        self.tableWidget.horizontalHeaderItem(1).setText(QtWidgets.QApplication.translate("MainWindow", "Type", None, -1))
+        self.tableWidget.horizontalHeaderItem(2).setText(QtWidgets.QApplication.translate("MainWindow", "Enabled", None, -1))
+        self.pushButton.setText(QtWidgets.QApplication.translate("MainWindow", "Delete", None, -1))
+        self.pushButton_4.setText(QtWidgets.QApplication.translate("MainWindow", "Disable", None, -1))
+        self.pushButton_3.setText(QtWidgets.QApplication.translate("MainWindow", "Edit", None, -1))
+        self.pushButton_2.setText(QtWidgets.QApplication.translate("MainWindow", "New", None, -1))
+

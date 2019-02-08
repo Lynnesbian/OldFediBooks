@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Bot Manager</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -147,7 +147,8 @@
          <string>More...</string>
         </property>
         <property name="icon">
-         <iconset theme="preferences-other"/>
+         <iconset theme="preferences-other">
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>

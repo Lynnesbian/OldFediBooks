@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/addsrc_text.ui',
 # licensing of 'gui/addsrc_text.ui' applies.
 #
-# Created: Fri Feb  8 23:29:15 2019
+# Created: Sat Feb  9 00:59:27 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
+        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Add Source", None, -1))
         self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "Add Source", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Text file", None, -1))
         self.lineEdit.setPlaceholderText(QtWidgets.QApplication.translate("MainWindow", "Click \"browse\" to choose a file", None, -1))
