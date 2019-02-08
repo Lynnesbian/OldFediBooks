@@ -41,5 +41,6 @@ There are various options to choose from here. You can leave the defaults if you
 
 #### Attribution (Important)
 Under the terms of the GNU Affero General Public License version 3.0, you are required to provide attribution. The simplest way to do this is to link to [FediBooks' GitHub repository](https://github.com/Lynnesbian/FediBooks), but you can do anything you'd like as long as you provide 
- 1. The source code
+ 1. A copy of, or a link to, the source code
  2. Acknowledgement of the author (Lynnesbian)
+
