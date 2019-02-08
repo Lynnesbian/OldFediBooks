@@ -406,9 +406,22 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_5">
             <item>
+             <widget class="QPushButton" name="pushButton_14">
+              <property name="text">
+               <string>Delete</string>
+              </property>
+              <property name="icon">
+               <iconset theme="delete"/>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="pushButton_9">
               <property name="text">
                <string>Add fediverse account</string>
+              </property>
+              <property name="icon">
+               <iconset theme="add"/>
               </property>
              </widget>
             </item>
@@ -416,6 +429,9 @@
              <widget class="QPushButton" name="pushButton_8">
               <property name="text">
                <string>Add text file</string>
+              </property>
+              <property name="icon">
+               <iconset theme="add"/>
               </property>
              </widget>
             </item>
