@@ -151,11 +151,11 @@
         <item>
          <widget class="QTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>4</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab">
            <attribute name="title">
-            <string>Content match (simple)</string>
+            <string>Content match</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
@@ -220,7 +220,7 @@
           </widget>
           <widget class="QWidget" name="tab_2">
            <attribute name="title">
-            <string>Content match (RegEx)</string>
+            <string>RegEx Match</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
