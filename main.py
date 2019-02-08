@@ -17,8 +17,9 @@
 import sys
 from PySide2.QtWidgets import QApplication, QMainWindow
 from PySide2.QtCore import QFile
-from FediBooks.uic.ui_mainmenu import Ui_MainMenu
 import webbrowser  
+
+from FediBooks.uic.ui_mainmenu import Ui_MainMenu
 from FediBooks.wzd_createbot import wzdCreateBot
 
 class MainMenu(QMainWindow):
