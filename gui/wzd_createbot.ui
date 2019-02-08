@@ -71,6 +71,13 @@
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="pushButton_12">
+            <property name="text">
+             <string>Import existing bot from mstdn-ebooks</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="verticalSpacer">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -467,7 +474,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You may set up the options for how your bot should work here, such as how often it should post, whether it should reply, etc.&lt;/p&gt;&lt;p&gt;Click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to continue when ready.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You may set up the options for how your bot should work here, such as how often it should post, whether it should reply, etc. You can also leave them as they are for now and configure them later.&lt;/p&gt;&lt;p&gt;Click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to continue when ready.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -482,6 +489,9 @@
             <property name="bottomMargin">
              <number>0</number>
             </property>
+            <property name="horizontalSpacing">
+             <number>0</number>
+            </property>
             <item row="0" column="0">
              <widget class="QLabel" name="label_10">
               <property name="text">
@@ -489,8 +499,27 @@
               </property>
              </widget>
             </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_16">
+              <property name="text">
+               <string>Check for new posts every</string>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="2">
              <widget class="QPushButton" name="pushButton_7">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="text">
                <string>Enable</string>
               </property>
@@ -509,10 +538,33 @@
               </property>
              </spacer>
             </item>
+            <item row="1" column="2">
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QSpinBox" name="spinBox">
+                <property name="suffix">
+                 <string> mins</string>
+                </property>
+                <property name="minimum">
+                 <number>5</number>
+                </property>
+                <property name="maximum">
+                 <number>360</number>
+                </property>
+                <property name="singleStep">
+                 <number>5</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
            </layout>
           </item>
           <item>
            <layout class="QGridLayout" name="gridLayout">
+            <property name="horizontalSpacing">
+             <number>0</number>
+            </property>
             <item row="2" column="2">
              <widget class="QPushButton" name="pushButton_6">
               <property name="text">
@@ -568,19 +620,18 @@
             <item row="0" column="2">
              <layout class="QHBoxLayout" name="horizontalLayout_3">
               <item>
-               <widget class="QSlider" name="horizontalSlider">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+               <widget class="QSpinBox" name="spinBox_2">
+                <property name="suffix">
+                 <string> mins</string>
                 </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_22">
-                <property name="text">
-                 <string>30 minutes</string>
+                <property name="minimum">
+                 <number>5</number>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <property name="maximum">
+                 <number>360</number>
+                </property>
+                <property name="singleStep">
+                 <number>5</number>
                 </property>
                </widget>
               </item>
@@ -654,7 +705,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This software is licensed under the &lt;span style=&quot; font-weight:600;&quot;&gt;GNU Affero General Public License&lt;/span&gt;, meaning that you must provide attribution.&lt;/p&gt;&lt;p&gt;Please copy the link below and make it available somewhere from your bot's user page, such as in the bio, on a pinned post, or similar, and make it clear that this is a link to the source code of the bot.&lt;/p&gt;&lt;p&gt;Once you have added the text somewhere to your bot's page, click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to continue. This step is not optional.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This software is licensed under the &lt;span style=&quot; font-weight:600;&quot;&gt;GNU Affero General Public License&lt;/span&gt;, meaning that you must provide attribution.&lt;/p&gt;&lt;p&gt;Please copy the link below and make it available somewhere from your bot's user page, such as in the bio, on a pinned post, or similar, and make it clear that this is a link to the source code of the bot.&lt;/p&gt;&lt;p&gt;Once you have added the text somewhere to your bot's page, click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to continue. This step is not optional.&lt;/p&gt;&lt;p&gt;A button to view the full text of the license is provided below for convenience.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -671,6 +722,13 @@
             </property>
             <property name="readOnly">
              <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_11">
+            <property name="text">
+             <string>View the full text of the license</string>
             </property>
            </widget>
           </item>
