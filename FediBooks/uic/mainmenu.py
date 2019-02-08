@@ -3,18 +3,18 @@
 # Form implementation generated from reading ui file 'gui/mainmenu.ui',
 # licensing of 'gui/mainmenu.ui' applies.
 #
-# Created: Sat Feb  9 01:08:56 2019
+# Created: Sat Feb  9 01:14:06 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
 
 from PySide2 import QtCore, QtGui, QtWidgets
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(438, 331)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+class Ui_MainMenu(object):
+    def setupUi(self, MainMenu):
+        MainMenu.setObjectName("MainMenu")
+        MainMenu.resize(438, 331)
+        self.centralwidget = QtWidgets.QWidget(MainMenu)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -55,17 +55,17 @@ class Ui_MainWindow(object):
         self.pushButton_4.setIcon(icon)
         self.pushButton_4.setObjectName("pushButton_4")
         self.verticalLayout.addWidget(self.pushButton_4)
-        MainWindow.setCentralWidget(self.centralwidget)
+        MainMenu.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(MainMenu)
+        QtCore.QMetaObject.connectSlotsByName(MainMenu)
 
-    def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Main Menu", None, -1))
-        self.label_13.setText(QtWidgets.QApplication.translate("MainWindow", "Main Menu", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "<html><head/><body><p>Welcome to FediBooks! You have <span style=\" font-weight:600;\">1</span> bot, <span style=\" font-weight:600;\">1</span> of which is currently active. The database of learned content is currently <span style=\" font-weight:600;\">32KiB</span> in size.</p></body></html>", None, -1))
-        self.pushButton.setText(QtWidgets.QApplication.translate("MainWindow", "Bot Manager", None, -1))
-        self.pushButton_2.setText(QtWidgets.QApplication.translate("MainWindow", "Settings", None, -1))
-        self.pushButton_3.setText(QtWidgets.QApplication.translate("MainWindow", "Donate", None, -1))
-        self.pushButton_4.setText(QtWidgets.QApplication.translate("MainWindow", "Quit", None, -1))
+    def retranslateUi(self, MainMenu):
+        MainMenu.setWindowTitle(QtWidgets.QApplication.translate("MainMenu", "Main Menu", None, -1))
+        self.label_13.setText(QtWidgets.QApplication.translate("MainMenu", "Main Menu", None, -1))
+        self.label.setText(QtWidgets.QApplication.translate("MainMenu", "<html><head/><body><p>Welcome to FediBooks! You have <span style=\" font-weight:600;\">1</span> bot, <span style=\" font-weight:600;\">1</span> of which is currently active. The database of learned content is currently <span style=\" font-weight:600;\">32KiB</span> in size.</p></body></html>", None, -1))
+        self.pushButton.setText(QtWidgets.QApplication.translate("MainMenu", "Bot Manager", None, -1))
+        self.pushButton_2.setText(QtWidgets.QApplication.translate("MainMenu", "Settings", None, -1))
+        self.pushButton_3.setText(QtWidgets.QApplication.translate("MainMenu", "Donate", None, -1))
+        self.pushButton_4.setText(QtWidgets.QApplication.translate("MainMenu", "Quit", None, -1))
 
