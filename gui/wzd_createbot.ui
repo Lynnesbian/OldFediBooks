@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>wzdCreateBot</class>
+ <widget class="QMainWindow" name="wzdCreateBot">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -880,5 +880,76 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>pressed()</signal>
+   <receiver>wzdCreateBot</receiver>
+   <slot>btn_cancel_pressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>422</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>431</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_13</sender>
+   <signal>pressed()</signal>
+   <receiver>wzdCreateBot</receiver>
+   <slot>btn_help_pressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>148</x>
+     <y>434</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>244</x>
+     <y>433</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>pressed()</signal>
+   <receiver>wzdCreateBot</receiver>
+   <slot>btn_back_pressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>430</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>413</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>pressed()</signal>
+   <receiver>wzdCreateBot</receiver>
+   <slot>btn_next_pressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>526</x>
+     <y>430</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>578</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>btn_cancel_pressed()</slot>
+  <slot>btn_help_pressed()</slot>
+  <slot>btn_back_pressed()</slot>
+  <slot>btn_next_pressed()</slot>
+ </slots>
 </ui>

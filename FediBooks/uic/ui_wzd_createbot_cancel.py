@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/wzd_createbot_cancel.ui',
 # licensing of 'gui/wzd_createbot_cancel.ui' applies.
 #
-# Created: Sat Feb  9 01:46:50 2019
+# Created: Sat Feb  9 01:57:32 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
