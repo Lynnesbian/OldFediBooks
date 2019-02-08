@@ -147,8 +147,7 @@
          <string>More...</string>
         </property>
         <property name="icon">
-         <iconset theme="system">
-          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+         <iconset theme="preferences-other"/>
         </property>
        </widget>
       </item>
