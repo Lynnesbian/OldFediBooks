@@ -21,7 +21,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -138,7 +138,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;First, you need to select some &lt;span style=&quot; font-weight:600;&quot;&gt;conditions&lt;/span&gt; for this rule. &lt;span style=&quot; font-weight:600;&quot;&gt;Condition&lt;/span&gt; are what the bot checks for before activating this rule. For example, you might have a rule that says &amp;quot;add an exclamation mark&amp;quot; that is activated when a post meets the &lt;span style=&quot; font-weight:600;&quot;&gt;conditions&lt;/span&gt; of containing the word &amp;quot;pop&amp;quot;, and being after 12:00PM.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;First, you need to select some &lt;span style=&quot; font-weight:600;&quot;&gt;conditions&lt;/span&gt; for this rule. &lt;span style=&quot; font-weight:600;&quot;&gt;Condition&lt;/span&gt; are what the bot checks for before activating this rule. For example, you might have a rule that says &amp;quot;add an exclamation mark&amp;quot; that is activated when a post meets the &lt;span style=&quot; font-weight:600;&quot;&gt;conditions&lt;/span&gt; of containing the word &amp;quot;pop&amp;quot;, and being after 12:00PM.&lt;/p&gt;&lt;p&gt;Once you've selected one or more conditions, click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -562,7 +562,7 @@
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-            <height>60</height>
+            <height>36</height>
            </size>
           </property>
          </spacer>
@@ -595,6 +595,16 @@
           </property>
           <property name="alignment">
            <set>Qt::AlignHCenter|Qt::AlignTop</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_10">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Your bot now needs an &lt;span style=&quot; font-weight:600;&quot;&gt;action&lt;/span&gt; to take after the &lt;span style=&quot; font-weight:600;&quot;&gt;conditions&lt;/span&gt; are met. This can be anything from posting a custom message, modifying text, or even not posting at all.&lt;/p&gt;&lt;p&gt;Unlike conditions, &lt;span style=&quot; font-weight:600;&quot;&gt;you can only specify one action&lt;/span&gt;. The action used is determined by the tab you're currently viewing when you click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
