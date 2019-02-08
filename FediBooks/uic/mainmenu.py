@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/mainmenu.ui',
 # licensing of 'gui/mainmenu.ui' applies.
 #
-# Created: Sat Feb  9 01:14:06 2019
+# Created: Sat Feb  9 01:27:56 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -37,35 +37,39 @@ class Ui_MainMenu(object):
         self.label.setWordWrap(True)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_botmanager = QtWidgets.QPushButton(self.centralwidget)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("."), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon)
-        self.pushButton.setObjectName("pushButton")
-        self.verticalLayout.addWidget(self.pushButton)
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setIcon(icon)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.verticalLayout.addWidget(self.pushButton_2)
-        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setIcon(icon)
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.verticalLayout.addWidget(self.pushButton_3)
-        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setIcon(icon)
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.verticalLayout.addWidget(self.pushButton_4)
+        self.btn_botmanager.setIcon(icon)
+        self.btn_botmanager.setObjectName("btn_botmanager")
+        self.verticalLayout.addWidget(self.btn_botmanager)
+        self.btn_settings = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_settings.setIcon(icon)
+        self.btn_settings.setObjectName("btn_settings")
+        self.verticalLayout.addWidget(self.btn_settings)
+        self.btn_donate = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_donate.setIcon(icon)
+        self.btn_donate.setObjectName("btn_donate")
+        self.verticalLayout.addWidget(self.btn_donate)
+        self.btn_quit = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_quit.setIcon(icon)
+        self.btn_quit.setObjectName("btn_quit")
+        self.verticalLayout.addWidget(self.btn_quit)
         MainMenu.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainMenu)
+        QtCore.QObject.connect(self.btn_botmanager, QtCore.SIGNAL("pressed()"), MainMenu.btn_botmanager_pressed)
+        QtCore.QObject.connect(self.btn_settings, QtCore.SIGNAL("pressed()"), MainMenu.btn_settings_pressed)
+        QtCore.QObject.connect(self.btn_donate, QtCore.SIGNAL("pressed()"), MainMenu.btn_donate_pressed)
+        QtCore.QObject.connect(self.btn_quit, QtCore.SIGNAL("pressed()"), MainMenu.btn_quit_pressed)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
 
     def retranslateUi(self, MainMenu):
         MainMenu.setWindowTitle(QtWidgets.QApplication.translate("MainMenu", "Main Menu", None, -1))
         self.label_13.setText(QtWidgets.QApplication.translate("MainMenu", "Main Menu", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainMenu", "<html><head/><body><p>Welcome to FediBooks! You have <span style=\" font-weight:600;\">1</span> bot, <span style=\" font-weight:600;\">1</span> of which is currently active. The database of learned content is currently <span style=\" font-weight:600;\">32KiB</span> in size.</p></body></html>", None, -1))
-        self.pushButton.setText(QtWidgets.QApplication.translate("MainMenu", "Bot Manager", None, -1))
-        self.pushButton_2.setText(QtWidgets.QApplication.translate("MainMenu", "Settings", None, -1))
-        self.pushButton_3.setText(QtWidgets.QApplication.translate("MainMenu", "Donate", None, -1))
-        self.pushButton_4.setText(QtWidgets.QApplication.translate("MainMenu", "Quit", None, -1))
+        self.btn_botmanager.setText(QtWidgets.QApplication.translate("MainMenu", "Bot Manager", None, -1))
+        self.btn_settings.setText(QtWidgets.QApplication.translate("MainMenu", "Settings", None, -1))
+        self.btn_donate.setText(QtWidgets.QApplication.translate("MainMenu", "Donate", None, -1))
+        self.btn_quit.setText(QtWidgets.QApplication.translate("MainMenu", "Quit", None, -1))
 
