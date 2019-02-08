@@ -20,7 +20,7 @@
       <item>
        <widget class="QStackedWidget" name="stackedWidget">
         <property name="currentIndex">
-         <number>0</number>
+         <number>5</number>
         </property>
         <widget class="QWidget" name="page">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -490,7 +490,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You may set up the options for how your bot should work here, such as how often it should post, whether it should reply, etc. You can also leave them as they are for now and configure them later.&lt;/p&gt;&lt;p&gt;Click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to continue when ready.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You may set up the options for how your bot should work here, such as how often it should post, whether it should reply, etc. You can also leave them as they are for now and configure them later. Advanced options, like custom reply rules, can be configured later.&lt;/p&gt;&lt;p&gt;Click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to continue when ready.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -570,6 +570,9 @@
                 <property name="singleStep">
                  <number>5</number>
                 </property>
+                <property name="value">
+                 <number>60</number>
+                </property>
                </widget>
               </item>
              </layout>
@@ -581,34 +584,6 @@
             <property name="horizontalSpacing">
              <number>0</number>
             </property>
-            <item row="2" column="2">
-             <widget class="QPushButton" name="pushButton_6">
-              <property name="text">
-               <string>Configure</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>Advanced options</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_21">
-              <property name="text">
-               <string>Create a new post every</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="2">
-             <widget class="QLineEdit" name="lineEdit_3">
-              <property name="placeholderText">
-               <string>Leave blank for none</string>
-              </property>
-             </widget>
-            </item>
             <item row="1" column="2">
              <widget class="QPushButton" name="pushButton_10">
               <property name="text">
@@ -629,10 +604,37 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="0">
+            <item row="1" column="1">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="0">
              <widget class="QLabel" name="label_11">
               <property name="text">
                <string>CW for created posts</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QLineEdit" name="lineEdit_3">
+              <property name="placeholderText">
+               <string>Leave blank for none</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_21">
+              <property name="text">
+               <string>Create a new post every</string>
               </property>
              </widget>
             </item>
@@ -652,22 +654,12 @@
                 <property name="singleStep">
                  <number>5</number>
                 </property>
+                <property name="value">
+                 <number>30</number>
+                </property>
                </widget>
               </item>
              </layout>
-            </item>
-            <item row="1" column="1">
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
             </item>
            </layout>
           </item>
