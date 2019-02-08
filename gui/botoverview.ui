@@ -152,7 +152,7 @@
             <item>
              <widget class="QPushButton" name="pushButton_7">
               <property name="text">
-               <string>Settings</string>
+               <string>Specify rules</string>
               </property>
               <property name="icon">
                <iconset theme="preferences-other"/>
