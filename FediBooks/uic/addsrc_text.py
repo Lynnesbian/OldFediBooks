@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/addsrc_text.ui',
 # licensing of 'gui/addsrc_text.ui' applies.
 #
-# Created: Sat Feb  9 00:59:27 2019
+# Created: Sat Feb  9 01:08:56 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!

@@ -61,7 +61,8 @@
        <string>Bot Manager</string>
       </property>
       <property name="icon">
-       <iconset theme="system"/>
+       <iconset theme="system">
+        <normaloff>.</normaloff>.</iconset>
       </property>
      </widget>
     </item>
@@ -71,7 +72,8 @@
        <string>Settings</string>
       </property>
       <property name="icon">
-       <iconset theme="preferences-other"/>
+       <iconset theme="preferences-other">
+        <normaloff>.</normaloff>.</iconset>
       </property>
      </widget>
     </item>
@@ -81,7 +83,8 @@
        <string>Donate</string>
       </property>
       <property name="icon">
-       <iconset theme="add"/>
+       <iconset theme="add">
+        <normaloff>.</normaloff>.</iconset>
       </property>
      </widget>
     </item>
@@ -91,7 +94,8 @@
        <string>Quit</string>
       </property>
       <property name="icon">
-       <iconset theme="exit"/>
+       <iconset theme="exit">
+        <normaloff>.</normaloff>.</iconset>
       </property>
      </widget>
     </item>

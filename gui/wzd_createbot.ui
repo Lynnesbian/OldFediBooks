@@ -411,7 +411,8 @@
                <string>Delete</string>
               </property>
               <property name="icon">
-               <iconset theme="delete"/>
+               <iconset theme="delete">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -421,7 +422,8 @@
                <string>Add fediverse account</string>
               </property>
               <property name="icon">
-               <iconset theme="add"/>
+               <iconset theme="add">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -431,7 +433,8 @@
                <string>Add text file</string>
               </property>
               <property name="icon">
-               <iconset theme="add"/>
+               <iconset theme="add">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -819,7 +822,7 @@
           </property>
           <property name="icon">
            <iconset theme="cancel">
-            <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+            <normaloff>.</normaloff>.</iconset>
           </property>
          </widget>
         </item>
@@ -854,7 +857,7 @@
           </property>
           <property name="icon">
            <iconset theme="back">
-            <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+            <normaloff>.</normaloff>.</iconset>
           </property>
          </widget>
         </item>
@@ -865,7 +868,7 @@
           </property>
           <property name="icon">
            <iconset theme="next">
-            <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+            <normaloff>.</normaloff>.</iconset>
           </property>
          </widget>
         </item>
