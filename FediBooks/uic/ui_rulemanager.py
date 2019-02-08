@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/rulemanager.ui',
 # licensing of 'gui/rulemanager.ui' applies.
 #
-# Created: Sat Feb  9 01:27:56 2019
+# Created: Sat Feb  9 01:46:50 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!

@@ -17,13 +17,22 @@
 import sys
 from PySide2.QtWidgets import QApplication, QMainWindow
 from PySide2.QtCore import QFile
-from FediBooks.uic.mainmenu import Ui_MainMenu
+from FediBooks.uic.ui_mainmenu import Ui_MainMenu
+import webbrowser  
 
 class MainMenu(QMainWindow):
 	def __init__(self):
 		super(MainMenu, self).__init__()
 		self.ui = Ui_MainMenu()
 		self.ui.setupUi(self)
+	def btn_botmanager_pressed(self):
+		print("bot manager")
+	def btn_settings_pressed(self):
+		print("settings")
+	def btn_donate_pressed(self):
+		webbrowser.open("https://github.com/Lynnesbian/FediBooks/tree/master/README.md#Donations", new=2, autoraise=True)
+	def btn_quit_pressed(self):
+		print("quit")
 
 if __name__ == "__main__":
 	app = QApplication(sys.argv)
