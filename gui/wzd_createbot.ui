@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Bot Creation Wizard</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -818,7 +818,8 @@
            <string>Help</string>
           </property>
           <property name="icon">
-           <iconset theme="help"/>
+           <iconset theme="help">
+            <normaloff>.</normaloff>.</iconset>
           </property>
          </widget>
         </item>
