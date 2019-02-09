@@ -31,6 +31,10 @@ class dlgWzdError(QDialog):
 	def accepted(self):
 		self.done(1)
 
+	def present(self, text):
+		self.ui.label.setText("There were some problems with the data you entered. Please rectify the following issues and try again.\n\n{}\n\nIf you believe this to be an error, please open a GitHub issue, or notify Lynne (@lynnesbian.fedi.lynnesbian.space)".format(text))
+		self.exec()
+
 class wzdCreateBot(QMainWindow):
 	def __init__(self):
 		super(wzdCreateBot, self).__init__()
