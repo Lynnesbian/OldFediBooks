@@ -11,8 +11,10 @@ sudo pip install -r requirements.txt
 ./main.py
 ```
 
-## Donations
+## Manual
+The manual can be accessed [here](https://github.com/Lynnesbian/FediBooks/blob/master/MANUAL.md).
 
+## Donations
 Donations can be provided via [LiberaPay](https://liberapay.com/lynnesbian), [PayPal](https://paypal.me/lynnesbian), or [Ko-fi](https://ko-fi.com/lynnesbian).
 
 ## License

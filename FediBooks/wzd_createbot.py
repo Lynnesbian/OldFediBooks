@@ -29,9 +29,13 @@ class wzdCreateBot(QMainWindow):
 		self.pageCount = self.ui.stackedWidget.count()
 
 	# FUNCTIONS
+	def validate_page(self):
+		return "Example"
+		# return True
 	def next_page(self):
 		index = self.ui.stackedWidget.currentIndex()
-		self.ui.stackedWidget.setCurrentIndex(index + 1)
+		if self.validate_page() is True:
+			self.ui.stackedWidget.setCurrentIndex(index + 1)
 	def previous_page(self):
 		index = self.ui.stackedWidget.currentIndex()
 		self.ui.stackedWidget.setCurrentIndex(index - 1)
