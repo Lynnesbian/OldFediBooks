@@ -19,4 +19,39 @@ from PySide2.QtWidgets import QApplication, QMainWindow
 from PySide2.QtCore import QFile
 import webbrowser  
 
-from uic.ui_wzd_createbot import Ui_wzdCreateBot
+from .uic.ui_wzd_createbot import Ui_wzdCreateBot
+
+class wzdCreateBot(QMainWindow):
+	def __init__(self):
+		super(wzdCreateBot, self).__init__()
+		self.ui = Ui_wzdCreateBot()
+		self.ui.setupUi(self)
+		self.pageCount = self.ui.stackedWidget.count()
+
+	# FUNCTIONS
+	def next_page(self):
+		index = self.ui.stackedWidget.currentIndex()
+		self.ui.stackedWidget.setCurrentIndex(index + 1)
+	def previous_page(self):
+		index = self.ui.stackedWidget.currentIndex()
+		self.ui.stackedWidget.setCurrentIndex(index - 1)
+
+	# EVENT HANDLERS
+	def btn_cancel_pressed(self):
+		print("cancel")
+	def btn_help_pressed(self):
+		webbrowser.open(
+			"https://github.com/Lynnesbian/FediBooks/tree/master/MANUAL.md#{}".format(
+				self.ui.stackedWidget.currentWidget().objectName().replace("_", "-")), new=2, autoraise=True)
+	def btn_back_pressed(self):
+		self.previous_page()
+	def btn_next_pressed(self):
+		self.next_page()
+	def stk_index_changed(self):
+		print(self.ui.stackedWidget.currentWidget().objectName())
+		if self.ui.stackedWidget.currentIndex() == self.pageCount - 1:
+			self.ui.btn_next.setText("Finish")
+		else:
+			self.ui.btn_next.setText("Next")
+
+		self.ui.btn_back.setEnabled(self.ui.stackedWidget.currentIndex() != 0)

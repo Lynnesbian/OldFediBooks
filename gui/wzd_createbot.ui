@@ -22,7 +22,7 @@
         <property name="currentIndex">
          <number>0</number>
         </property>
-        <widget class="QWidget" name="page">
+        <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
            <widget class="QLabel" name="label">
@@ -92,7 +92,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_2">
+        <widget class="QWidget" name="choose_an_instance">
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
            <widget class="QLabel" name="label_3">
@@ -181,7 +181,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_3">
+        <widget class="QWidget" name="create_account">
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <widget class="QLabel" name="label_5">
@@ -251,7 +251,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_4">
+        <widget class="QWidget" name="authorise_fedibooks">
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
            <widget class="QLabel" name="label_7">
@@ -338,7 +338,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_5">
+        <widget class="QWidget" name="select_sources">
          <layout class="QVBoxLayout" name="verticalLayout_10">
           <item>
            <widget class="QLabel" name="label_17">
@@ -455,7 +455,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_11">
+        <widget class="QWidget" name="configure_your_bot">
          <layout class="QVBoxLayout" name="verticalLayout_11">
           <item>
            <widget class="QLabel" name="label_19">
@@ -681,7 +681,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_7">
+        <widget class="QWidget" name="attribution_important">
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <item>
            <widget class="QLabel" name="label_15">
@@ -761,7 +761,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="page_6">
+        <widget class="QWidget" name="done">
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
            <widget class="QLabel" name="label_13">
@@ -852,6 +852,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btn_back">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Back</string>
           </property>
@@ -945,11 +948,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>stackedWidget</sender>
+   <signal>currentChanged(int)</signal>
+   <receiver>wzdCreateBot</receiver>
+   <slot>stk_index_changed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>539</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>570</x>
+     <y>302</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>btn_cancel_pressed()</slot>
   <slot>btn_help_pressed()</slot>
   <slot>btn_back_pressed()</slot>
   <slot>btn_next_pressed()</slot>
+  <slot>stk_index_changed()</slot>
  </slots>
 </ui>
