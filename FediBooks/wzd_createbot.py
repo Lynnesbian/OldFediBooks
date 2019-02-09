@@ -15,11 +15,21 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import sys
-from PySide2.QtWidgets import QApplication, QMainWindow
+from PySide2.QtWidgets import QApplication, QMainWindow, QDialog
 from PySide2.QtCore import QFile
 import webbrowser  
 
 from .uic.ui_wzd_createbot import Ui_wzdCreateBot
+from .uic.ui_dlg_wzd_error import Ui_dlgWzdError
+
+class dlgWzdError(QDialog):
+	def __init__(self):
+		super(dlgWzdError, self).__init__()
+		self.ui = Ui_dlgWzdError()
+		self.ui.setupUi(self)
+
+	def accepted(self):
+		self.done(1)
 
 class wzdCreateBot(QMainWindow):
 	def __init__(self):
@@ -34,8 +44,12 @@ class wzdCreateBot(QMainWindow):
 		# return True
 	def next_page(self):
 		index = self.ui.stackedWidget.currentIndex()
-		if self.validate_page() is True:
+		response = self.validate_page()
+		if response is True:
 			self.ui.stackedWidget.setCurrentIndex(index + 1)
+		else:
+			pass
+			
 	def previous_page(self):
 		index = self.ui.stackedWidget.currentIndex()
 		self.ui.stackedWidget.setCurrentIndex(index - 1)
