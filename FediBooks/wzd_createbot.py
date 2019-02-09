@@ -75,8 +75,13 @@ class wzdCreateBot(QMainWindow):
 			self.ui.pbr_instance.setFormat(steps[0])
 			self.ui.pbr_instance.setValue(1)
 			self.ui.pbr_instance.show()
+			instance = {
+				"name":None,
+				"type":None,
+				"version":None
+			}
 			try:
-				instance = re.search(r"(?:https?:\/\/)?((?:\w+\.)+\w+)\/?", self.ui.txt_instance.text()).group(1)
+				instance['name'] = re.search(r"(?:https?:\/\/)?((?:\w+\.)+\w+)\/?", self.ui.txt_instance.text()).group(1)
 			except:
 				out.send_text.emit("The instance URL you provided is not a valid URL.")
 				return
@@ -100,6 +105,7 @@ class wzdCreateBot(QMainWindow):
 			self.ui.pbr_instance.setFormat(steps[1])
 			self.ui.pbr_instance.setValue(2)
 
+			self.webfinger_uri = None
 			try:
 				xml = ElementTree.fromstring(r.text)
 				for child in xml:
@@ -112,17 +118,36 @@ class wzdCreateBot(QMainWindow):
 				out.send_text.emit("Failed to parse host-meta as XML")
 				return
 			
-			out.send_text.emit("host-meta did not specify WebFinger URI")
+			if self.webfinger_uri == None:
+				out.send_text.emit("host-meta did not specify WebFinger URI.")
+				return
 
 			#it's probably a fediverse instance! now we check nodeinfo
 
+			instance_type = None
 			#first, the standard way, used by pleroma, misskey, friendica, osada, hubzilla, ganggo, diaspora, and more!
 			try:
 				r = requests.get("https://{}/.well-known/nodeinfo".format(instance))
 				r.raise_for_status()
-			except requests.exceptions.HTTPError as e: 
-				print(e)
-			#and now, the mastodon way, used by mastodon!
+			except requests.exceptions.HTTPError: 
+				#no nodeinfo file! this part is the mastodon way, used by mastodon!
+				#(it might also be GNU social, but we'll cross that bridge when we come to it)
+				instance_type = "mastodon"
+				pass
+			
+			try:
+				j = r.json()
+			except: 
+				out.send_text.emit("Failed to parse nodeinfo as JSON.")
+				return
+
+			try:
+				for link in j['links']:
+					if link['rel'] == "http://nodeinfo.diaspora.software/ns/schema/2.0":
+						r = requests.get(link['href'])
+			except:
+				out.send_text.emit("Couldn't load nodeinfo.")
+				return
 
 			return
 
