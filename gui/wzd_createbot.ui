@@ -20,7 +20,7 @@
       <item>
        <widget class="QStackedWidget" name="stackedWidget">
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -141,28 +141,22 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit">
+           <widget class="QLineEdit" name="txt_instance">
             <property name="text">
              <string>botsin.space</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QProgressBar" name="progressBar">
+           <widget class="QProgressBar" name="pbr_instance">
             <property name="minimum">
              <number>0</number>
             </property>
             <property name="maximum">
-             <number>1</number>
+             <number>3</number>
             </property>
             <property name="value">
              <number>0</number>
-            </property>
-            <property name="invertedAppearance">
-             <bool>false</bool>
-            </property>
-            <property name="format">
-             <string>Verifying</string>
             </property>
            </widget>
           </item>
@@ -818,7 +812,7 @@
         <item>
          <widget class="QPushButton" name="btn_cancel">
           <property name="text">
-           <string>Cancel</string>
+           <string>&amp;Cancel</string>
           </property>
           <property name="icon">
            <iconset theme="cancel">
@@ -829,7 +823,7 @@
         <item>
          <widget class="QPushButton" name="btn_help">
           <property name="text">
-           <string>Help</string>
+           <string>&amp;Help</string>
           </property>
           <property name="icon">
            <iconset theme="help">
@@ -856,7 +850,7 @@
            <bool>false</bool>
           </property>
           <property name="text">
-           <string>Back</string>
+           <string>&amp;Back</string>
           </property>
           <property name="icon">
            <iconset theme="back">
@@ -867,11 +861,14 @@
         <item>
          <widget class="QPushButton" name="btn_next">
           <property name="text">
-           <string>Next</string>
+           <string>&amp;Next</string>
           </property>
           <property name="icon">
            <iconset theme="next">
             <normaloff>.</normaloff>.</iconset>
+          </property>
+          <property name="default">
+           <bool>true</bool>
           </property>
          </widget>
         </item>

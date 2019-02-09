@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/wzd_createbot.ui',
 # licensing of 'gui/wzd_createbot.ui' applies.
 #
-# Created: Sat Feb  9 10:54:16 2019
+# Created: Sat Feb  9 14:59:14 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -84,16 +84,17 @@ class Ui_wzdCreateBot(object):
 		self.label_4.setWordWrap(True)
 		self.label_4.setObjectName("label_4")
 		self.verticalLayout_3.addWidget(self.label_4)
-		self.lineEdit = QtWidgets.QLineEdit(self.choose_an_instance)
-		self.lineEdit.setObjectName("lineEdit")
-		self.verticalLayout_3.addWidget(self.lineEdit)
-		self.progressBar = QtWidgets.QProgressBar(self.choose_an_instance)
-		self.progressBar.setMinimum(0)
-		self.progressBar.setMaximum(1)
-		self.progressBar.setProperty("value", 0)
-		self.progressBar.setInvertedAppearance(False)
-		self.progressBar.setObjectName("progressBar")
-		self.verticalLayout_3.addWidget(self.progressBar)
+		self.txt_instance = QtWidgets.QLineEdit(self.choose_an_instance)
+		self.txt_instance.setObjectName("txt_instance")
+		self.verticalLayout_3.addWidget(self.txt_instance)
+		self.pbr_instance = QtWidgets.QProgressBar(self.choose_an_instance)
+		self.pbr_instance.setMinimum(0)
+		self.pbr_instance.setMaximum(1)
+		self.pbr_instance.setProperty("value", 0)
+		self.pbr_instance.setInvertedAppearance(False)
+		self.pbr_instance.setFormat("")
+		self.pbr_instance.setObjectName("pbr_instance")
+		self.verticalLayout_3.addWidget(self.pbr_instance)
 		spacerItem1 = QtWidgets.QSpacerItem(20, 101, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
 		self.verticalLayout_3.addItem(spacerItem1)
 		self.stackedWidget.addWidget(self.choose_an_instance)
@@ -409,6 +410,7 @@ class Ui_wzdCreateBot(object):
 		self.horizontalLayout_4.addWidget(self.btn_back)
 		self.btn_next = QtWidgets.QPushButton(self.centralwidget)
 		self.btn_next.setIcon(icon)
+		self.btn_next.setDefault(True)
 		self.btn_next.setObjectName("btn_next")
 		self.horizontalLayout_4.addWidget(self.btn_next)
 		self.verticalLayout.addLayout(self.horizontalLayout_4)
@@ -416,7 +418,7 @@ class Ui_wzdCreateBot(object):
 		wzdCreateBot.setCentralWidget(self.centralwidget)
 
 		self.retranslateUi(wzdCreateBot)
-		self.stackedWidget.setCurrentIndex(0)
+		self.stackedWidget.setCurrentIndex(1)
 		QtCore.QObject.connect(self.btn_cancel, QtCore.SIGNAL("pressed()"), wzdCreateBot.btn_cancel_pressed)
 		QtCore.QObject.connect(self.btn_help, QtCore.SIGNAL("pressed()"), wzdCreateBot.btn_help_pressed)
 		QtCore.QObject.connect(self.btn_back, QtCore.SIGNAL("pressed()"), wzdCreateBot.btn_back_pressed)
@@ -431,8 +433,7 @@ class Ui_wzdCreateBot(object):
 		self.pushButton_12.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Import existing bot from mstdn-ebooks", None, -1))
 		self.label_3.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Choose an Instance", None, -1))
 		self.label_4.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>Please specify the instance you\'d like your bot to run on. It doesn\'t have to be the same instance that your account is on. <span style=\" font-weight:600;\">botsin.space</span> is an instance designed with the intention of hosting bots.</p><p>When you\'ve chosen an instance, click <span style=\" font-weight:600;\">Next</span> to continue.</p></body></html>", None, -1))
-		self.lineEdit.setText(QtWidgets.QApplication.translate("wzdCreateBot", "botsin.space", None, -1))
-		self.progressBar.setFormat(QtWidgets.QApplication.translate("wzdCreateBot", "Verifying", None, -1))
+		self.txt_instance.setText(QtWidgets.QApplication.translate("wzdCreateBot", "botsin.space", None, -1))
 		self.label_5.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Create Account", None, -1))
 		self.label_6.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>If you <span style=\" font-weight:600;\">don\'t have an account for your bot yet</span>, ou now need to create an account on <span style=\" font-weight:600;\">botsin.space</span> for your bot to use. Click the button below to open the account creation page. Once you\'ve successfully created the account <span style=\" font-weight:600;\">and confirmed the email </span>(if necessary), click <span style=\" font-weight:600;\">Next</span> to proceed. </p><p>If you <span style=\" font-weight:600;\">already have an account you\'d like to use for the bot</span>, click <span style=\" font-weight:600;\">Next</span>.</p></body></html>", None, -1))
 		self.pushButton_4.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Open account creation page", None, -1))
@@ -466,8 +467,8 @@ class Ui_wzdCreateBot(object):
 		self.pushButton_11.setText(QtWidgets.QApplication.translate("wzdCreateBot", "View the full text of the license", None, -1))
 		self.label_13.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Done!", None, -1))
 		self.label_12.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>Your bot has been set up and configured, and is ready to learn from the sources provided. </p><p>Click <span style=\" font-weight:600;\">Finish</span> to complete the setup process. Your bot will start learning from the provided sources.</p></body></html>", None, -1))
-		self.btn_cancel.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Cancel", None, -1))
-		self.btn_help.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Help", None, -1))
-		self.btn_back.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Back", None, -1))
-		self.btn_next.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Next", None, -1))
+		self.btn_cancel.setText(QtWidgets.QApplication.translate("wzdCreateBot", "&Cancel", None, -1))
+		self.btn_help.setText(QtWidgets.QApplication.translate("wzdCreateBot", "&Help", None, -1))
+		self.btn_back.setText(QtWidgets.QApplication.translate("wzdCreateBot", "&Back", None, -1))
+		self.btn_next.setText(QtWidgets.QApplication.translate("wzdCreateBot", "&Next", None, -1))
 
