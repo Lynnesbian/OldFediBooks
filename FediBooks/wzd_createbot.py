@@ -249,3 +249,4 @@ class wzdCreateBot(QMainWindow):
 
 		if self.page_name() == "choose_an_instance":
 			self.ui.pbr_instance.setFormat("Ready")
+			self.ui.pbr_instance.setValue(0)
