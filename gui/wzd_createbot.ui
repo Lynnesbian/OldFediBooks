@@ -20,7 +20,7 @@
       <item>
        <widget class="QStackedWidget" name="stkMain">
         <property name="currentIndex">
-         <number>2</number>
+         <number>7</number>
         </property>
         <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -448,7 +448,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QTableWidget" name="tableWidget">
+           <widget class="QTableWidget" name="tbl_sources">
             <property name="editTriggers">
              <set>QAbstractItemView::NoEditTriggers</set>
             </property>
@@ -467,7 +467,7 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_5">
             <item>
-             <widget class="QPushButton" name="pushButton_14">
+             <widget class="QPushButton" name="btn_source_delete">
               <property name="text">
                <string>Delete</string>
               </property>
@@ -478,7 +478,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_9">
+             <widget class="QPushButton" name="btn_add_fedi">
               <property name="text">
                <string>Add fediverse account</string>
               </property>
@@ -489,7 +489,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_8">
+             <widget class="QPushButton" name="btn_add_text">
               <property name="text">
                <string>Add text file</string>
               </property>
@@ -587,7 +587,7 @@
              </widget>
             </item>
             <item row="0" column="2">
-             <widget class="QPushButton" name="pushButton_7">
+             <widget class="QPushButton" name="btn_learn_from_cw_posts">
               <property name="minimumSize">
                <size>
                 <width>200</width>
@@ -621,7 +621,7 @@
             <item row="1" column="2">
              <layout class="QHBoxLayout" name="horizontalLayout_2">
               <item>
-               <widget class="QSpinBox" name="spinBox">
+               <widget class="QSpinBox" name="spn_post_check_frequency">
                 <property name="suffix">
                  <string> mins</string>
                 </property>
@@ -649,7 +649,7 @@
              <number>0</number>
             </property>
             <item row="1" column="2">
-             <widget class="QPushButton" name="pushButton_10">
+             <widget class="QPushButton" name="btn_enable_reply_service">
               <property name="text">
                <string>Enable</string>
               </property>
@@ -689,7 +689,7 @@
              </widget>
             </item>
             <item row="2" column="2">
-             <widget class="QLineEdit" name="lineEdit_3">
+             <widget class="QLineEdit" name="txt_cw">
               <property name="placeholderText">
                <string>Leave blank for none</string>
               </property>
@@ -705,7 +705,7 @@
             <item row="0" column="2">
              <layout class="QHBoxLayout" name="horizontalLayout_3">
               <item>
-               <widget class="QSpinBox" name="spinBox_2">
+               <widget class="QSpinBox" name="btn_post_frequency">
                 <property name="suffix">
                  <string> mins</string>
                 </property>
@@ -780,7 +780,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This software is licensed under the &lt;span style=&quot; font-weight:600;&quot;&gt;GNU Affero General Public License&lt;/span&gt;, meaning that you must provide attribution.&lt;/p&gt;&lt;p&gt;Please copy the link below and make it available somewhere from your bot's user page, such as in the bio, on a pinned post, or similar, and make it clear that this is a link to the source code of the bot.&lt;/p&gt;&lt;p&gt;Once you have added the text somewhere to your bot's page, click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to continue. This step is not optional.&lt;/p&gt;&lt;p&gt;A button to view the full text of the license is provided below for convenience.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This software is licensed under the &lt;span style=&quot; font-weight:600;&quot;&gt;GNU Affero General Public License (version 3)&lt;/span&gt;, meaning that you must provide attribution.&lt;/p&gt;&lt;p&gt;Please &lt;span style=&quot; font-weight:600;&quot;&gt;copy the link below and make it available somewhere from your bot's user page&lt;/span&gt;, such as in the bio, on a pinned post, or similar, and &lt;span style=&quot; font-weight:600;&quot;&gt;make it clear that this is a link to the source code of the bot&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Once you have added the text in the box below somewhere to your bot's page, along with an explanation of what the link is for, click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to continue. This step is not optional.&lt;/p&gt;&lt;p&gt;A button to view the full text of the license is provided below for convenience.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -801,7 +801,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_11">
+           <widget class="QPushButton" name="btn_view_license">
             <property name="text">
              <string>View the full text of the license</string>
             </property>

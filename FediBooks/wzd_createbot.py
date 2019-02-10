@@ -19,6 +19,8 @@ from PySide2.QtCore import QFile, Signal, Slot, QObject, QThread
 import sys, re
 import xml.etree.ElementTree as ElementTree
 import requests
+from mastodon import Mastodon
+from Misskey import Misskey
 
 from .functions import *
 from .uic.ui_wzd_createbot import Ui_wzdCreateBot
@@ -44,6 +46,7 @@ class wzdPageValidator(QThread):
 	send_true = Signal(bool)
 	send_text = Signal(str)
 	update_pbr = Signal(int, str)
+	set_pbr_visibility = Signal(bool)
 
 	def __init__(self, wzd):
 		self.wzd = wzd
@@ -54,8 +57,6 @@ class wzdPageValidator(QThread):
 		self.wait()
 
 	def run(self):
-		print("uwu")
-
 		pn = self.wzd.page_name()
 
 		if pn == "choose_an_instance":
@@ -63,6 +64,7 @@ class wzdPageValidator(QThread):
 
 			# CONNECTING
 
+			self.set_pbr_visibility.emit(True)
 			self.update_pbr.emit(1, steps[0]) #TODO: find out why this one causes a crash but the later ones don't
 			self.wzd.instance = {
 				"name":None,
@@ -182,7 +184,7 @@ class wzdCreateBot(QMainWindow):
 		self.ui = Ui_wzdCreateBot()
 		self.ui.setupUi(self)
 		self.pageCount = self.ui.stkMain.count()
-		self.on_stkMain_index_changed()
+		self.on_stkMain_currentChanged()
 
 	# FUNCTIONS
 
@@ -198,6 +200,14 @@ class wzdCreateBot(QMainWindow):
 			self.reset_page()
 		
 		self.ui.btn_next.setEnabled(True)
+		self.ui.stkMain.setEnabled(True)
+
+	@Slot(bool)
+	def set_pbr_visibility(self, visible):
+		if self.page_name() == "choose_an_instance":
+			self.ui.pbr_instance.setVisible(visible)
+
+		print(self.page_name())
 
 	@Slot(int, str)
 	def set_pbr_state(self, progress, text):
@@ -213,11 +223,12 @@ class wzdCreateBot(QMainWindow):
 		self.validator.send_true.connect(self.validate_page_result)
 		self.validator.send_text.connect(self.validate_page_result)
 		self.validator.update_pbr.connect(self.set_pbr_state)
-		print("owo")
+		self.validator.set_pbr_visibility.connect(self.set_pbr_visibility)
 		self.validator.start()
 		
 	def next_page(self):
 		self.ui.btn_next.setEnabled(False)
+		self.ui.stkMain.setEnabled(False)
 		self.validate_page()
 		# thread.join(30)
 			
@@ -232,6 +243,7 @@ class wzdCreateBot(QMainWindow):
 		if self.page_name() == "choose_an_instance":
 			self.ui.pbr_instance.setFormat("Ready")
 			self.ui.pbr_instance.setValue(0)
+		self.set_pbr_visibility(False)
 
 	# EVENT HANDLERS
 	@Slot()
@@ -263,7 +275,12 @@ class wzdCreateBot(QMainWindow):
 			open_url("https://{}/register".format(n))
 		else:
 			open_url("https://{}")
-	def on_stkMain_index_changed(self):
+
+	@Slot(str)
+	def on_txt_auth_code_textChanged(self, text):
+		self.ui.btn_next.setEnabled(True)
+	@Slot(int)
+	def on_stkMain_currentChanged(self, page=None):
 		# print(self.ui.stkMain.currentWidget().objectName())
 		if self.ui.stkMain.currentIndex() == self.pageCount - 1:
 			self.ui.btn_next.setText("Finish")

@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/mainmenu.ui',
 # licensing of 'gui/mainmenu.ui' applies.
 #
-# Created: Sun Feb 10 17:43:43 2019
+# Created: Sun Feb 10 20:06:24 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -64,8 +64,8 @@ class Ui_MainMenu(object):
 		MainMenu.setWindowTitle(QtWidgets.QApplication.translate("MainMenu", "Main Menu", None, -1))
 		self.label_13.setText(QtWidgets.QApplication.translate("MainMenu", "Main Menu", None, -1))
 		self.label.setText(QtWidgets.QApplication.translate("MainMenu", "<html><head/><body><p>Welcome to FediBooks! You have <span style=\" font-weight:600;\">1</span> bot, <span style=\" font-weight:600;\">1</span> of which is currently active. The database of learned content is currently <span style=\" font-weight:600;\">32KiB</span> in size.</p></body></html>", None, -1))
-		self.btn_botmanager.setText(QtWidgets.QApplication.translate("MainMenu", "Bot Manager", None, -1))
-		self.btn_settings.setText(QtWidgets.QApplication.translate("MainMenu", "Settings", None, -1))
-		self.btn_donate.setText(QtWidgets.QApplication.translate("MainMenu", "Donate", None, -1))
-		self.btn_quit.setText(QtWidgets.QApplication.translate("MainMenu", "Quit", None, -1))
+		self.btn_botmanager.setText(QtWidgets.QApplication.translate("MainMenu", "&Bot Manager", None, -1))
+		self.btn_settings.setText(QtWidgets.QApplication.translate("MainMenu", "&Settings", None, -1))
+		self.btn_donate.setText(QtWidgets.QApplication.translate("MainMenu", "&Donate", None, -1))
+		self.btn_quit.setText(QtWidgets.QApplication.translate("MainMenu", "&Quit", None, -1))
 

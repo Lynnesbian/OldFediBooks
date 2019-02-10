@@ -58,7 +58,7 @@
     <item>
      <widget class="QPushButton" name="btn_botmanager">
       <property name="text">
-       <string>Bot Manager</string>
+       <string>&amp;Bot Manager</string>
       </property>
       <property name="icon">
        <iconset theme="system">
@@ -69,7 +69,7 @@
     <item>
      <widget class="QPushButton" name="btn_settings">
       <property name="text">
-       <string>Settings</string>
+       <string>&amp;Settings</string>
       </property>
       <property name="icon">
        <iconset theme="preferences-other">
@@ -80,7 +80,7 @@
     <item>
      <widget class="QPushButton" name="btn_donate">
       <property name="text">
-       <string>Donate</string>
+       <string>&amp;Donate</string>
       </property>
       <property name="icon">
        <iconset theme="add">
@@ -91,7 +91,7 @@
     <item>
      <widget class="QPushButton" name="btn_quit">
       <property name="text">
-       <string>Quit</string>
+       <string>&amp;Quit</string>
       </property>
       <property name="icon">
        <iconset theme="exit">
