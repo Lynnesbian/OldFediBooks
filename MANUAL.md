@@ -23,7 +23,7 @@ These instances are in order of priority -- for example, if Pleroma and Misskey 
 
 ## Caveats
  - The bots can only post if the computer FediBooks is running on is online. If you put the computer FediBooks is running on into sleep mode, it will stop posting until the computer is woken up. FediBooks will not reply when mentioned while the computer is asleep, and it will not reply to the mentions it missed after the computer wakes up.
- - [mstdn-ebooks](https://github.com/mstdn-ebooks), the previous bot software I wrote, determined sources by seeing what accounts the bot was following. For example, if @bot was following @jack and @jill, it would download posts from their accounts and use them to learn. FediBooks does not work this way, and you will instead need to add sources via the user interface. Support for this method of specifying sources is planned.
+ - [mstdn-ebooks](https://github.com/Lynnesbian/mstdn-ebooks), the previous bot software I wrote, determined sources by seeing what accounts the bot was following. For example, if @bot was following @jack and @jill, it would download posts from their accounts and use them to learn. FediBooks does not work this way, and you will instead need to add sources via the user interface. Support for this method of specifying sources is planned.
 
 ## Permissions
 This section aims to explain why FediBooks requests the account permissions it does.
