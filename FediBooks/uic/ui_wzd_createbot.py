@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/wzd_createbot.ui',
 # licensing of 'gui/wzd_createbot.ui' applies.
 #
-# Created: Sun Feb 10 16:51:31 2019
+# Created: Sun Feb 10 17:47:11 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -131,9 +131,9 @@ class Ui_wzdCreateBot(object):
 		self.label_6.setWordWrap(True)
 		self.label_6.setObjectName("label_6")
 		self.verticalLayout_9.addWidget(self.label_6)
-		self.pushButton_4 = QtWidgets.QPushButton(self.page_3)
-		self.pushButton_4.setObjectName("pushButton_4")
-		self.verticalLayout_9.addWidget(self.pushButton_4)
+		self.btn_create_account = QtWidgets.QPushButton(self.page_3)
+		self.btn_create_account.setObjectName("btn_create_account")
+		self.verticalLayout_9.addWidget(self.btn_create_account)
 		self.stkCreateAccount.addWidget(self.page_3)
 		self.page_4 = QtWidgets.QWidget()
 		self.page_4.setObjectName("page_4")
@@ -191,12 +191,12 @@ class Ui_wzdCreateBot(object):
 		self.label_8.setWordWrap(True)
 		self.label_8.setObjectName("label_8")
 		self.verticalLayout_5.addWidget(self.label_8)
-		self.pushButton_5 = QtWidgets.QPushButton(self.authorise_fedibooks)
-		self.pushButton_5.setObjectName("pushButton_5")
-		self.verticalLayout_5.addWidget(self.pushButton_5)
-		self.lineEdit_2 = QtWidgets.QLineEdit(self.authorise_fedibooks)
-		self.lineEdit_2.setObjectName("lineEdit_2")
-		self.verticalLayout_5.addWidget(self.lineEdit_2)
+		self.btn_auth_code = QtWidgets.QPushButton(self.authorise_fedibooks)
+		self.btn_auth_code.setObjectName("btn_auth_code")
+		self.verticalLayout_5.addWidget(self.btn_auth_code)
+		self.txt_auth_code = QtWidgets.QLineEdit(self.authorise_fedibooks)
+		self.txt_auth_code.setObjectName("txt_auth_code")
+		self.verticalLayout_5.addWidget(self.txt_auth_code)
 		self.progressBar_2 = QtWidgets.QProgressBar(self.authorise_fedibooks)
 		self.progressBar_2.setProperty("value", 24)
 		self.progressBar_2.setObjectName("progressBar_2")
@@ -448,13 +448,8 @@ class Ui_wzdCreateBot(object):
 		wzdCreateBot.setCentralWidget(self.centralwidget)
 
 		self.retranslateUi(wzdCreateBot)
-		self.stkMain.setCurrentIndex(0)
+		self.stkMain.setCurrentIndex(2)
 		self.stkCreateAccount.setCurrentIndex(0)
-		QtCore.QObject.connect(self.btn_cancel, QtCore.SIGNAL("pressed()"), wzdCreateBot.btn_cancel_pressed)
-		QtCore.QObject.connect(self.btn_help, QtCore.SIGNAL("pressed()"), wzdCreateBot.btn_help_pressed)
-		QtCore.QObject.connect(self.btn_back, QtCore.SIGNAL("pressed()"), wzdCreateBot.btn_back_pressed)
-		QtCore.QObject.connect(self.btn_next, QtCore.SIGNAL("pressed()"), wzdCreateBot.btn_next_pressed)
-		QtCore.QObject.connect(self.stkMain, QtCore.SIGNAL("currentChanged(int)"), wzdCreateBot.stk_index_changed)
 		QtCore.QMetaObject.connectSlotsByName(wzdCreateBot)
 
 	def retranslateUi(self, wzdCreateBot):
@@ -465,15 +460,15 @@ class Ui_wzdCreateBot(object):
 		self.label_3.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Choose an Instance", None, -1))
 		self.label_4.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>Please specify the instance you\'d like your bot to run on. It doesn\'t have to be the same instance that your account is on. <span style=\" font-weight:600;\">botsin.space</span> is an instance designed with the intention of hosting bots.</p><p>When you\'ve chosen an instance, click <span style=\" font-weight:600;\">Next</span> to continue.</p></body></html>", None, -1))
 		self.txt_instance.setText(QtWidgets.QApplication.translate("wzdCreateBot", "botsin.space", None, -1))
-		self.label_5.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Create Account", None, -1))
+		self.label_5.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Create an Account", None, -1))
 		self.label_6.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>If you <span style=\" font-weight:600;\">don\'t have an account for your bot yet</span>, ou now need to create an account on <span style=\" font-weight:600;\">botsin.space</span> for your bot to use. Click the button below to open the account creation page. Once you\'ve successfully created the account <span style=\" font-weight:600;\">and confirmed the email </span>(if necessary), click <span style=\" font-weight:600;\">Next</span> to proceed. </p><p>If you <span style=\" font-weight:600;\">already have an account you\'d like to use for the bot</span>, click <span style=\" font-weight:600;\">Next</span>.</p></body></html>", None, -1))
-		self.pushButton_4.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Open account creation page", None, -1))
+		self.btn_create_account.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Open account creation page", None, -1))
 		self.label_9.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Unsupported Instance Type", None, -1))
 		self.label_22.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>Unfortunately, FediBooks does not yet support posting to accounts hosted on [instance name] instances. While <span style=\" font-weight:600;\">posting from these instances is unsupported</span>, it is hightly likely that <span style=\" font-weight:600;\">you will still be able to learn from posts on instances of this type</span>.</p><p>Click <span style=\" font-weight:600;\">Back</span> to choose a new instance for FediBooks to use.</p></body></html>", None, -1))
 		self.label_7.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Authorise FediBooks", None, -1))
 		self.label_8.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>FediBooks needs access to the account you\'ve just created in order to post from it. Click the button below to open the authorisation prompt, and allow access to the account. If you accidentally reject access, click the button again.<br/></p><p>When you\'ve authorised access to the account, you will be given a code. Copy that code and paste it in the box below the button, then click <span style=\" font-weight:600;\">Next</span> to continue.</p></body></html>", None, -1))
-		self.pushButton_5.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Request access", None, -1))
-		self.lineEdit_2.setPlaceholderText(QtWidgets.QApplication.translate("wzdCreateBot", "Authorisation code", None, -1))
+		self.btn_auth_code.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Request access", None, -1))
+		self.txt_auth_code.setPlaceholderText(QtWidgets.QApplication.translate("wzdCreateBot", "Authorisation code", None, -1))
 		self.progressBar_2.setFormat(QtWidgets.QApplication.translate("wzdCreateBot", "Validating", None, -1))
 		self.label_17.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Select Sources", None, -1))
 		self.label_18.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>FediBooks needs at least one source to model its posts from. These can either be fediverse accounts or text files (seperated by linebreaks).</p><p>Add at least one source, then click <span style=\" font-weight:600;\">Next</span>.</p></body></html>", None, -1))

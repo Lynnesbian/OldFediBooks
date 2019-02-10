@@ -181,7 +181,7 @@ class wzdCreateBot(QMainWindow):
 		self.ui = Ui_wzdCreateBot()
 		self.ui.setupUi(self)
 		self.pageCount = self.ui.stkMain.count()
-		self.stk_index_changed()
+		self.on_stkMain_index_changed()
 
 	# FUNCTIONS
 
@@ -230,9 +230,11 @@ class wzdCreateBot(QMainWindow):
 		return self.ui.stkMain.currentWidget().objectName()
 
 	# EVENT HANDLERS
-	def btn_cancel_pressed(self):
+	@Slot()
+	def on_btn_cancel_pressed(self):
 		print("cancel")
-	def btn_help_pressed(self):
+	@Slot()
+	def on_btn_help_pressed(self):
 		page = self.page_name().replace("_", "-")
 		if page in ["welcome", "done"]:
 			#no specific help for these pages, just direct to the wizard help instead
@@ -240,11 +242,13 @@ class wzdCreateBot(QMainWindow):
 		webbrowser.open(
 			"https://github.com/Lynnesbian/FediBooks/tree/master/MANUAL.md#{}".format(
 				page), new=2, autoraise=True)
-	def btn_back_pressed(self):
+	@Slot()
+	def on_btn_back_pressed(self):
 		self.previous_page()
-	def btn_next_pressed(self):
+	@Slot()
+	def on_btn_next_pressed(self):
 		self.next_page()
-	def stk_index_changed(self):
+	def on_stkMain_index_changed(self):
 		# print(self.ui.stkMain.currentWidget().objectName())
 		if self.ui.stkMain.currentIndex() == self.pageCount - 1:
 			self.ui.btn_next.setText("Finish")

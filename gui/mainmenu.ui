@@ -103,72 +103,7 @@
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>btn_botmanager</sender>
-   <signal>pressed()</signal>
-   <receiver>MainMenu</receiver>
-   <slot>btn_botmanager_pressed()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>295</x>
-     <y>200</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>4</x>
-     <y>226</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_settings</sender>
-   <signal>pressed()</signal>
-   <receiver>MainMenu</receiver>
-   <slot>btn_settings_pressed()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>356</x>
-     <y>232</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>438</x>
-     <y>253</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_donate</sender>
-   <signal>pressed()</signal>
-   <receiver>MainMenu</receiver>
-   <slot>btn_donate_pressed()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>310</x>
-     <y>278</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>438</x>
-     <y>305</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_quit</sender>
-   <signal>pressed()</signal>
-   <receiver>MainMenu</receiver>
-   <slot>btn_quit_pressed()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>151</x>
-     <y>300</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>5</x>
-     <y>157</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
  <slots>
   <slot>btn_botmanager_pressed()</slot>
   <slot>btn_settings_pressed()</slot>

@@ -16,7 +16,8 @@
 
 import sys, faulthandler
 from PySide2.QtWidgets import QApplication, QMainWindow
-from PySide2.QtCore import QFile
+from PySide2.QtCore import QFile, Slot
+import PySide2.QtCore as QtCore
 import webbrowser  
 
 from FediBooks.uic.ui_mainmenu import Ui_MainMenu
@@ -28,13 +29,17 @@ class MainMenu(QMainWindow):
 		super(MainMenu, self).__init__()
 		self.ui = Ui_MainMenu()
 		self.ui.setupUi(self)
-	def btn_botmanager_pressed(self):
+	@Slot()
+	def on_btn_botmanager_pressed(self):
 		print("bot manager")
-	def btn_settings_pressed(self):
+	@Slot()
+	def on_btn_settings_pressed(self):
 		print("settings")
-	def btn_donate_pressed(self):
+	@Slot()
+	def on_btn_donate_pressed(self):
 		webbrowser.open("https://github.com/Lynnesbian/FediBooks/tree/master/README.md#Donations", new=2, autoraise=True)
-	def btn_quit_pressed(self):
+	@Slot()
+	def on_btn_quit_pressed(self):
 		print("quit")
 
 if __name__ == "__main__":
