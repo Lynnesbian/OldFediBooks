@@ -20,6 +20,7 @@ from PySide2.QtCore import QFile, Slot
 import PySide2.QtCore as QtCore
 import webbrowser  
 
+from FediBooks.functions import *
 from FediBooks.uic.ui_mainmenu import Ui_MainMenu
 from FediBooks.wzd_createbot import wzdCreateBot
 
@@ -37,7 +38,7 @@ class MainMenu(QMainWindow):
 		print("settings")
 	@Slot()
 	def on_btn_donate_pressed(self):
-		webbrowser.open("https://github.com/Lynnesbian/FediBooks/tree/master/README.md#Donations", new=2, autoraise=True)
+		open_url("https://github.com/Lynnesbian/FediBooks/tree/master/README.md#Donations")
 	@Slot()
 	def on_btn_quit_pressed(self):
 		print("quit")

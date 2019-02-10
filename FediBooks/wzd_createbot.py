@@ -16,10 +16,11 @@
 
 from PySide2.QtWidgets import QApplication, QMainWindow, QDialog
 from PySide2.QtCore import QFile, Signal, Slot, QObject, QThread
-import sys, webbrowser, re
+import sys, re
 import xml.etree.ElementTree as ElementTree
 import requests
 
+from .functions import *
 from .uic.ui_wzd_createbot import Ui_wzdCreateBot
 from .uic.ui_dlg_wzd_error import Ui_dlgWzdError
 
@@ -194,9 +195,7 @@ class wzdCreateBot(QMainWindow):
 		else:
 			dialogue = dlgWzdError()
 			dialogue.present(response)
-			if self.page_name() == "choose_an_instance":
-				self.ui.pbr_instance.setFormat("Ready")
-				self.ui.pbr_instance.setValue(0)
+			self.reset_page()
 		
 		self.ui.btn_next.setEnabled(True)
 
@@ -229,6 +228,11 @@ class wzdCreateBot(QMainWindow):
 	def page_name(self):
 		return self.ui.stkMain.currentWidget().objectName()
 
+	def reset_page(self):
+		if self.page_name() == "choose_an_instance":
+			self.ui.pbr_instance.setFormat("Ready")
+			self.ui.pbr_instance.setValue(0)
+
 	# EVENT HANDLERS
 	@Slot()
 	def on_btn_cancel_pressed(self):
@@ -239,15 +243,26 @@ class wzdCreateBot(QMainWindow):
 		if page in ["welcome", "done"]:
 			#no specific help for these pages, just direct to the wizard help instead
 			page = "bot-creation-wizard"
-		webbrowser.open(
-			"https://github.com/Lynnesbian/FediBooks/tree/master/MANUAL.md#{}".format(
-				page), new=2, autoraise=True)
+		open_url("https://github.com/Lynnesbian/FediBooks/tree/master/MANUAL.md#{}".format(page))
 	@Slot()
 	def on_btn_back_pressed(self):
 		self.previous_page()
 	@Slot()
 	def on_btn_next_pressed(self):
 		self.next_page()
+	@Slot()
+	def on_btn_create_account_pressed(self):
+		i = self.instance['type']
+		n = self.instance['name']
+		#v = self.instance['version']
+		if i == "mastodon":
+			open_url("https://{}/auth/sign_up".format(n))
+		elif i == "pleroma":
+			open_url("https://{}/registration".format(n))
+		elif i in ["hubzilla", "osada"]: #not supported yet but may as well prepare for it
+			open_url("https://{}/register".format(n))
+		else:
+			open_url("https://{}")
 	def on_stkMain_index_changed(self):
 		# print(self.ui.stkMain.currentWidget().objectName())
 		if self.ui.stkMain.currentIndex() == self.pageCount - 1:
@@ -257,6 +272,4 @@ class wzdCreateBot(QMainWindow):
 
 		self.ui.btn_back.setEnabled(self.ui.stkMain.currentIndex() != 0)
 
-		if self.page_name() == "choose_an_instance":
-			self.ui.pbr_instance.setFormat("Ready")
-			self.ui.pbr_instance.setValue(0)
+		self.reset_page()
