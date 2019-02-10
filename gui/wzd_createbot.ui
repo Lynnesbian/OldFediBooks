@@ -20,7 +20,7 @@
       <item>
        <widget class="QStackedWidget" name="stkMain">
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -232,7 +232,7 @@
                  </sizepolicy>
                 </property>
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you &lt;span style=&quot; font-weight:600;&quot;&gt;don't have an account for your bot yet&lt;/span&gt;, ou now need to create an account on &lt;span style=&quot; font-weight:600;&quot;&gt;botsin.space&lt;/span&gt; for your bot to use. Click the button below to open the account creation page. Once you've successfully created the account &lt;span style=&quot; font-weight:600;&quot;&gt;and confirmed the email &lt;/span&gt;(if necessary), click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to proceed. &lt;/p&gt;&lt;p&gt;If you &lt;span style=&quot; font-weight:600;&quot;&gt;already have an account you'd like to use for the bot&lt;/span&gt;, click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you &lt;span style=&quot; font-weight:600;&quot;&gt;don't have an account for your bot yet&lt;/span&gt;, ou now need to create an account on &lt;span style=&quot; font-weight:600;&quot;&gt;botsin.space&lt;/span&gt; for your bot to use. Click the button below to open the account creation page. Once you've successfully created the account &lt;span style=&quot; font-weight:600;&quot;&gt;and confirmed the email &lt;/span&gt;(if necessary), click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to proceed. If you are currently signed in to an account on this instance, you will either need to &lt;span style=&quot; font-weight:600;&quot;&gt;log out&lt;/span&gt; or &lt;span style=&quot; font-weight:600;&quot;&gt;sign up in a different browser or a private window&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;If you &lt;span style=&quot; font-weight:600;&quot;&gt;already have an account you'd like to use for the bot&lt;/span&gt;, click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>

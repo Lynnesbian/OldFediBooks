@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/wzd_createbot.ui',
 # licensing of 'gui/wzd_createbot.ui' applies.
 #
-# Created: Sun Feb 10 17:47:11 2019
+# Created: Sun Feb 10 18:30:32 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -461,7 +461,7 @@ class Ui_wzdCreateBot(object):
 		self.label_4.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>Please specify the instance you\'d like your bot to run on. It doesn\'t have to be the same instance that your account is on. <span style=\" font-weight:600;\">botsin.space</span> is an instance designed with the intention of hosting bots.</p><p>When you\'ve chosen an instance, click <span style=\" font-weight:600;\">Next</span> to continue.</p></body></html>", None, -1))
 		self.txt_instance.setText(QtWidgets.QApplication.translate("wzdCreateBot", "botsin.space", None, -1))
 		self.label_5.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Create an Account", None, -1))
-		self.label_6.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>If you <span style=\" font-weight:600;\">don\'t have an account for your bot yet</span>, ou now need to create an account on <span style=\" font-weight:600;\">botsin.space</span> for your bot to use. Click the button below to open the account creation page. Once you\'ve successfully created the account <span style=\" font-weight:600;\">and confirmed the email </span>(if necessary), click <span style=\" font-weight:600;\">Next</span> to proceed. </p><p>If you <span style=\" font-weight:600;\">already have an account you\'d like to use for the bot</span>, click <span style=\" font-weight:600;\">Next</span>.</p></body></html>", None, -1))
+		self.label_6.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>If you <span style=\" font-weight:600;\">don\'t have an account for your bot yet</span>, ou now need to create an account on <span style=\" font-weight:600;\">botsin.space</span> for your bot to use. Click the button below to open the account creation page. Once you\'ve successfully created the account <span style=\" font-weight:600;\">and confirmed the email </span>(if necessary), click <span style=\" font-weight:600;\">Next</span> to proceed. If you are currently signed in to an account on this instance, you will either need to <span style=\" font-weight:600;\">log out</span> or <span style=\" font-weight:600;\">sign up in a different browser or a private window</span>.</p><p>If you <span style=\" font-weight:600;\">already have an account you\'d like to use for the bot</span>, click <span style=\" font-weight:600;\">Next</span>.</p></body></html>", None, -1))
 		self.btn_create_account.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Open account creation page", None, -1))
 		self.label_9.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Unsupported Instance Type", None, -1))
 		self.label_22.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>Unfortunately, FediBooks does not yet support posting to accounts hosted on [instance name] instances. While <span style=\" font-weight:600;\">posting from these instances is unsupported</span>, it is hightly likely that <span style=\" font-weight:600;\">you will still be able to learn from posts on instances of this type</span>.</p><p>Click <span style=\" font-weight:600;\">Back</span> to choose a new instance for FediBooks to use.</p></body></html>", None, -1))
