@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/wzd_createbot.ui',
 # licensing of 'gui/wzd_createbot.ui' applies.
 #
-# Created: Sun Feb 10 14:59:48 2019
+# Created: Sun Feb 10 16:51:31 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -435,7 +435,6 @@ class Ui_wzdCreateBot(object):
 		spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
 		self.horizontalLayout_4.addItem(spacerItem9)
 		self.btn_back = QtWidgets.QPushButton(self.centralwidget)
-		self.btn_back.setEnabled(False)
 		self.btn_back.setIcon(icon)
 		self.btn_back.setObjectName("btn_back")
 		self.horizontalLayout_4.addWidget(self.btn_back)
@@ -449,7 +448,7 @@ class Ui_wzdCreateBot(object):
 		wzdCreateBot.setCentralWidget(self.centralwidget)
 
 		self.retranslateUi(wzdCreateBot)
-		self.stkMain.setCurrentIndex(1)
+		self.stkMain.setCurrentIndex(0)
 		self.stkCreateAccount.setCurrentIndex(0)
 		QtCore.QObject.connect(self.btn_cancel, QtCore.SIGNAL("pressed()"), wzdCreateBot.btn_cancel_pressed)
 		QtCore.QObject.connect(self.btn_help, QtCore.SIGNAL("pressed()"), wzdCreateBot.btn_help_pressed)

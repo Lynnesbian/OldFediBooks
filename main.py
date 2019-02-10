@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import sys
+import sys, faulthandler
 from PySide2.QtWidgets import QApplication, QMainWindow
 from PySide2.QtCore import QFile
 import webbrowser  
@@ -22,6 +22,7 @@ import webbrowser
 from FediBooks.uic.ui_mainmenu import Ui_MainMenu
 from FediBooks.wzd_createbot import wzdCreateBot
 
+faulthandler.enable()
 class MainMenu(QMainWindow):
 	def __init__(self):
 		super(MainMenu, self).__init__()
