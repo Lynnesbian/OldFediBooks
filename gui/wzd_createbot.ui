@@ -18,9 +18,9 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QStackedWidget" name="stackedWidget">
+       <widget class="QStackedWidget" name="stkMain">
         <property name="currentIndex">
-         <number>2</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -177,8 +177,20 @@
         </widget>
         <widget class="QWidget" name="create_account">
          <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
-           <widget class="QStackedWidget" name="stackedWidget_2">
+           <widget class="QStackedWidget" name="stkCreateAccount">
             <property name="currentIndex">
              <number>0</number>
             </property>
@@ -1001,7 +1013,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>stackedWidget</sender>
+   <sender>stkMain</sender>
    <signal>currentChanged(int)</signal>
    <receiver>wzdCreateBot</receiver>
    <slot>stk_index_changed()</slot>

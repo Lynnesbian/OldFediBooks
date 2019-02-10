@@ -45,7 +45,7 @@ class wzdCreateBot(QMainWindow):
 		super(wzdCreateBot, self).__init__()
 		self.ui = Ui_wzdCreateBot()
 		self.ui.setupUi(self)
-		self.pageCount = self.ui.stackedWidget.count()
+		self.pageCount = self.ui.stkMain.count()
 
 	# FUNCTIONS
 
@@ -53,8 +53,8 @@ class wzdCreateBot(QMainWindow):
 	@Slot(bool)
 	def validate_page_result(self, response):
 		if response is True:
-			index = self.ui.stackedWidget.currentIndex()
-			self.ui.stackedWidget.setCurrentIndex(index + 1)
+			index = self.ui.stkMain.currentIndex()
+			self.ui.stkMain.setCurrentIndex(index + 1)
 		else:
 			dialogue = dlgWzdError()
 			dialogue.present(response)
@@ -177,7 +177,7 @@ class wzdCreateBot(QMainWindow):
 				out.send_text.emit("An unknown error ocurred.")
 				return
 			#end choose_an_instance
-			
+
 		else:
 			out.send_true.emit(True)
 			return
@@ -188,11 +188,11 @@ class wzdCreateBot(QMainWindow):
 		thread.start()
 			
 	def previous_page(self):
-		index = self.ui.stackedWidget.currentIndex()
-		self.ui.stackedWidget.setCurrentIndex(index - 1)
+		index = self.ui.stkMain.currentIndex()
+		self.ui.stkMain.setCurrentIndex(index - 1)
 
 	def page_name(self):
-		return self.ui.stackedWidget.currentWidget().objectName()
+		return self.ui.stkMain.currentWidget().objectName()
 
 	# EVENT HANDLERS
 	def btn_cancel_pressed(self):
@@ -206,10 +206,10 @@ class wzdCreateBot(QMainWindow):
 	def btn_next_pressed(self):
 		self.next_page()
 	def stk_index_changed(self):
-		print(self.ui.stackedWidget.currentWidget().objectName())
-		if self.ui.stackedWidget.currentIndex() == self.pageCount - 1:
+		print(self.ui.stkMain.currentWidget().objectName())
+		if self.ui.stkMain.currentIndex() == self.pageCount - 1:
 			self.ui.btn_next.setText("Finish")
 		else:
 			self.ui.btn_next.setText("Next")
 
-		self.ui.btn_back.setEnabled(self.ui.stackedWidget.currentIndex() != 0)
+		self.ui.btn_back.setEnabled(self.ui.stkMain.currentIndex() != 0)
