@@ -15,7 +15,7 @@ pip3 install -r requirements.txt
 The manual can be accessed [here](https://github.com/Lynnesbian/FediBooks/blob/master/MANUAL.md).
 
 ## Donations
-Donations can be provided via [LiberaPay](https://liberapay.com/lynnesbian), [PayPal](https://paypal.me/lynnesbian), or [Ko-fi](https://ko-fi.com/lynnesbian).
+Donations can be provided via [LiberaPay](https://liberapay.com/lynnesbian) (recurring), [PayPal](https://paypal.me/lynnesbian) (singular), or [Ko-fi](https://ko-fi.com/lynnesbian) (singular). Don't feel obligated to donate!
 
 ## License
 Copyright (C)2019 Lynnesbian (https://fedi.lynnesbian.space/@lynnesbian)
