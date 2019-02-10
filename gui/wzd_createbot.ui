@@ -20,7 +20,7 @@
       <item>
        <widget class="QStackedWidget" name="stackedWidget">
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -178,56 +178,111 @@
         <widget class="QWidget" name="create_account">
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
-           <widget class="QLabel" name="label_5">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
+           <widget class="QStackedWidget" name="stackedWidget_2">
+            <property name="currentIndex">
+             <number>0</number>
             </property>
-            <property name="font">
-             <font>
-              <pointsize>24</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Create Account</string>
-            </property>
-            <property name="textFormat">
-             <enum>Qt::AutoText</enum>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignHCenter|Qt::AlignTop</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_6">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you &lt;span style=&quot; font-weight:600;&quot;&gt;don't have an account for your bot yet&lt;/span&gt;, ou now need to create an account on &lt;span style=&quot; font-weight:600;&quot;&gt;botsin.space&lt;/span&gt; for your bot to use. Click the button below to open the account creation page. Once you've successfully created the account &lt;span style=&quot; font-weight:600;&quot;&gt;and confirmed the email &lt;/span&gt;(if necessary), click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to proceed. &lt;/p&gt;&lt;p&gt;If you &lt;span style=&quot; font-weight:600;&quot;&gt;already have an account you'd like to use for the bot&lt;/span&gt;, click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_4">
-            <property name="text">
-             <string>Open account creation page</string>
-            </property>
+            <widget class="QWidget" name="page_3">
+             <layout class="QVBoxLayout" name="verticalLayout_9">
+              <item>
+               <widget class="QLabel" name="label_5">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>24</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Create Account</string>
+                </property>
+                <property name="textFormat">
+                 <enum>Qt::AutoText</enum>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_6">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you &lt;span style=&quot; font-weight:600;&quot;&gt;don't have an account for your bot yet&lt;/span&gt;, ou now need to create an account on &lt;span style=&quot; font-weight:600;&quot;&gt;botsin.space&lt;/span&gt; for your bot to use. Click the button below to open the account creation page. Once you've successfully created the account &lt;span style=&quot; font-weight:600;&quot;&gt;and confirmed the email &lt;/span&gt;(if necessary), click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to proceed. &lt;/p&gt;&lt;p&gt;If you &lt;span style=&quot; font-weight:600;&quot;&gt;already have an account you'd like to use for the bot&lt;/span&gt;, click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_4">
+                <property name="text">
+                 <string>Open account creation page</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_4">
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <item>
+               <widget class="QLabel" name="label_9">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>24</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Unsupported Instance Type</string>
+                </property>
+                <property name="textFormat">
+                 <enum>Qt::AutoText</enum>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_22">
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unfortunately, FediBooks does not yet support posting to accounts hosted on [instance name] instances. While &lt;span style=&quot; font-weight:600;&quot;&gt;posting from these instances is unsupported&lt;/span&gt;, it is hightly likely that &lt;span style=&quot; font-weight:600;&quot;&gt;you will still be able to learn from posts on instances of this type&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Click &lt;span style=&quot; font-weight:600;&quot;&gt;Back&lt;/span&gt; to choose a new instance for FediBooks to use.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </widget>
           </item>
           <item>

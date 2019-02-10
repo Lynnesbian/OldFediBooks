@@ -124,7 +124,6 @@ class wzdCreateBot(QMainWindow):
 
 			#it's probably a fediverse instance! now we check nodeinfo
 
-			instance_type = None
 			#first, the standard way, used by pleroma, misskey, friendica, osada, hubzilla, ganggo, diaspora, and more!
 			try:
 				r = requests.get("https://{}/.well-known/nodeinfo".format(instance))
@@ -132,8 +131,27 @@ class wzdCreateBot(QMainWindow):
 			except requests.exceptions.HTTPError: 
 				#no nodeinfo file! this part is the mastodon way, used by mastodon!
 				#(it might also be GNU social, but we'll cross that bridge when we come to it)
-				instance_type = "mastodon"
-				pass
+				if "server" in r.headers and r.headers['server'].lower() == "mastodon":
+					instance['type'] = "mastodon" #it could also be glitch-soc but they're the same for the purposes of this program
+					#we'll leave the version number blank for now and get it later when we use Mastodon.py
+				else:
+					try:
+						r = requests.get("https://{}/api/v1/instance")
+						j = r.json()
+						if re.search(r"^(\d+\.)+\d$", j['version']) != None:
+							#its probably mastodon
+							#this will handle e.g. 2.1.2.3.4 or 21.2.4 but not commit numbers, which mastodon hopefully doesn't use haha
+							#man, if only there was some type of standard
+							instance['type'] = "mastodon"
+							instance['version'] = j['version']
+						else:
+							out.send_text.emit("The instance type is not supported by FediBooks.")
+							return
+					except:
+						#TODO: check for GNU social
+						out.send_text.emit("The instance type is not supported by FediBooks.")
+						return
+					pass
 			
 			try:
 				j = r.json()
@@ -145,13 +163,21 @@ class wzdCreateBot(QMainWindow):
 				for link in j['links']:
 					if link['rel'] == "http://nodeinfo.diaspora.software/ns/schema/2.0":
 						r = requests.get(link['href'])
+						j = r.json()
+						instance['type'] = j['software']['name'].lower()
+						instance['version'] = j['software']['version'].lower()
 			except:
-				out.send_text.emit("Couldn't load nodeinfo.")
+				out.send_text.emit("Couldn't load or parse nodeinfo.")
 				return
 
-			return
-
-
+			if instance['type'] != None:
+				out.send_true.emit(True)
+				return
+			else:
+				out.send_text.emit("An unknown error ocurred.")
+				return
+			#end choose_an_instance
+			
 		else:
 			out.send_true.emit(True)
 			return
