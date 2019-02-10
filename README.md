@@ -7,7 +7,7 @@ A Python-based multiplatform markov fediverse bot creator and manager with an in
 ```
 git clone https://github.com/Lynnesbian/FediBooks
 cd FediBooks
-sudo pip install -r requirements.txt
+pip3 install -r requirements.txt
 ./main.py
 ```
 
