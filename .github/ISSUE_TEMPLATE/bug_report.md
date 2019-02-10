@@ -14,7 +14,7 @@ e.g. "create a new reply rule"
 e.g. "the program crashed and gave me this error message:"
 
 **What should have happened?**
-e.g. "the reply rule should have saved successfully*
+e.g. "the reply rule should have saved successfully"
 
 **How did it happen**
 e.g. "click x, then y, then type z, then press save"
