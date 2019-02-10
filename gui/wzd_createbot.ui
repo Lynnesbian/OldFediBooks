@@ -20,7 +20,7 @@
       <item>
        <widget class="QStackedWidget" name="stkMain">
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -243,7 +243,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_4">
+               <widget class="QPushButton" name="btn_create_account">
                 <property name="text">
                  <string>Open account creation page</string>
                 </property>
@@ -361,14 +361,14 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_5">
+           <widget class="QPushButton" name="btn_auth_code">
             <property name="text">
              <string>Request access</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_2">
+           <widget class="QLineEdit" name="txt_auth_code">
             <property name="placeholderText">
              <string>Authorisation code</string>
             </property>
@@ -1025,6 +1025,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btn_create_account</sender>
+   <signal>pressed()</signal>
+   <receiver>wzdCreateBot</receiver>
+   <slot>btn_create_account_pressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>515</x>
+     <y>245</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>231</x>
+     <y>419</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>btn_cancel_pressed()</slot>
@@ -1032,5 +1048,6 @@
   <slot>btn_back_pressed()</slot>
   <slot>btn_next_pressed()</slot>
   <slot>stk_index_changed()</slot>
+  <slot>btn_create_account_pressed()</slot>
  </slots>
 </ui>

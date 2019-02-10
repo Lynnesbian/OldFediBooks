@@ -3,7 +3,7 @@ This is the manual for FediBooks. The latest version can always be accessed onli
 
 FediBooks is free software, both gratis (free of charge, as in "free car") and libre (free to run, modify and distrubute, as in "freedom"). It is licensed under the GNU Affero Public License version 3.0. For more information, check the license section later in this manual, or read the provided license file ("LICENSE" in the root directory of this repository).
 
-#Donations
+# Donations
 While FediBooks is provided free of charge, it is still possible to donate to the project. Provided below are various donation methods.
 - [LiberaPay](https://liberapay.com/lynnesbian/)
 - [PayPal](https://paypal.me/Lynnesbian)

@@ -29,6 +29,9 @@ class dlgWzdError(QDialog):
 		self.ui = Ui_dlgWzdError()
 		self.ui.setupUi(self)
 
+	def rejected(self):
+		self.accepted #:blobderpy:
+
 	def accepted(self):
 		self.done(1)
 
@@ -191,6 +194,9 @@ class wzdCreateBot(QMainWindow):
 		else:
 			dialogue = dlgWzdError()
 			dialogue.present(response)
+			if self.page_name() == "choose_an_instance":
+				self.ui.pbr_instance.setFormat("Ready")
+				self.ui.pbr_instance.setValue(0)
 		
 		self.ui.btn_next.setEnabled(True)
 
