@@ -12,7 +12,7 @@ While FediBooks is provided free of charge, it is still possible to donate to th
 # Using FediBooks
 
 ## Caveats
- - The bots can only post if the computer FediBooks is running on is online. If you put the computer FediBooks is running on into sleep mode, it will stop posting until the computer is woken up. FediBooks will not reply when mentioned while the computer is asleep, and it will not reply to those mentions after the computer wakes up.
+ - The bots can only post if the computer FediBooks is running on is online. If you put the computer FediBooks is running on into sleep mode, it will stop posting until the computer is woken up. FediBooks will not reply when mentioned while the computer is asleep, and it will not reply to the mentions it missed after the computer wakes up.
 
 ## The User Interface (UI)
 FediBooks provides a robust, intuitive graphical user interface (GUI) to aid the user in creating and maintaining their bot(s). No knowledge of the command line is required to use FediBooks, although there are some optional features that make use of it. This section of the manual will explain the UI in greater detail.
@@ -21,7 +21,7 @@ FediBooks provides a robust, intuitive graphical user interface (GUI) to aid the
 The Bot Creation Wizard guides you through the process of creating a new bot.
 
 #### Choose an Instance
-The first step (after the welcome page) is choosing an instance for the bot to run on. This doesn't need to be the same instance as your account(s)! Any instance should be fine. I reccomend [botsin.space](https://botsin.space/about), a Mastodon instance dedicated to running bots. There are no benefits gained from having the bot on the same instance as you, aside from having access to the same emojo set.
+The first step (after the welcome page) is choosing an instance for the bot to run on. This doesn't need to be the same instance as your account(s)! Any instance should be fine. I recommend [botsin.space](https://botsin.space/about), a Mastodon instance dedicated to running bots. There are no benefits gained from having the bot on the same instance as you, aside from having access to the same emojo set.
 
 #### Create an Account
 This page allows you to create an account on the chosen instance. If you already have an account you'd like the bot to post from, you can continue without doing anything here. Note that you must confirm the email before continuing.
@@ -38,10 +38,10 @@ There are various options to choose from here. You can leave the defaults if you
  - Check for new posts every [60 mins]: How frequently your bot should download and learn from new posts from the provided account(s).
  - Create a new post every [30 mins]: How frequently your bot should post.
  - Reply service: If enabled, your bot will reply when mentioned. 
- - CW for created posts: You can provide a content warning here, for example "Bot post" or "Markov post". 
+ - CW for created posts: You can provide a content warning here, for example "Bot post" or "Markov post".  If you don't want a content warning, leave the box blank.
 
 #### Attribution (Important)
-Under the terms of the GNU Affero General Public License version 3.0, you are required to provide attribution. The simplest way to do this is to link to [FediBooks' GitHub repository](https://github.com/Lynnesbian/FediBooks), but you can do anything you'd like as long as you provide 
+Under the terms of the GNU Affero General Public License version 3.0, you are required to provide attribution. The simplest way to do this is to link to [FediBooks' GitHub repository](https://github.com/Lynnesbian/FediBooks), but you can do anything you'd like as long as you provide the following:
  1. A copy of, or a link to, the source code
  2. Acknowledgement of the author (Lynnesbian)
 
