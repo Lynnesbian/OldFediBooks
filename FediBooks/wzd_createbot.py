@@ -198,9 +198,13 @@ class wzdCreateBot(QMainWindow):
 	def btn_cancel_pressed(self):
 		print("cancel")
 	def btn_help_pressed(self):
+		page = self.page_name().replace("_", "-")
+		if page in ["welcome", "done"]:
+			#no specific help for these pages, just direct to the wizard help instead
+			page = "bot-creation-wizard"
 		webbrowser.open(
 			"https://github.com/Lynnesbian/FediBooks/tree/master/MANUAL.md#{}".format(
-				self.page_name().replace("_", "-")), new=2, autoraise=True)
+				page), new=2, autoraise=True)
 	def btn_back_pressed(self):
 		self.previous_page()
 	def btn_next_pressed(self):
@@ -211,5 +215,5 @@ class wzdCreateBot(QMainWindow):
 			self.ui.btn_next.setText("Finish")
 		else:
 			self.ui.btn_next.setText("Next")
-
+		
 		self.ui.btn_back.setEnabled(self.ui.stkMain.currentIndex() != 0)
