@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/wzd_createrule.ui',
 # licensing of 'gui/wzd_createrule.ui' applies.
 #
-# Created: Sun Feb 10 20:10:17 2019
+# Created: Mon Feb 11 00:15:14 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -54,30 +54,31 @@ class Ui_MainWindow(object):
 		self.pushButton_4 = QtWidgets.QPushButton(self.page)
 		self.pushButton_4.setObjectName("pushButton_4")
 		self.verticalLayout_2.addWidget(self.pushButton_4)
-		self.lay_button_box = QtWidgets.QHBoxLayout()
-		self.lay_button_box.setObjectName("lay_button_box")
+		self.hbx_button_box = QtWidgets.QHBoxLayout()
+		self.hbx_button_box.setObjectName("hbx_button_box")
 		self.btn_cancel = QtWidgets.QPushButton(self.page)
 		icon = QtGui.QIcon()
 		icon.addPixmap(QtGui.QPixmap("."), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.btn_cancel.setIcon(icon)
 		self.btn_cancel.setObjectName("btn_cancel")
-		self.lay_button_box.addWidget(self.btn_cancel)
+		self.hbx_button_box.addWidget(self.btn_cancel)
 		self.btn_help = QtWidgets.QPushButton(self.page)
 		self.btn_help.setIcon(icon)
 		self.btn_help.setObjectName("btn_help")
-		self.lay_button_box.addWidget(self.btn_help)
+		self.hbx_button_box.addWidget(self.btn_help)
 		spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-		self.lay_button_box.addItem(spacerItem1)
+		self.hbx_button_box.addItem(spacerItem1)
 		self.btn_back = QtWidgets.QPushButton(self.page)
 		self.btn_back.setIcon(icon)
 		self.btn_back.setObjectName("btn_back")
-		self.lay_button_box.addWidget(self.btn_back)
+		self.hbx_button_box.addWidget(self.btn_back)
 		self.btn_next = QtWidgets.QPushButton(self.page)
 		self.btn_next.setIcon(icon)
+		self.btn_next.setAutoDefault(True)
 		self.btn_next.setDefault(True)
 		self.btn_next.setObjectName("btn_next")
-		self.lay_button_box.addWidget(self.btn_next)
-		self.verticalLayout_2.addLayout(self.lay_button_box)
+		self.hbx_button_box.addWidget(self.btn_next)
+		self.verticalLayout_2.addLayout(self.hbx_button_box)
 		self.stackedWidget.addWidget(self.page)
 		self.page_2 = QtWidgets.QWidget()
 		self.page_2.setObjectName("page_2")

@@ -14,7 +14,10 @@
    <string>Bot Creation Wizard</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_13">
+    <property name="spacing">
+     <number>0</number>
+    </property>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
@@ -947,69 +950,72 @@
         </widget>
        </widget>
       </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="hbx_button_box">
       <item>
-       <layout class="QHBoxLayout" name="lay_button_box">
-        <item>
-         <widget class="QPushButton" name="btn_cancel">
-          <property name="text">
-           <string>&amp;Cancel</string>
-          </property>
-          <property name="icon">
-           <iconset theme="cancel">
-            <normaloff>.</normaloff>.</iconset>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_help">
-          <property name="text">
-           <string>&amp;Help</string>
-          </property>
-          <property name="icon">
-           <iconset theme="help">
-            <normaloff>.</normaloff>.</iconset>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_back">
-          <property name="text">
-           <string>&amp;Back</string>
-          </property>
-          <property name="icon">
-           <iconset theme="back">
-            <normaloff>.</normaloff>.</iconset>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_next">
-          <property name="text">
-           <string>&amp;Next</string>
-          </property>
-          <property name="icon">
-           <iconset theme="next">
-            <normaloff>.</normaloff>.</iconset>
-          </property>
-          <property name="default">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <widget class="QPushButton" name="btn_cancel">
+        <property name="text">
+         <string>&amp;Cancel</string>
+        </property>
+        <property name="icon">
+         <iconset theme="cancel">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_help">
+        <property name="text">
+         <string>&amp;Help</string>
+        </property>
+        <property name="icon">
+         <iconset theme="help">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_back">
+        <property name="text">
+         <string>&amp;Back</string>
+        </property>
+        <property name="icon">
+         <iconset theme="back">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_next">
+        <property name="text">
+         <string>&amp;Next</string>
+        </property>
+        <property name="icon">
+         <iconset theme="next">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="autoDefault">
+         <bool>true</bool>
+        </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>

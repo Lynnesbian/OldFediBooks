@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/wzd_createbot.ui',
 # licensing of 'gui/wzd_createbot.ui' applies.
 #
-# Created: Sun Feb 10 23:50:37 2019
+# Created: Mon Feb 11 00:28:02 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -16,8 +16,9 @@ class Ui_wzdCreateBot(object):
 		wzdCreateBot.resize(576, 456)
 		self.centralwidget = QtWidgets.QWidget(wzdCreateBot)
 		self.centralwidget.setObjectName("centralwidget")
-		self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
-		self.horizontalLayout.setObjectName("horizontalLayout")
+		self.verticalLayout_13 = QtWidgets.QVBoxLayout(self.centralwidget)
+		self.verticalLayout_13.setSpacing(0)
+		self.verticalLayout_13.setObjectName("verticalLayout_13")
 		self.verticalLayout = QtWidgets.QVBoxLayout()
 		self.verticalLayout.setObjectName("verticalLayout")
 		self.stkMain = QtWidgets.QStackedWidget(self.centralwidget)
@@ -454,33 +455,34 @@ class Ui_wzdCreateBot(object):
 		self.verticalLayout_6.addWidget(self.label_12)
 		self.stkMain.addWidget(self.done)
 		self.verticalLayout.addWidget(self.stkMain)
-		self.lay_button_box = QtWidgets.QHBoxLayout()
-		self.lay_button_box.setObjectName("lay_button_box")
+		self.verticalLayout_13.addLayout(self.verticalLayout)
+		self.hbx_button_box = QtWidgets.QHBoxLayout()
+		self.hbx_button_box.setObjectName("hbx_button_box")
 		self.btn_cancel = QtWidgets.QPushButton(self.centralwidget)
 		self.btn_cancel.setIcon(icon)
 		self.btn_cancel.setObjectName("btn_cancel")
-		self.lay_button_box.addWidget(self.btn_cancel)
+		self.hbx_button_box.addWidget(self.btn_cancel)
 		self.btn_help = QtWidgets.QPushButton(self.centralwidget)
 		self.btn_help.setIcon(icon)
 		self.btn_help.setObjectName("btn_help")
-		self.lay_button_box.addWidget(self.btn_help)
+		self.hbx_button_box.addWidget(self.btn_help)
 		spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-		self.lay_button_box.addItem(spacerItem10)
+		self.hbx_button_box.addItem(spacerItem10)
 		self.btn_back = QtWidgets.QPushButton(self.centralwidget)
 		self.btn_back.setIcon(icon)
 		self.btn_back.setObjectName("btn_back")
-		self.lay_button_box.addWidget(self.btn_back)
+		self.hbx_button_box.addWidget(self.btn_back)
 		self.btn_next = QtWidgets.QPushButton(self.centralwidget)
 		self.btn_next.setIcon(icon)
+		self.btn_next.setAutoDefault(True)
 		self.btn_next.setDefault(True)
 		self.btn_next.setObjectName("btn_next")
-		self.lay_button_box.addWidget(self.btn_next)
-		self.verticalLayout.addLayout(self.lay_button_box)
-		self.horizontalLayout.addLayout(self.verticalLayout)
+		self.hbx_button_box.addWidget(self.btn_next)
+		self.verticalLayout_13.addLayout(self.hbx_button_box)
 		wzdCreateBot.setCentralWidget(self.centralwidget)
 
 		self.retranslateUi(wzdCreateBot)
-		self.stkMain.setCurrentIndex(3)
+		self.stkMain.setCurrentIndex(4)
 		self.stkCreateAccount.setCurrentIndex(0)
 		QtCore.QMetaObject.connectSlotsByName(wzdCreateBot)
 

@@ -61,11 +61,12 @@ class wzdPageValidator(QThread):
 
 		if pn == "choose_an_instance":
 			steps = ["Connecting", "Verifying", "Checking instance type"]
+			self.wzd.app = None #if we had an app before, it's invalid now, because we're changing instances
 
 			# CONNECTING
 
 			self.set_pbr_visibility.emit(True)
-			self.update_pbr.emit(1, steps[0]) #TODO: find out why this one causes a crash but the later ones don't
+			self.update_pbr.emit(1, steps[0])
 			self.wzd.instance = {
 				"name":None,
 				"type":None,
@@ -174,6 +175,35 @@ class wzdPageValidator(QThread):
 				return
 			#end choose_an_instance
 
+		if pn == "registering_app":
+			if self.app != None:
+				#we already have an app, no need to register a new one
+				#TODO: if the existing app is invalid somehow, remove it
+				self.send_true.emit(True)
+				return
+			else:
+				i = self.wzd.instance['type']
+				n = self.wzd.instance['name']
+				app = {
+					"type":i,
+					"credentials": {
+						"app_secret":None,
+						"app_id":None,
+						"access_token":None
+					}
+				}
+				#for information on why FediBooks requests the permissions it does, see https://github.com/Lynnesbian/FediBooks/blob/master/MANUAL.md#permissions
+				if i in ["mastodon", "pleroma"]:
+					#pleroma supports the mastodon API so we'll use that
+					app["type"] = "mastodon" #overwrite type with "mastodon" in case this is a pleroma instance
+					app["credentials"]["app_id"], app["credentials"]["app_secret"] = Mastodon.create_app(
+						"FediBooks",
+						api_base_url="https://{}".format(n),
+						scopes = ["read:accounts", "read:follows", "read:notifications", "read:statuses", "write:media", "write:statuses"],
+						website = "https://github.com/Lynnesbian/FediBooks"
+					)
+
+
 		else:
 			self.send_true.emit(True)
 			return
@@ -185,7 +215,7 @@ class wzdCreateBot(QMainWindow):
 		self.ui.setupUi(self)
 		self.pageCount = self.ui.stkMain.count()
 		self.on_stkMain_currentChanged()
-		self.app = None
+		self.app = "None"
 
 	# FUNCTIONS
 
@@ -200,15 +230,14 @@ class wzdCreateBot(QMainWindow):
 			dialogue.present(response)
 			self.reset_page()
 		
-		self.ui.btn_next.setEnabled(True)
+		self.set_control_buttons_enabled(True)
 		self.ui.stkMain.setEnabled(True)
+		self.ui.btn_next.setFocus()
 
 	@Slot(bool)
 	def set_pbr_visibility(self, visible):
 		if self.page_name() == "choose_an_instance":
 			self.ui.pbr_instance.setVisible(visible)
-
-		print(self.page_name())
 
 	@Slot(int, str)
 	def set_pbr_state(self, progress, text):
@@ -228,12 +257,17 @@ class wzdCreateBot(QMainWindow):
 		self.validator.start()
 		
 	def next_page(self):
-		self.ui.btn_next.setEnabled(False)
+		self.set_control_buttons_enabled(False)
 		self.ui.stkMain.setEnabled(False)
 		self.validate_page()
 		# thread.join(30)
 			
 	def previous_page(self):
+		if self.page_name() == "authorise_fedibooks" and self.app != None:
+			#we've already registered, skip this page
+			self.ui.stkMain.setCurrentIndex(self.ui.stkMain.currentIndex() - 1)
+			self.previous_page()
+			return
 		index = self.ui.stkMain.currentIndex()
 		self.ui.stkMain.setCurrentIndex(index - 1)
 
@@ -247,6 +281,10 @@ class wzdCreateBot(QMainWindow):
 		if self.page_name() == "authorise_fedibooks":
 			self.ui.txt_auth_code.setEnabled(False)
 		self.set_pbr_visibility(False)
+
+	def set_control_buttons_enabled(self, state):
+		self.ui.btn_next.setEnabled(state)
+		self.ui.btn_back.setEnabled(state)
 
 	# EVENT HANDLERS
 	# GENERAL
@@ -278,8 +316,7 @@ class wzdCreateBot(QMainWindow):
 		self.ui.btn_back.setEnabled(self.ui.stkMain.currentIndex() != 0)
 
 		if self.page_name() == "create_app":
-			i = self.instance['type']
-			n = self.instance['name']
+			self.next_page()
 
 		self.reset_page()
 
@@ -306,7 +343,3 @@ class wzdCreateBot(QMainWindow):
 		i = self.instance['type']
 		n = self.instance['name']
 
-
-	@Slot(str)
-	def on_txt_auth_code_textChanged(self, text):
-		self.ui.btn_next.setEnabled(True)

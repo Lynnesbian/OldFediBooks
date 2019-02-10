@@ -9,6 +9,9 @@ While FediBooks is provided free of charge, it is still possible to donate to th
 - [PayPal](https://paypal.me/Lynnesbian)
 - [Ko-fi](https://ko-fi/Lynnesbian)
 
+# Reporting Bugs and Making Feature Requests
+If you'd like to report a bug with FediBooks, request a feature, or submit some other form of feedback, click [here](https://github.com/Lynnesbian/FediBooks/issues/) and use the search bar to see if anyone else has opened a similar issue yet. If not, click the green "[New Issue](https://github.com/Lynnesbian/FediBooks/issues/new/choose)" button.
+
 # Supported Instance Types
 Note: No instances are currently supported by FediBooks, as FediBooks itself doesn't work yet. The first working version of FediBooks will support these instance types:
 

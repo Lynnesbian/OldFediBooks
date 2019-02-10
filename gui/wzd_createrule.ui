@@ -92,7 +92,7 @@
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="lay_button_box">
+         <layout class="QHBoxLayout" name="hbx_button_box">
           <item>
            <widget class="QPushButton" name="btn_cancel">
             <property name="text">
@@ -147,6 +147,9 @@
             <property name="icon">
              <iconset theme="next">
               <normaloff>.</normaloff>.</iconset>
+            </property>
+            <property name="autoDefault">
+             <bool>true</bool>
             </property>
             <property name="default">
              <bool>true</bool>
