@@ -20,7 +20,7 @@
       <item>
        <widget class="QStackedWidget" name="stkMain">
         <property name="currentIndex">
-         <number>7</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">

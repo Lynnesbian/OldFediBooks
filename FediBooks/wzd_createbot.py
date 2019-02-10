@@ -243,9 +243,12 @@ class wzdCreateBot(QMainWindow):
 		if self.page_name() == "choose_an_instance":
 			self.ui.pbr_instance.setFormat("Ready")
 			self.ui.pbr_instance.setValue(0)
+		if self.page_name() == "authorise_fedibooks":
+			self.ui.txt_auth_code.setEnabled(False)
 		self.set_pbr_visibility(False)
 
 	# EVENT HANDLERS
+	# GENERAL
 	@Slot()
 	def on_btn_cancel_pressed(self):
 		print("cancel")
@@ -262,6 +265,21 @@ class wzdCreateBot(QMainWindow):
 	@Slot()
 	def on_btn_next_pressed(self):
 		self.next_page()
+
+	@Slot(int)
+	def on_stkMain_currentChanged(self, page=None):
+		# print(self.ui.stkMain.currentWidget().objectName())
+		if self.ui.stkMain.currentIndex() == self.pageCount - 1:
+			self.ui.btn_next.setText("Finish")
+		else:
+			self.ui.btn_next.setText("Next")
+
+		self.ui.btn_back.setEnabled(self.ui.stkMain.currentIndex() != 0)
+
+		self.reset_page()
+
+	# CREATE ACCOUNT
+
 	@Slot()
 	def on_btn_create_account_pressed(self):
 		i = self.instance['type']
@@ -276,17 +294,8 @@ class wzdCreateBot(QMainWindow):
 		else:
 			open_url("https://{}")
 
+	# AUTHENTICATION
+
 	@Slot(str)
 	def on_txt_auth_code_textChanged(self, text):
 		self.ui.btn_next.setEnabled(True)
-	@Slot(int)
-	def on_stkMain_currentChanged(self, page=None):
-		# print(self.ui.stkMain.currentWidget().objectName())
-		if self.ui.stkMain.currentIndex() == self.pageCount - 1:
-			self.ui.btn_next.setText("Finish")
-		else:
-			self.ui.btn_next.setText("Next")
-
-		self.ui.btn_back.setEnabled(self.ui.stkMain.currentIndex() != 0)
-
-		self.reset_page()
