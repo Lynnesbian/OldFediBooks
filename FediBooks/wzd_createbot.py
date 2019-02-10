@@ -75,13 +75,13 @@ class wzdCreateBot(QMainWindow):
 			self.ui.pbr_instance.setFormat(steps[0])
 			self.ui.pbr_instance.setValue(1)
 			self.ui.pbr_instance.show()
-			instance = {
+			self.instance = {
 				"name":None,
 				"type":None,
 				"version":None
 			}
 			try:
-				instance['name'] = re.search(r"(?:https?:\/\/)?((?:\w+\.)+\w+)\/?", self.ui.txt_instance.text()).group(1)
+				self.instance['name'] = re.search(r"(?:https?:\/\/)?((?:\w+\.)+\w+)\/?", self.ui.txt_instance.text()).group(1)
 			except:
 				out.send_text.emit("The instance URL you provided is not a valid URL.")
 				return
@@ -89,15 +89,15 @@ class wzdCreateBot(QMainWindow):
 			#afaik the best way to do this is to check for a host-meta file containing a link rel="lrdd"
 			#mastodon refuses to federate with non-HTTPS websites, and you can set up HTTPS for free in ten minutes, so there's really no reason not to enforce it
 			try:
-				r = requests.get("https://{}/.well-known/host-meta".format(instance), timeout=30)
+				r = requests.get("https://{}/.well-known/host-meta".format(self.instance), timeout=30)
 			except requests.exceptions.Timeout:
-				out.send_text.emit("Timed out while trying to load {}. Is the instance down?").format(instance)
+				out.send_text.emit("Timed out while trying to load {}. Is the instance down?").format(self.instance)
 				return
 			except requests.exceptions.SSLError:
-				out.send_text.emit("An SSL error ocurred. Has the HTTPS certificate for {} expired?").format(instance)
+				out.send_text.emit("An SSL error ocurred. Has the HTTPS certificate for {} expired?").format(self.instance)
 				return
 			except:
-				out.send_text.emit("An unknown error ocurred while trying to validate {}.").format(instance)
+				out.send_text.emit("An unknown error ocurred while trying to validate {}.").format(self.instance)
 				return
 
 			# VERIFYING
@@ -126,13 +126,13 @@ class wzdCreateBot(QMainWindow):
 
 			#first, the standard way, used by pleroma, misskey, friendica, osada, hubzilla, ganggo, diaspora, and more!
 			try:
-				r = requests.get("https://{}/.well-known/nodeinfo".format(instance))
+				r = requests.get("https://{}/.well-known/nodeinfo".format(self.instance))
 				r.raise_for_status()
 			except requests.exceptions.HTTPError: 
 				#no nodeinfo file! this part is the mastodon way, used by mastodon!
 				#(it might also be GNU social, but we'll cross that bridge when we come to it)
 				if "server" in r.headers and r.headers['server'].lower() == "mastodon":
-					instance['type'] = "mastodon" #it could also be glitch-soc but they're the same for the purposes of this program
+					self.instance['type'] = "mastodon" #it could also be glitch-soc but they're the same for the purposes of this program
 					#we'll leave the version number blank for now and get it later when we use Mastodon.py
 				else:
 					try:
@@ -142,8 +142,8 @@ class wzdCreateBot(QMainWindow):
 							#its probably mastodon
 							#this will handle e.g. 2.1.2.3.4 or 21.2.4 but not commit numbers, which mastodon hopefully doesn't use haha
 							#man, if only there was some type of standard
-							instance['type'] = "mastodon"
-							instance['version'] = j['version']
+							self.instance['type'] = "mastodon"
+							self.instance['version'] = j['version']
 						else:
 							out.send_text.emit("The instance type is not supported by FediBooks.")
 							return
@@ -164,13 +164,13 @@ class wzdCreateBot(QMainWindow):
 					if link['rel'] == "http://nodeinfo.diaspora.software/ns/schema/2.0":
 						r = requests.get(link['href'])
 						j = r.json()
-						instance['type'] = j['software']['name'].lower()
-						instance['version'] = j['software']['version'].lower()
+						self.instance['type'] = j['software']['name'].lower()
+						self.instance['version'] = j['software']['version'].lower()
 			except:
 				out.send_text.emit("Couldn't load or parse nodeinfo.")
 				return
 
-			if instance['type'] != None:
+			if self.instance['type'] != None:
 				out.send_true.emit(True)
 				return
 			else:
