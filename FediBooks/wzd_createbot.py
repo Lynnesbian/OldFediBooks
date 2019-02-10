@@ -185,6 +185,7 @@ class wzdCreateBot(QMainWindow):
 		self.ui.setupUi(self)
 		self.pageCount = self.ui.stkMain.count()
 		self.on_stkMain_currentChanged()
+		self.app = None
 
 	# FUNCTIONS
 
@@ -276,6 +277,10 @@ class wzdCreateBot(QMainWindow):
 
 		self.ui.btn_back.setEnabled(self.ui.stkMain.currentIndex() != 0)
 
+		if self.page_name() == "create_app":
+			i = self.instance['type']
+			n = self.instance['name']
+
 		self.reset_page()
 
 	# CREATE ACCOUNT
@@ -292,9 +297,15 @@ class wzdCreateBot(QMainWindow):
 		elif i in ["hubzilla", "osada"]: #not supported yet but may as well prepare for it
 			open_url("https://{}/register".format(n))
 		else:
-			open_url("https://{}")
+			open_url("https://{}".format(n))
 
 	# AUTHENTICATION
+
+	@Slot()
+	def on_btn_auth_code_pressed(self):
+		i = self.instance['type']
+		n = self.instance['name']
+
 
 	@Slot(str)
 	def on_txt_auth_code_textChanged(self, text):

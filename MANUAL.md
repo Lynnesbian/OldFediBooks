@@ -26,6 +26,9 @@ The first step (after the welcome page) is choosing an instance for the bot to r
 #### Create an Account
 This page allows you to create an account on the chosen instance. If you already have an account you'd like the bot to post from, you can continue without doing anything here. Note that you must confirm the email before continuing.
 
+#### Registering App
+FediBooks needs to create an app profile with your instance so that it can post properly. There's nothing for you to do here but sit back and watch the animated progressbar!
+
 #### Authorise FediBooks
 FediBooks needs access to your bot's account in order to post, reply, and so on. Click the "request access" button, complete the authorisation process in your browser, and paste the provided code into the text box provided. Every time you click the "request access" button, the previous request will be invalidated, so make sure you only click it again if the first time fails for some reason, or if you accidentally deny access.
 
