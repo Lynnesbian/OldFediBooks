@@ -14,6 +14,16 @@ While FediBooks is provided free of charge, it is still possible to donate to th
 ## Caveats
  - The bots can only post if the computer FediBooks is running on is online. If you put the computer FediBooks is running on into sleep mode, it will stop posting until the computer is woken up. FediBooks will not reply when mentioned while the computer is asleep, and it will not reply to the mentions it missed after the computer wakes up.
 
+## Permissions
+This section aims to explain why FediBooks requests the account permissions it does.
+### Mastodon and Pleroma
+ - read:accounts - needed to get account info
+ - read:follows - in future, it will be possible to add sources by following accounts from the bot account
+ - read:notifications - so the bot can receive replies
+ - read:statuses - read replies
+ - write:media - eventually the bots will be able to post images/videos
+ - write:statuses - to post
+
 ## The User Interface (UI)
 FediBooks provides a robust, intuitive graphical user interface (GUI) to aid the user in creating and maintaining their bot(s). No knowledge of the command line is required to use FediBooks, although there are some optional features that make use of it. This section of the manual will explain the UI in greater detail.
 
@@ -31,6 +41,8 @@ FediBooks needs to create an app profile with your instance so that it can post 
 
 #### Authorise FediBooks
 FediBooks needs access to your bot's account in order to post, reply, and so on. Click the "request access" button, complete the authorisation process in your browser, and paste the provided code into the text box provided. Every time you click the "request access" button, the previous request will be invalidated, so make sure you only click it again if the first time fails for some reason, or if you accidentally deny access.
+
+For more information on the permissions requested by FediBooks, click [here](#permissions).
 
 #### Select Sources
 You must now provide at least one source for your bot to learn from. This can be a fediverse account (an account on Mastodon, Pleroma, Misskey...) or a text file on your computer. You can add as many sources as you like.
