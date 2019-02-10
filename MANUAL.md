@@ -9,10 +9,21 @@ While FediBooks is provided free of charge, it is still possible to donate to th
 - [PayPal](https://paypal.me/Lynnesbian)
 - [Ko-fi](https://ko-fi/Lynnesbian)
 
+# Supported Instance Types
+Note: No instances are currently supported by FediBooks, as FediBooks itself doesn't work yet. The first working version of FediBooks will support these instance types:
+
+|  Instance type   | Mastodon | Pleroma | Misskey | Hubzilla | Osada | GangGo | GNU Social |
+|------------------|----------|---------|---------|----------|-------|--------|------------|
+|  Posting support | ✅       | ✅      | ✅      | ❌       | ❌    | ❌     | ❌         |
+| Sourcing support | ✅       | ✅      | ✅      | ❌       | ❌    | ❌     | ❌         |
+
+These instances are in order of priority -- for example, if Pleroma and Misskey support are both broken, I will focus on Pleroma first.
+
 # Using FediBooks
 
 ## Caveats
  - The bots can only post if the computer FediBooks is running on is online. If you put the computer FediBooks is running on into sleep mode, it will stop posting until the computer is woken up. FediBooks will not reply when mentioned while the computer is asleep, and it will not reply to the mentions it missed after the computer wakes up.
+ - [mstdn-ebooks](https://github.com/mstdn-ebooks), the previous bot software I wrote, determined sources by seeing what accounts the bot was following. For example, if @bot was following @jack and @jill, it would download posts from their accounts and use them to learn. FediBooks does not work this way, and you will instead need to add sources via the user interface. Support for this method of specifying sources is planned.
 
 ## Permissions
 This section aims to explain why FediBooks requests the account permissions it does.
