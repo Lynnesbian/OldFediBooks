@@ -25,18 +25,30 @@ These instances are in order of priority -- for example, if Pleroma and Misskey 
 # Using FediBooks
 
 ## Caveats
+ - As FediBooks is not finished yet, much of this documentation does not actually apply. This manual gives you an idea of how you can expect FediBooks to work, but it is subject to massive changes, and almost nothing listed here is implemented.
  - The bots can only post if the computer FediBooks is running on is online. If you put the computer FediBooks is running on into sleep mode, it will stop posting until the computer is woken up. FediBooks will not reply when mentioned while the computer is asleep, and it will not reply to the mentions it missed after the computer wakes up.
  - [mstdn-ebooks](https://github.com/Lynnesbian/mstdn-ebooks), the previous bot software I wrote, determined sources by seeing what accounts the bot was following. For example, if @bot was following @jack and @jill, it would download posts from their accounts and use them to learn. FediBooks does not work this way, and you will instead need to add sources via the user interface. Support for this method of specifying sources is planned.
 
 ## Permissions
 This section aims to explain why FediBooks requests the account permissions it does.
 ### Mastodon and Pleroma
- - read:accounts - needed to get account info
- - read:follows - in future, it will be possible to add sources by following accounts from the bot account
- - read:notifications - so the bot can receive replies
- - read:statuses - read replies
- - write:media - eventually the bots will be able to post images/videos
- - write:statuses - to post
+ - read:accounts - Get account info
+ - read:follows - In future, it will be possible to add sources by following accounts from the bot account
+ - read:notifications - Monitor notifications for mentions
+ - read:statuses - Read replies
+ - write:media - Eventually, the bots will (probably) be able to post images/videos
+ - write:statuses - Create posts
+### Misskey
+ - account-read - Get account info
+ - account/read - I don't know what the difference between this and the above one is, and there's no documentation, so I'm adding this one to be safe
+ - note-read - Read replies
+ - note-write - Create posts
+ - notification-read - Monitor notifications for mentions
+<!--
+### Osada and Hubzilla
+-->
+### Diaspora*
+FediBooks uses your account credentials to log in to Diaspora*. As no special "app tokens" are requested, it is impossible for FediBooks to only request certain permissions. FediBooks' Diaspora* integration therefore operates with full access to your Diaspora* account.
 
 ## The User Interface (UI)
 FediBooks provides a robust, intuitive graphical user interface (GUI) to aid the user in creating and maintaining their bot(s). No knowledge of the command line is required to use FediBooks, although there are some optional features that make use of it. This section of the manual will explain the UI in greater detail.
