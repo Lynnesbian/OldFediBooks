@@ -21,9 +21,9 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QStackedWidget" name="stkMain">
+       <widget class="QStackedWidget" name="stk_main">
         <property name="currentIndex">
-         <number>4</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -193,7 +193,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QStackedWidget" name="stkCreateAccount">
+           <widget class="QStackedWidget" name="stk_create_account">
             <property name="currentIndex">
              <number>0</number>
             </property>
@@ -418,7 +418,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QStackedWidget" name="stackedWidget">
+           <widget class="QStackedWidget" name="stk_authorise_fedibooks">
             <property name="currentIndex">
              <number>0</number>
             </property>

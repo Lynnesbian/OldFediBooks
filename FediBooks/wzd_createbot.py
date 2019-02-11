@@ -179,7 +179,7 @@ class wzdPageValidator(QThread):
 				return
 			#end choose_an_instance
 
-		if pn == "registering_app":
+		elif pn == "registering_app":
 			if self.app != None:
 				#we already have an app, no need to register a new one
 				#TODO: if the existing app is invalid somehow, remove it
@@ -243,6 +243,15 @@ class wzdPageValidator(QThread):
 					self.send_true.emit(True)
 					return
 
+				#end registering_app
+
+		elif pn == "authorise_fedibooks":
+			if self.wzd.instance['type'] in ["mastodon", "pleroma", "misskey"]:
+				#oauth
+				pass
+			else:
+				#username/password
+				pass
 		else:
 			self.send_true.emit(True)
 			return
@@ -252,8 +261,8 @@ class wzdCreateBot(QMainWindow):
 		super(wzdCreateBot, self).__init__()
 		self.ui = Ui_wzdCreateBot()
 		self.ui.setupUi(self)
-		self.pageCount = self.ui.stkMain.count()
-		self.on_stkMain_currentChanged()
+		self.pageCount = self.ui.stk_main.count()
+		self.on_stk_main_currentChanged()
 		self.app = "None"
 
 	# FUNCTIONS
@@ -262,15 +271,15 @@ class wzdCreateBot(QMainWindow):
 	@Slot(bool)
 	def validate_page_result(self, response):
 		if response is True:
-			index = self.ui.stkMain.currentIndex()
-			self.ui.stkMain.setCurrentIndex(index + 1)
+			index = self.ui.stk_main.currentIndex()
+			self.ui.stk_main.setCurrentIndex(index + 1)
 		else:
 			dialogue = dlgWzdError()
 			dialogue.present(response)
 			self.reset_page()
 		
 		self.set_control_buttons_enabled(True)
-		self.ui.stkMain.setEnabled(True)
+		self.ui.stk_main.setEnabled(True)
 		self.ui.btn_next.setFocus()
 
 	@Slot(bool)
@@ -297,21 +306,21 @@ class wzdCreateBot(QMainWindow):
 		
 	def next_page(self):
 		self.set_control_buttons_enabled(False)
-		self.ui.stkMain.setEnabled(False)
+		self.ui.stk_main.setEnabled(False)
 		self.validate_page()
 		# thread.join(30)
 			
 	def previous_page(self):
 		if self.page_name() == "authorise_fedibooks" and self.app != None:
 			#we've already registered, skip this page
-			self.ui.stkMain.setCurrentIndex(self.ui.stkMain.currentIndex() - 1)
+			self.ui.stk_main.setCurrentIndex(self.ui.stk_main.currentIndex() - 1)
 			self.previous_page()
 			return
-		index = self.ui.stkMain.currentIndex()
-		self.ui.stkMain.setCurrentIndex(index - 1)
+		index = self.ui.stk_main.currentIndex()
+		self.ui.stk_main.setCurrentIndex(index - 1)
 
 	def page_name(self):
-		return self.ui.stkMain.currentWidget().objectName()
+		return self.ui.stk_main.currentWidget().objectName()
 
 	def reset_page(self):
 		if self.page_name() == "choose_an_instance":
@@ -345,17 +354,23 @@ class wzdCreateBot(QMainWindow):
 		self.next_page()
 
 	@Slot(int)
-	def on_stkMain_currentChanged(self, page=None):
-		# print(self.ui.stkMain.currentWidget().objectName())
-		if self.ui.stkMain.currentIndex() == self.pageCount - 1:
+	def on_stk_main_currentChanged(self, page=None):
+		# print(self.ui.stk_main.currentWidget().objectName())
+		if self.ui.stk_main.currentIndex() == self.pageCount - 1:
 			self.ui.btn_next.setText("Finish")
 		else:
 			self.ui.btn_next.setText("Next")
 
-		self.ui.btn_back.setEnabled(self.ui.stkMain.currentIndex() != 0)
+		self.ui.btn_back.setEnabled(self.ui.stk_main.currentIndex() != 0)
 
 		if self.page_name() == "create_app":
 			self.next_page()
+
+		if self.page_name() == "authorise_fedibooks":
+			if self.app == None:
+				self.stk_authorise_fedibooks.setCurrentIndex(1)
+			else:
+				self.stk_authorise_fedibooks.setCurrentIndex(0)
 
 		self.reset_page()
 
