@@ -113,6 +113,9 @@ class wzdPageValidator(QThread):
 				self.send_text.emit("host-meta did not specify WebFinger URI.")
 				return
 
+			#use the webfinger URI to determine the instance's actual URL
+			self.wzd.instance['url'] = re.search(r"^(https:\/\/[^/]+)", self.wzd.instance['webfinger_uri']).group(1)
+
 			#it's probably a fediverse instance! now we check nodeinfo
 
 			self.update_pbr.emit(3, steps[2])
@@ -183,13 +186,14 @@ class wzdPageValidator(QThread):
 				return
 			else:
 				i = self.wzd.instance['type']
-				n = self.wzd.instance['name']
+				u = self.wzd.instance['url']
 				app = {
-					"type":i,
+					"type": i,
+					"url": u,
 					"credentials": {
-						"app_secret":None,
-						"app_id":None,
-						"access_token":None
+						"app_secret": None,
+						"app_id": None,
+						"access_token": None
 					}
 				}
 				#for information on why FediBooks requests the permissions it does, see https://github.com/Lynnesbian/FediBooks/blob/master/MANUAL.md#permissions
@@ -198,7 +202,7 @@ class wzdPageValidator(QThread):
 					app["type"] = "mastodon" #overwrite type with "mastodon" in case this is a pleroma instance
 					app["credentials"]["app_id"], app["credentials"]["app_secret"] = Mastodon.create_app(
 						"FediBooks",
-						api_base_url="https://{}".format(n),
+						api_base_url= u,
 						scopes = ["read:accounts", "read:follows", "read:notifications", "read:statuses", "write:media", "write:statuses"],
 						website = "https://github.com/Lynnesbian/FediBooks"
 					)
