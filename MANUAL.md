@@ -15,10 +15,11 @@ If you'd like to report a bug with FediBooks, request a feature, or submit some 
 # Supported Instance Types
 Note: No instances are currently supported by FediBooks, as FediBooks itself doesn't work yet. The first working version of FediBooks will probably support these instance types:
 
-|  Instance type   | Mastodon | Pleroma | Misskey | Hubzilla | Osada | GangGo | GNU Social |
-|------------------|----------|---------|---------|----------|-------|--------|------------|
-|  Posting support | ✔️        | ✔️       | ✔️       | ❌       | ❌    | ❌     | ❌         |
-| Sourcing support | ✔️        | ✔️       | ✔️       | ❌       | ❌    | ❌     | ❌         |
+| Instance type | Mastodon | Pleroma | Misskey | Diaspora* | Hubzilla | Osada | GangGo | GNU Social |
+|---------------|----------|---------|---------|-----------|----------|-------|--------|------------|
+|      Sourcing | ✔️        | ✔️       | ✔️       | ✔️         | ❌       | ❌    | ❌     | ❌         |
+|       Posting | ✔️        | ✔️       | ✔️       | ✔️         | ❌       | ❌    | ❌     | ❌         |
+|      Replying | ✔️        | ✔️       | ✔️       | ✔️         | ❌       | ❌    | ❌     | ❌         |
 
 These instances are in order of priority -- for example, if Pleroma and Misskey support are both broken, I will focus on Pleroma first.
 
