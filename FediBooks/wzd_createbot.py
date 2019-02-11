@@ -16,11 +16,12 @@
 
 from PySide2.QtWidgets import QApplication, QMainWindow, QDialog
 from PySide2.QtCore import QFile, Signal, Slot, QObject, QThread
-import sys, re
+import sys, re, json
 import xml.etree.ElementTree as ElementTree
 import requests
-from mastodon import Mastodon
+from .fixtodon import Fixtodon
 from Misskey import Misskey
+import diaspy
 
 from .functions import *
 from .uic.ui_wzd_createbot import Ui_wzdCreateBot
@@ -199,14 +200,48 @@ class wzdPageValidator(QThread):
 				#for information on why FediBooks requests the permissions it does, see https://github.com/Lynnesbian/FediBooks/blob/master/MANUAL.md#permissions
 				if i in ["mastodon", "pleroma"]:
 					#pleroma supports the mastodon API so we'll use that
+					#however, Mastodon.py is a bit fucky-wucky, and makes the same mistake as toot! did by converting post IDs to integers, which breaks with pleroma's new, non-integer IDs.
+					#the fact that mastodon uses integers for IDs isn't an intentional decision that you should base your app around.
+					#why do you need to store them as integers anyway? are you planning on performing multiplication on post IDs...?
 					app["type"] = "mastodon" #overwrite type with "mastodon" in case this is a pleroma instance
-					app["credentials"]["app_id"], app["credentials"]["app_secret"] = Mastodon.create_app(
-						"FediBooks",
-						api_base_url= u,
-						scopes = ["read:accounts", "read:follows", "read:notifications", "read:statuses", "write:media", "write:statuses"],
-						website = "https://github.com/Lynnesbian/FediBooks"
-					)
+					try:
+						app["credentials"]["app_id"], app["credentials"]["app_secret"] = Fixtodon.create_app(
+							client_name = "FediBooks",
+							api_base_url= u,
+							scopes = ["read:accounts", "read:follows", "read:notifications", "read:statuses", "write:media", "write:statuses"],
+							website = "https://github.com/Lynnesbian/FediBooks"
+						)
+					except:
+						self.send_text.emit("Failed to create Mastodon/Pleroma app.")
+						return
+				elif i == "misskey":
+					try:
+						mk_app = json.loads(Misskey.create_app(
+							instanceAddress = u,
+							appName = "FediBooks",
+							description = "https://github.com/Lynnesiban/FediBooks",
+							permission = [
+								"account-read","account/read","note-read","note-write","notification-read"
+							]
+						))
+						#PROTIP: the misskey documentation won't tell you what this call returns -- in fact, it won't tell you anything apart from "Internal Server Error".
+						#but by creating an app and dumping the json returned we can roughly figure it out
+						#here's an example:
+						#{"createdAt": "2019-02-11T06:08:23.522Z", "userId": null, "name": "test", "description": "test", "permission": ["account-read", "account/read", "note-read", "note-write", "notification-read"], "callbackUrl": null, "secret": "[SECRET GOES HERE]", "id": "[ID GOES HERE]", "iconUrl": "https://misskey.xyz/files/app-default.jpg"}
+						#all of that is fairly self-explanatory
+						#i don't really know why there's a userId but apart from that it's fairly self-explanatory.
+						#self-explanatory is NOT a substitute for documentation, and i have to say that i won't be working particularly hard to support software that provides no support of its own.
 
+						app['credentials']['app_id'] = mk_app['id']
+						app['credentials']['app_secret'] = mk_app['secret']
+					except:
+						self.send_text.emit("Failed to create Misskey app.")
+						return
+
+				else:
+					#no need to create an app (in fact, it's not even possible. although it will eventually possible for diaspora.)
+					self.send_true.emit(True)
+					return
 
 		else:
 			self.send_true.emit(True)

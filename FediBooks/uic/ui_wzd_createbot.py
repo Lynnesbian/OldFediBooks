@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/wzd_createbot.ui',
 # licensing of 'gui/wzd_createbot.ui' applies.
 #
-# Created: Mon Feb 11 17:56:28 2019
+# Created: Mon Feb 11 17:57:20 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -518,7 +518,7 @@ class Ui_wzdCreateBot(object):
 		self.retranslateUi(wzdCreateBot)
 		self.stkMain.setCurrentIndex(4)
 		self.stkCreateAccount.setCurrentIndex(0)
-		self.stackedWidget.setCurrentIndex(1)
+		self.stackedWidget.setCurrentIndex(0)
 		QtCore.QMetaObject.connectSlotsByName(wzdCreateBot)
 
 	def retranslateUi(self, wzdCreateBot):
