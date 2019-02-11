@@ -25,6 +25,7 @@ These instances are in order of priority -- for example, if Pleroma and Misskey 
 # Using FediBooks
 
 ## Caveats
+ - FediBooks is currently incompatible with non-HTTPS instances. While it wouldn't be much work to support them, I doubt that there are many non-HTTPS instances out there, and some instance types (e.g. Mastodon) will outright refuse to federate with non-HTTPS instances.
  - As FediBooks is not finished yet, much of this documentation does not actually apply. This manual gives you an idea of how you can expect FediBooks to work, but it is subject to massive changes, and almost nothing listed here is implemented.
  - The bots can only post if the computer FediBooks is running on is online. If you put the computer FediBooks is running on into sleep mode, it will stop posting until the computer is woken up. FediBooks will not reply when mentioned while the computer is asleep, and it will not reply to the mentions it missed after the computer wakes up.
  - [mstdn-ebooks](https://github.com/Lynnesbian/mstdn-ebooks), the previous bot software I wrote, determined sources by seeing what accounts the bot was following. For example, if @bot was following @jack and @jill, it would download posts from their accounts and use them to learn. FediBooks does not work this way, and you will instead need to add sources via the user interface. Support for this method of specifying sources is planned.
