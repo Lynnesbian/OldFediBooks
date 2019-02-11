@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'gui/wzd_createbot.ui',
 # licensing of 'gui/wzd_createbot.ui' applies.
 #
-# Created: Mon Feb 11 18:32:48 2019
+# Created: Mon Feb 11 20:06:18 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -516,7 +516,7 @@ class Ui_wzdCreateBot(object):
 		wzdCreateBot.setCentralWidget(self.centralwidget)
 
 		self.retranslateUi(wzdCreateBot)
-		self.stk_main.setCurrentIndex(2)
+		self.stk_main.setCurrentIndex(4)
 		self.stk_create_account.setCurrentIndex(0)
 		self.stk_authorise_fedibooks.setCurrentIndex(0)
 		QtCore.QMetaObject.connectSlotsByName(wzdCreateBot)

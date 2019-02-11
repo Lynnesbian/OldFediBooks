@@ -211,6 +211,7 @@ class wzdPageValidator(QThread):
 							scopes = ["read:accounts", "read:follows", "read:notifications", "read:statuses", "write:media", "write:statuses"],
 							website = "https://github.com/Lynnesbian/FediBooks"
 						)
+						self.wzd.app = app
 					except:
 						self.send_text.emit("Failed to create Mastodon/Pleroma app.")
 						return
@@ -234,12 +235,14 @@ class wzdPageValidator(QThread):
 
 						app['credentials']['app_id'] = mk_app['id']
 						app['credentials']['app_secret'] = mk_app['secret']
+						self.wzd.app = app
 					except:
 						self.send_text.emit("Failed to create Misskey app.")
 						return
 
 				else:
 					#no need to create an app (in fact, it's not even possible. although it will eventually possible for diaspora.)
+					self.wzd.app = None
 					self.send_true.emit(True)
 					return
 
@@ -367,10 +370,11 @@ class wzdCreateBot(QMainWindow):
 			self.next_page()
 
 		if self.page_name() == "authorise_fedibooks":
+			#self.app = None
 			if self.app == None:
-				self.stk_authorise_fedibooks.setCurrentIndex(1)
+				self.ui.stk_authorise_fedibooks.setCurrentIndex(1)
 			else:
-				self.stk_authorise_fedibooks.setCurrentIndex(0)
+				self.ui.stk_authorise_fedibooks.setCurrentIndex(0)
 
 		self.reset_page()
 
