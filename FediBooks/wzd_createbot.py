@@ -337,6 +337,8 @@ class wzdCreateBot(QMainWindow):
 			open_url("https://{}/registration".format(n))
 		elif i in ["hubzilla", "osada"]: #not supported yet but may as well prepare for it
 			open_url("https://{}/register".format(n))
+		elif i == "diaspora":
+			open_url("https://{}/users/sign_up".format(n))
 		else:
 			open_url("https://{}".format(n))
 
