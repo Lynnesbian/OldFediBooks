@@ -17,9 +17,9 @@ Note: No instances are currently supported by FediBooks, as FediBooks itself doe
 
 | Instance type | Mastodon | Pleroma | Misskey | Diaspora* | Hubzilla | Osada | GangGo | GNU Social |
 |---------------|----------|---------|---------|-----------|----------|-------|--------|------------|
-|      Sourcing | ✔️        | ✔️       | ✔️       | ✔️         | ❌       | ❌    | ❌     | ❌         |
+|      Sourcing | ✔️        | ✔️       | ✔️       | ❌        | ❌       | ❌    | ❌     | ❌         |
 |       Posting | ✔️        | ✔️       | ✔️       | ✔️         | ❌       | ❌    | ❌     | ❌         |
-|      Replying | ✔️        | ✔️       | ✔️       | ✔️         | ❌       | ❌    | ❌     | ❌         |
+|      Replying | ✔️        | ✔️       | ✔️       | ❌        | ❌       | ❌    | ❌     | ❌         |
 
 These instances are in order of priority -- for example, if Pleroma and Misskey support are both broken, I will focus on Pleroma first.
 
