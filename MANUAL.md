@@ -21,7 +21,7 @@ Note: No instances are currently supported by FediBooks, as FediBooks itself doe
 |       Posting | ✔️        | ✔️       | ✔️       | ✔️         | ❌       | ❌    | ❌     | ❌         |
 |      Replying | ✔️        | ✔️       | ✔️       | ❌        | ❌       | ❌    | ❌     | ❌         |
 
-These instances are in order of priority -- for example, if Pleroma and Misskey support are both broken, I will focus on Pleroma first.
+These instances are in descending order of priority -- for example, if Pleroma and Misskey support are both broken, I will focus on Pleroma first. I've ordered them in terms of relevance, userbase, and ease of support.
 
 # Using FediBooks
 
