@@ -235,8 +235,6 @@ class thrWzdPageValidator(QThread):
 				if self.wzd.instance['type'] in ["mastodon", "pleroma"]:
 					# pleroma supports the mastodon API so we'll use that
 					# however, Mastodon.py is a bit fucky-wucky, and makes the same mistake as toot! did by converting post IDs to integers, which breaks with pleroma's new, non-integer IDs.
-					# the fact that mastodon uses integers for IDs isn't an intentional decision that you should base your app around.
-					# why do you need to store them as integers anyway? are you planning on performing multiplication on post IDs...?
 					app["type"] = "mastodon" # overwrite type with "mastodon" in case this is a pleroma instance
 					try:
 						app['permissions'] = ["read:accounts", "read:follows", "read:notifications", "read:statuses", "write:media", "write:statuses"]
@@ -261,8 +259,9 @@ class thrWzdPageValidator(QThread):
 							description = "https://github.com/Lynnesiban/FediBooks",
 							permission = app['permissions']
 						))
-						# PROTIP: the misskey documentation won't tell you what this call returns -- in fact, it won't tell you anything apart from "Internal Server Error".
-						# but by creating an app and dumping the json returned we can roughly figure it out
+						# PROTIP: the misskey documentation won't tell you much about what this call returns -- it just tells you that you'll get three strings, an array, and a string that can sometimes be null. see here: https://misskey.xyz/docs/en-US/api/endpoints/app/create
+						# however, this is wrong. these docs don't tell you that you'll get information such as createdAt or iconUrl, so the docs are no help
+						# but by creating an app and dumping the json it returns, we can roughly figure out what's gonig on
 						# here's an example:
 						# {"createdAt": "2019-02-11T06:08:23.522Z", "userId": null, "name": "test", "description": "test", "permission": ["account-read", "account/read", "note-read", "note-write", "notification-read"], "callbackUrl": null, "secret": "[SECRET GOES HERE]", "id": "[ID GOES HERE]", "iconUrl": "https://misskey.xyz/files/app-default.jpg"}
 						# all of that is fairly self-explanatory
@@ -298,7 +297,7 @@ class thrWzdPageValidator(QThread):
 			else:
 				# username/password
 				if self.wzd.instance['type'] == "diaspora":
-					#verify that the credentials are correct
+					# verify that the credentials are correct
 					connection = diaspy.connection.Connection(
 						pod = self.wzd.instance['url'],
 						username = self.ui.txt_username.text(),
