@@ -34,7 +34,7 @@ class dlgWzdError(QDialog):
 		self.ui.setupUi(self)
 
 	def rejected(self):
-		self.accepted #:blobderpy:
+		self.accepted # :blobderpy:
 
 	def accepted(self):
 		self.done(1)
@@ -43,7 +43,37 @@ class dlgWzdError(QDialog):
 		self.ui.label.setText("There were some problems with the data you entered. Please rectify the following issues and try again.\n\n{}\n\nIf you believe this to be a problem with FediBooks itself, please open a GitHub issue, or notify Lynne (@lynnesbian.fedi.lynnesbian.space)".format(text))
 		self.exec()
 
-class wzdPageValidator(QThread):
+class thrOauthCodeRequester(QThread):
+	send_url = Signal(str)
+	send_error = Signal(str)
+
+	def __init__(self, wzd):
+		self.wzd = wzd
+		super(thrOauthCodeRequester, self).__init__()
+
+	def __del__(self):
+		self.exiting = True
+		self.wait()
+
+	def run(self):
+		if self.wzd.instance['type'] in ['mastodon', 'pleroma']:
+			# mastodon/pleroma
+			try:
+				client = Fixtodon(client_id = self.wzd.app['credentials']['app_id'],
+					client_secret = self.wzd.app['credentials']['app_secret'],
+					api_base_url=self.wzd.instance['url']
+				)
+				self.send_url.emit(client.auth_request_url(scopes=self.wzd.app['permissions']))
+			except:
+				raise
+				self.send_error.emit("An error ocurred while requesting authorisation.")
+				return
+		elif self.wzd.instance['type'] == 'misskey':
+			# misskey
+			pass
+		pass
+
+class thrWzdPageValidator(QThread):
 	send_true = Signal(bool)
 	send_text = Signal(str)
 	update_pbr = Signal(int, str)
@@ -51,7 +81,7 @@ class wzdPageValidator(QThread):
 
 	def __init__(self, wzd):
 		self.wzd = wzd
-		super(wzdPageValidator, self).__init__()
+		super(thrWzdPageValidator, self).__init__()
 
 	def __del__(self):
 		self.exiting = True
@@ -62,7 +92,7 @@ class wzdPageValidator(QThread):
 
 		if pn == "choose_an_instance":
 			steps = ["Connecting", "Verifying", "Checking instance type"]
-			self.wzd.app = None #if we had an app before, it's invalid now, because we're changing instances
+			self.wzd.app = None # if we had an app before, it's invalid now, because we're changing instances
 
 			# CONNECTING
 
@@ -79,9 +109,9 @@ class wzdPageValidator(QThread):
 			except:
 				self.send_text.emit("The instance URL you provided is not a valid URL.")
 				return
-			#valid URL, check if it's actually an instance
-			#afaik the best way to do this is to check for a host-meta file containing a link rel="lrdd"
-			#mastodon refuses to federate with non-HTTPS websites, and you can set up HTTPS for free in ten minutes, so there's really no reason not to enforce it
+			# valid URL, check if it's actually an instance
+			# afaik the best way to do this is to check for a host-meta file containing a link rel="lrdd"
+			# mastodon refuses to federate with non-HTTPS websites, and you can set up HTTPS for free in ten minutes, so there's really no reason not to enforce it
 			try:
 				r = requests.get("https://{}/.well-known/host-meta".format(self.wzd.instance['name']), timeout=30)
 			except requests.exceptions.Timeout:
@@ -98,6 +128,10 @@ class wzdPageValidator(QThread):
 
 			self.update_pbr.emit(2, steps[1])
 
+			# the webfinger URI tells us two very important things:
+			# where to find a given user's activitypub outbox, and
+			# the true base URL of a given instance
+			# for example, mastodon lets you run an instance at subdomain.example.com but still appear as @user@example.com. we need subdomain.example.com.
 			self.wzd.instance['webfinger_uri'] = None
 			try:
 				xml = ElementTree.fromstring(r.text)
@@ -114,23 +148,24 @@ class wzdPageValidator(QThread):
 				self.send_text.emit("host-meta did not specify WebFinger URI.")
 				return
 
-			#use the webfinger URI to determine the instance's actual URL
+			# use the webfinger URI to determine the instance's actual URL
 			self.wzd.instance['url'] = re.search(r"^(https:\/\/[^/]+)", self.wzd.instance['webfinger_uri']).group(1)
 
-			#it's probably a fediverse instance! now we check nodeinfo
+			# it's probably a fediverse instance! now we check nodeinfo
 
 			self.update_pbr.emit(3, steps[2])
 
-			#first, the standard way, used by pleroma, misskey, friendica, osada, hubzilla, ganggo, diaspora, and more!
+			# first, the standard way, used by pleroma, misskey, friendica, osada, hubzilla, ganggo, diaspora, and more!
 			try:
 				r = requests.get("https://{}/.well-known/nodeinfo".format(self.wzd.instance['name']))
 				r.raise_for_status()
 			except requests.exceptions.HTTPError: 
-				#no nodeinfo file! this part is the mastodon way, used by mastodon!
-				#(it might also be GNU social, but we'll cross that bridge when we come to it)
+				# no nodeinfo file! this part is the mastodon way, used by mastodon!
+				# (it might also be GNU social, but we'll cross that bridge when we come to it)
+				# (it could also be a different type of website altogether -- trying to use "google.com" will also lead down this path)
 				if "server" in r.headers and r.headers['server'].lower() == "mastodon":
-					self.wzd.instance['type'] = "mastodon" #it could also be glitch-soc but they're the same for the purposes of this program
-					#we'll leave the version number blank for now and get it later when we use Mastodon.py
+					self.wzd.instance['type'] = "mastodon" # it could also be glitch-soc but they're the same for the purposes of this program
+					# we'll leave the version number blank for now and get it later when we use Mastodon.py
 					self.send_true.emit(True)
 					return
 				else:
@@ -138,19 +173,19 @@ class wzdPageValidator(QThread):
 						r = requests.get("https://{}/api/v1/instance")
 						j = r.json()
 						if re.search(r"^(\d+\.)+\d$", j['version']) != None:
-							#its probably mastodon
-							#this will handle e.g. 2.1.2.3.4 or 21.2.4 but not commit numbers, which mastodon hopefully doesn't use haha
-							#man, if only there was some type of standard
+							# its probably mastodon
+							# this will handle e.g. 2.1.2.3.4 or 21.2.4 but not commit numbers, which mastodon hopefully doesn't use haha
+							# man, if only there was some type of standard
 							self.wzd.instance['type'] = "mastodon"
 							self.wzd.instance['version'] = j['version']
 							self.send_true.emit(True)
 							return
 						else:
-							self.send_text.emit("The instance type is not supported by FediBooks.")
+							self.send_text.emit("This instance type is not supported by FediBooks.")
 							return
 					except:
-						#TODO: check for GNU social
-						self.send_text.emit("The instance type is not supported by FediBooks.")
+						# TODO: check for GNU social
+						self.send_text.emit("This instance type is not supported by FediBooks.")
 						return
 					pass
 			
@@ -163,6 +198,7 @@ class wzdPageValidator(QThread):
 			try:
 				for link in j['links']:
 					if link['rel'] == "http://nodeinfo.diaspora.software/ns/schema/2.0":
+						# look for nodeinfo v2.0 links. TODO: find out if anyone uses 1.0, if they do, add support
 						r = requests.get(link['href'])
 						j = r.json()
 						self.wzd.instance['type'] = j['software']['name'].lower()
@@ -177,84 +213,108 @@ class wzdPageValidator(QThread):
 			else:
 				self.send_text.emit("An unknown error ocurred.")
 				return
-			#end choose_an_instance
+			# end choose_an_instance
 
 		elif pn == "registering_app":
-			if self.app != None:
-				#we already have an app, no need to register a new one
-				#TODO: if the existing app is invalid somehow, remove it
+			if self.wzd.app != None:
+				# we already have an app, no need to register a new one
+				# TODO: if the existing app is invalid somehow, remove it
 				self.send_true.emit(True)
 				return
 			else:
-				i = self.wzd.instance['type']
-				u = self.wzd.instance['url']
 				app = {
-					"type": i,
-					"url": u,
+					"type": self.wzd.instance['type'],
+					"url": self.wzd.instance['url'],
 					"credentials": {
 						"app_secret": None,
 						"app_id": None,
 						"access_token": None
 					}
 				}
-				#for information on why FediBooks requests the permissions it does, see https://github.com/Lynnesbian/FediBooks/blob/master/MANUAL.md#permissions
-				if i in ["mastodon", "pleroma"]:
-					#pleroma supports the mastodon API so we'll use that
-					#however, Mastodon.py is a bit fucky-wucky, and makes the same mistake as toot! did by converting post IDs to integers, which breaks with pleroma's new, non-integer IDs.
-					#the fact that mastodon uses integers for IDs isn't an intentional decision that you should base your app around.
-					#why do you need to store them as integers anyway? are you planning on performing multiplication on post IDs...?
-					app["type"] = "mastodon" #overwrite type with "mastodon" in case this is a pleroma instance
+				# for information on why FediBooks requests the permissions it does, see https://github.com/Lynnesbian/FediBooks/blob/master/MANUAL.md# permissions
+				if self.wzd.instance['type'] in ["mastodon", "pleroma"]:
+					# pleroma supports the mastodon API so we'll use that
+					# however, Mastodon.py is a bit fucky-wucky, and makes the same mistake as toot! did by converting post IDs to integers, which breaks with pleroma's new, non-integer IDs.
+					# the fact that mastodon uses integers for IDs isn't an intentional decision that you should base your app around.
+					# why do you need to store them as integers anyway? are you planning on performing multiplication on post IDs...?
+					app["type"] = "mastodon" # overwrite type with "mastodon" in case this is a pleroma instance
 					try:
+						app['permissions'] = ["read:accounts", "read:follows", "read:notifications", "read:statuses", "write:media", "write:statuses"]
 						app["credentials"]["app_id"], app["credentials"]["app_secret"] = Fixtodon.create_app(
 							client_name = "FediBooks",
-							api_base_url= u,
-							scopes = ["read:accounts", "read:follows", "read:notifications", "read:statuses", "write:media", "write:statuses"],
+							api_base_url = self.wzd.instance['url'],
+							scopes = app['permissions'],
 							website = "https://github.com/Lynnesbian/FediBooks"
 						)
 						self.wzd.app = app
-					except:
-						self.send_text.emit("Failed to create Mastodon/Pleroma app.")
+						self.send_true.emit(True)
 						return
-				elif i == "misskey":
+					except:
+						self.send_text.emit("Failed to create {} app.".format(i.title()))
+						return
+				elif self.wzd.instance['type'] == "misskey":
 					try:
+						app['permissions'] = ["account-read","account/read","note-read","note-write","notification-read"]
 						mk_app = json.loads(Misskey.create_app(
-							instanceAddress = u,
+							instanceAddress = self.wzd.instance['url'],
 							appName = "FediBooks",
 							description = "https://github.com/Lynnesiban/FediBooks",
-							permission = [
-								"account-read","account/read","note-read","note-write","notification-read"
-							]
+							permission = app['permissions']
 						))
-						#PROTIP: the misskey documentation won't tell you what this call returns -- in fact, it won't tell you anything apart from "Internal Server Error".
-						#but by creating an app and dumping the json returned we can roughly figure it out
-						#here's an example:
-						#{"createdAt": "2019-02-11T06:08:23.522Z", "userId": null, "name": "test", "description": "test", "permission": ["account-read", "account/read", "note-read", "note-write", "notification-read"], "callbackUrl": null, "secret": "[SECRET GOES HERE]", "id": "[ID GOES HERE]", "iconUrl": "https://misskey.xyz/files/app-default.jpg"}
-						#all of that is fairly self-explanatory
-						#i don't really know why there's a userId but apart from that it's fairly self-explanatory.
-						#self-explanatory is NOT a substitute for documentation, and i have to say that i won't be working particularly hard to support software that provides no support of its own.
+						# PROTIP: the misskey documentation won't tell you what this call returns -- in fact, it won't tell you anything apart from "Internal Server Error".
+						# but by creating an app and dumping the json returned we can roughly figure it out
+						# here's an example:
+						# {"createdAt": "2019-02-11T06:08:23.522Z", "userId": null, "name": "test", "description": "test", "permission": ["account-read", "account/read", "note-read", "note-write", "notification-read"], "callbackUrl": null, "secret": "[SECRET GOES HERE]", "id": "[ID GOES HERE]", "iconUrl": "https://misskey.xyz/files/app-default.jpg"}
+						# all of that is fairly self-explanatory
+						# i don't really know why there's a userId but apart from that it's fairly self-explanatory.
+						# self-explanatory is NOT a substitute for documentation, and i have to say that i won't be working particularly hard to support software that provides no support of its own.
 
 						app['credentials']['app_id'] = mk_app['id']
 						app['credentials']['app_secret'] = mk_app['secret']
 						self.wzd.app = app
+						self.send_true.emit(True)
 					except:
 						self.send_text.emit("Failed to create Misskey app.")
 						return
 
 				else:
-					#no need to create an app (in fact, it's not even possible. although it will eventually possible for diaspora.)
+					# no need to create an app (in fact, it's not even possible. although it will eventually possible for diaspora.)
 					self.wzd.app = None
 					self.send_true.emit(True)
 					return
 
-				#end registering_app
+		# end registering_app
 
 		elif pn == "authorise_fedibooks":
+			self.set_pbr_visibility(True)
 			if self.wzd.instance['type'] in ["mastodon", "pleroma", "misskey"]:
-				#oauth
+				if self.wzd.instance['type'] == "misskey":
+					# misskey
+					pass
+				else:
+					# mastodon/pleroma
+					pass
 				pass
 			else:
-				#username/password
-				pass
+				# username/password
+				if self.wzd.instance['type'] == "diaspora":
+					#verify that the credentials are correct
+					connection = diaspy.connection.Connection(
+						pod = self.wzd.instance['url'],
+						username = self.ui.txt_username.text(),
+						password = self.ui.txt_password.text()
+					)
+					try:
+						connection.login()
+					except diaspy.errors.LoginError:
+						self.send_text("Login failed. Did you make a typo?")
+					
+					diaspy.streams.Activity(connection).post()
+
+
+
+		#end authorise_fedibooks
+
 		else:
 			self.send_true.emit(True)
 			return
@@ -268,11 +328,22 @@ class wzdCreateBot(QMainWindow):
 		self.on_stk_main_currentChanged()
 		self.app = "None"
 
+		#########################
+		#     TESTING STUFF     #
+		# REMOVE WHEN RELEASING #
+		#########################
+		if testing_mode():
+			self.ui.txt_instance.setText("fedi.lynnesbian.space")
+
 	# FUNCTIONS
 
 	@Slot(str)
 	@Slot(bool)
 	def validate_page_result(self, response):
+		self.set_control_buttons_enabled(True)
+		self.ui.stk_main.setEnabled(True)
+		self.ui.btn_next.setFocus()
+
 		if response is True:
 			index = self.ui.stk_main.currentIndex()
 			self.ui.stk_main.setCurrentIndex(index + 1)
@@ -280,15 +351,13 @@ class wzdCreateBot(QMainWindow):
 			dialogue = dlgWzdError()
 			dialogue.present(response)
 			self.reset_page()
-		
-		self.set_control_buttons_enabled(True)
-		self.ui.stk_main.setEnabled(True)
-		self.ui.btn_next.setFocus()
 
 	@Slot(bool)
 	def set_pbr_visibility(self, visible):
 		if self.page_name() == "choose_an_instance":
 			self.ui.pbr_instance.setVisible(visible)
+		elif self.page_name() == "authorise_fedibooks":
+			self.ui.pbr_authorisation.setVisible(visible)
 
 	@Slot(int, str)
 	def set_pbr_state(self, progress, text):
@@ -300,7 +369,7 @@ class wzdCreateBot(QMainWindow):
 		pbr.setFormat(text)
 
 	def validate_page(self):
-		self.validator = wzdPageValidator(self)
+		self.validator = thrWzdPageValidator(self)
 		self.validator.send_true.connect(self.validate_page_result)
 		self.validator.send_text.connect(self.validate_page_result)
 		self.validator.update_pbr.connect(self.set_pbr_state)
@@ -315,7 +384,7 @@ class wzdCreateBot(QMainWindow):
 			
 	def previous_page(self):
 		if self.page_name() == "authorise_fedibooks" and self.app != None:
-			#we've already registered, skip this page
+			# we've already registered, skip this page
 			self.ui.stk_main.setCurrentIndex(self.ui.stk_main.currentIndex() - 1)
 			self.previous_page()
 			return
@@ -337,6 +406,10 @@ class wzdCreateBot(QMainWindow):
 		self.ui.btn_next.setEnabled(state)
 		self.ui.btn_back.setEnabled(state)
 
+	@Slot(str)
+	def open_oauth_page(self, url):
+		open_url(url)
+
 	# EVENT HANDLERS
 	# GENERAL
 	@Slot()
@@ -346,9 +419,9 @@ class wzdCreateBot(QMainWindow):
 	def on_btn_help_pressed(self):
 		page = self.page_name().replace("_", "-")
 		if page in ["welcome", "done"]:
-			#no specific help for these pages, just direct to the wizard help instead
+			# no specific help for these pages, just direct to the general wizard help instead
 			page = "bot-creation-wizard"
-		open_url("https://github.com/Lynnesbian/FediBooks/tree/master/MANUAL.md#{}".format(page))
+		open_url("https://github.com/Lynnesbian/FediBooks/tree/master/MANUAL.md# {}".format(page))
 	@Slot()
 	def on_btn_back_pressed(self):
 		self.previous_page()
@@ -366,11 +439,11 @@ class wzdCreateBot(QMainWindow):
 
 		self.ui.btn_back.setEnabled(self.ui.stk_main.currentIndex() != 0)
 
-		if self.page_name() == "create_app":
+		if self.page_name() == "registering_app":
 			self.next_page()
 
 		if self.page_name() == "authorise_fedibooks":
-			#self.app = None
+			# self.app = None
 			if self.app == None:
 				self.ui.stk_authorise_fedibooks.setCurrentIndex(1)
 			else:
@@ -383,23 +456,27 @@ class wzdCreateBot(QMainWindow):
 	@Slot()
 	def on_btn_create_account_pressed(self):
 		i = self.instance['type']
-		n = self.instance['name']
-		#v = self.instance['version']
+		u = self.instance['url']
+		# v = self.instance['version']
 		if i == "mastodon":
-			open_url("https://{}/auth/sign_up".format(n))
+			open_url("{}/auth/sign_up".format(u))
 		elif i == "pleroma":
-			open_url("https://{}/registration".format(n))
-		elif i in ["hubzilla", "osada"]: #not supported yet but may as well prepare for it
-			open_url("https://{}/register".format(n))
+			open_url("{}/registration".format(u))
+		elif i in ["hubzilla", "osada"]: # not supported yet but may as well prepare for it
+			open_url("{}/register".format(u))
 		elif i == "diaspora":
-			open_url("https://{}/users/sign_up".format(n))
+			open_url("{}/users/sign_up".format(u))
 		else:
-			open_url("https://{}".format(n))
+			open_url(u)
 
 	# AUTHENTICATION
 
 	@Slot()
 	def on_btn_auth_code_pressed(self):
-		i = self.instance['type']
-		n = self.instance['name']
+		self.requester = thrOauthCodeRequester(self)
+		self.requester.send_url.connect(self.open_oauth_page)
+		self.requester.send_error.connect(self.validate_page_result)
+		# self.requester.update_pbr.connect(self.set_pbr_state)
+		# self.requester.set_pbr_visibility.connect(self.set_pbr_visibility)
+		self.requester.start()
 

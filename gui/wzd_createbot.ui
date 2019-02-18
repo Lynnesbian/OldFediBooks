@@ -23,7 +23,7 @@
       <item>
        <widget class="QStackedWidget" name="stk_main">
         <property name="currentIndex">
-         <number>4</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -315,7 +315,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="registering_fedibooks">
+        <widget class="QWidget" name="registering_app">
          <layout class="QVBoxLayout" name="verticalLayout_12">
           <item>
            <widget class="QLabel" name="label_24">
@@ -496,14 +496,14 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_2">
+               <widget class="QLineEdit" name="txt_username">
                 <property name="placeholderText">
                  <string>Username</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit">
+               <widget class="QLineEdit" name="txt_password">
                 <property name="echoMode">
                  <enum>QLineEdit::Password</enum>
                 </property>
@@ -530,12 +530,15 @@
            </widget>
           </item>
           <item>
-           <widget class="QProgressBar" name="progressBar_2">
-            <property name="value">
-             <number>24</number>
+           <widget class="QProgressBar" name="pbr_authorisation">
+            <property name="maximum">
+             <number>0</number>
             </property>
-            <property name="format">
-             <string>Validating</string>
+            <property name="value">
+             <number>0</number>
+            </property>
+            <property name="textVisible">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -628,7 +631,7 @@
               </property>
               <property name="icon">
                <iconset theme="delete">
-                <normaloff>.</normaloff>.</iconset>
+                <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
               </property>
              </widget>
             </item>
@@ -639,7 +642,7 @@
               </property>
               <property name="icon">
                <iconset theme="add">
-                <normaloff>.</normaloff>.</iconset>
+                <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
               </property>
              </widget>
             </item>
@@ -650,7 +653,7 @@
               </property>
               <property name="icon">
                <iconset theme="add">
-                <normaloff>.</normaloff>.</iconset>
+                <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
               </property>
              </widget>
             </item>
@@ -1040,7 +1043,7 @@
         </property>
         <property name="icon">
          <iconset theme="cancel">
-          <normaloff>.</normaloff>.</iconset>
+          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
         </property>
        </widget>
       </item>
@@ -1051,7 +1054,7 @@
         </property>
         <property name="icon">
          <iconset theme="help">
-          <normaloff>.</normaloff>.</iconset>
+          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
         </property>
        </widget>
       </item>
@@ -1075,7 +1078,7 @@
         </property>
         <property name="icon">
          <iconset theme="back">
-          <normaloff>.</normaloff>.</iconset>
+          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
         </property>
        </widget>
       </item>
@@ -1086,13 +1089,7 @@
         </property>
         <property name="icon">
          <iconset theme="next">
-          <normaloff>.</normaloff>.</iconset>
-        </property>
-        <property name="autoDefault">
-         <bool>true</bool>
-        </property>
-        <property name="default">
-         <bool>true</bool>
+          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
         </property>
        </widget>
       </item>
