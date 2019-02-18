@@ -34,10 +34,11 @@ These instances are in descending order of priority -- for example, if Pleroma a
 ## Permissions
 This section aims to explain why FediBooks requests the account permissions it does.
 ### Mastodon and Pleroma
- - read:accounts - Get account info
- - read:follows - In future, it will be possible to add sources by following accounts from the bot account
+ - read:accounts - Get account info, such as accounts followed, user ID, etc.
+ - read:follows - Relationship info between the bot account and another account -- check if they're blocked, followed, etc.
  - read:notifications - Monitor notifications for mentions
  - read:statuses - Read replies
+ - write:follows - Follow accounts from the bot
  - write:media - Eventually, the bots will (probably) be able to post images/videos
  - write:statuses - Create posts
 ### Misskey
