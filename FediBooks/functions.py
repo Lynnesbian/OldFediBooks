@@ -18,3 +18,7 @@ import webbrowser
 
 def open_url(url):
 	webbrowser.open(url, new=2, autoraise=True)
+
+def testing_mode():
+	return True # MAKE THIS FALSE WHEN RELEASING
+	
