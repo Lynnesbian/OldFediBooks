@@ -65,13 +65,21 @@ class thrOauthCodeRequester(QThread):
 				)
 				self.send_url.emit(client.auth_request_url(scopes=self.wzd.app['permissions']))
 			except:
-				raise
 				self.send_error.emit("An error ocurred while requesting authorisation.")
-				return
+			return
+
 		elif self.wzd.instance['type'] == 'misskey':
 			# misskey
-			pass
-		pass
+			try:
+				client = Misskey(instanceAddress = self.wzd.instance['url'],
+					appSecret = self.wzd.app['credentials']['app_secret'],
+					appId = self.wzd.app['credentials']['app_id']
+				)
+				self.wzd.app['credentials']['api_token'] = True #MAKE IT GENERATE THE API CREDS
+			except:
+				self.send_error.emit("An error ocurred while requesting authorisation.")
+			return
+		
 
 class thrWzdPageValidator(QThread):
 	send_true = Signal(bool)
@@ -308,7 +316,7 @@ class thrWzdPageValidator(QThread):
 					except diaspy.errors.LoginError:
 						self.send_text("Login failed. Did you make a typo?")
 					
-					diaspy.streams.Activity(connection).post()
+					# diaspy.streams.Activity(connection).post()
 
 
 

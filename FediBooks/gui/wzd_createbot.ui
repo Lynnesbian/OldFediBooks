@@ -631,7 +631,7 @@
               </property>
               <property name="icon">
                <iconset theme="delete">
-                <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+                <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
               </property>
              </widget>
             </item>
@@ -642,7 +642,7 @@
               </property>
               <property name="icon">
                <iconset theme="add">
-                <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+                <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
               </property>
              </widget>
             </item>
@@ -653,7 +653,7 @@
               </property>
               <property name="icon">
                <iconset theme="add">
-                <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+                <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
               </property>
              </widget>
             </item>
@@ -1043,7 +1043,7 @@
         </property>
         <property name="icon">
          <iconset theme="cancel">
-          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+          <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
         </property>
        </widget>
       </item>
@@ -1054,7 +1054,7 @@
         </property>
         <property name="icon">
          <iconset theme="help">
-          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+          <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
         </property>
        </widget>
       </item>
@@ -1078,7 +1078,7 @@
         </property>
         <property name="icon">
          <iconset theme="back">
-          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+          <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
         </property>
        </widget>
       </item>
@@ -1089,7 +1089,7 @@
         </property>
         <property name="icon">
          <iconset theme="next">
-          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+          <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
         </property>
        </widget>
       </item>

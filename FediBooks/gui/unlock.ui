@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>576</width>
-    <height>456</height>
+    <width>368</width>
+    <height>228</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Set Password</string>
+   <string>Enter Password</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -29,7 +29,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Set Password</string>
+       <string>Enter Password</string>
       </property>
       <property name="textFormat">
        <enum>Qt::AutoText</enum>
@@ -51,7 +51,7 @@
        </sizepolicy>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you wish, you may set a password to access FediBooks. This password will be used to control access to the application and to encrypt the database, which contains sensitive information such as access tokens. If obtained by a malicious actor, &lt;span style=&quot; font-weight:600;&quot;&gt;these tokens can be used to post from your account&lt;/span&gt; without your permission.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Note that if you forget this password, you will not be able to use FediBooks without wiping your data. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;FediBooks is currently locked with a password. Please enter your FediBooks password to decrypt the database and continue.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -68,26 +68,6 @@
       </property>
       <property name="placeholderText">
        <string>Password</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QProgressBar" name="progressBar">
-      <property name="value">
-       <number>10</number>
-      </property>
-      <property name="format">
-       <string>Weak</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEdit_2">
-      <property name="echoMode">
-       <enum>QLineEdit::Password</enum>
-      </property>
-      <property name="placeholderText">
-       <string>Confirm password</string>
       </property>
      </widget>
     </item>
@@ -113,7 +93,7 @@
         </property>
         <property name="icon">
          <iconset theme="cancel">
-          <normaloff>../../gui</normaloff>../../gui</iconset>
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>
@@ -124,7 +104,7 @@
         </property>
         <property name="icon">
          <iconset theme="help">
-          <normaloff>../../gui</normaloff>../../gui</iconset>
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>
@@ -144,11 +124,11 @@
       <item>
        <widget class="QPushButton" name="btn_ok">
         <property name="text">
-         <string>&amp;OK</string>
+         <string>&amp;Unlock</string>
         </property>
         <property name="icon">
          <iconset theme="dialog-ok">
-          <normaloff>../../gui</normaloff>../../gui</iconset>
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>

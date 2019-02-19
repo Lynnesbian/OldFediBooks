@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'gui/wzd_createbot.ui',
-# licensing of 'gui/wzd_createbot.ui' applies.
+# Form implementation generated from reading ui file 'FediBooks/gui/wzd_createbot.ui',
+# licensing of 'FediBooks/gui/wzd_createbot.ui' applies.
 #
-# Created: Sun Feb 17 01:14:35 2019
+# Created: Tue Feb 19 16:37:30 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -315,7 +315,7 @@ class Ui_wzdCreateBot(object):
 		self.horizontalLayout_5.setObjectName("horizontalLayout_5")
 		self.btn_source_delete = QtWidgets.QPushButton(self.select_sources)
 		icon = QtGui.QIcon()
-		icon.addPixmap(QtGui.QPixmap("../../../../../../.designer/backup"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		icon.addPixmap(QtGui.QPixmap("../../../../../../../.designer/backup"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.btn_source_delete.setIcon(icon)
 		self.btn_source_delete.setObjectName("btn_source_delete")
 		self.horizontalLayout_5.addWidget(self.btn_source_delete)
