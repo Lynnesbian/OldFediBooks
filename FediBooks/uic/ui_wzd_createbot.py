@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'FediBooks/gui/wzd_createbot.ui',
 # licensing of 'FediBooks/gui/wzd_createbot.ui' applies.
 #
-# Created: Tue Feb 19 16:37:30 2019
+# Created: Fri Feb 22 01:19:54 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -235,9 +235,6 @@ class Ui_wzdCreateBot(object):
 		self.btn_auth_code = QtWidgets.QPushButton(self.oauth)
 		self.btn_auth_code.setObjectName("btn_auth_code")
 		self.verticalLayout_14.addWidget(self.btn_auth_code)
-		self.txt_auth_code = QtWidgets.QLineEdit(self.oauth)
-		self.txt_auth_code.setObjectName("txt_auth_code")
-		self.verticalLayout_14.addWidget(self.txt_auth_code)
 		self.stk_authorise_fedibooks.addWidget(self.oauth)
 		self.username_password = QtWidgets.QWidget()
 		self.username_password.setObjectName("username_password")
@@ -516,7 +513,7 @@ class Ui_wzdCreateBot(object):
 		wzdCreateBot.setCentralWidget(self.centralwidget)
 
 		self.retranslateUi(wzdCreateBot)
-		self.stk_main.setCurrentIndex(0)
+		self.stk_main.setCurrentIndex(4)
 		self.stk_create_account.setCurrentIndex(0)
 		self.stk_authorise_fedibooks.setCurrentIndex(0)
 		QtCore.QMetaObject.connectSlotsByName(wzdCreateBot)
@@ -538,9 +535,8 @@ class Ui_wzdCreateBot(object):
 		self.label_25.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>Please wait while your copy of FediBooks registers itself with [instance name]. This is a necessary step of authentication and <span style=\" font-weight:600;\">no action is required</span>.</p></body></html>", None, -1))
 		self.pbr_registering_app.setFormat(QtWidgets.QApplication.translate("wzdCreateBot", "test", None, -1))
 		self.label_7.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Authorise FediBooks", None, -1))
-		self.label_8.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>FediBooks needs access to the account you\'d like to use for your bot. Click the button below to open the authorisation prompt, and allow access to the account. If you accidentally reject access, click the button again.<br/></p><p>When you\'ve authorised access to the account, you will be given a code. Copy that code and paste it in the box below the button, then click <span style=\" font-weight:600;\">Next</span> to continue.</p></body></html>", None, -1))
+		self.label_8.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>FediBooks needs access to the account you\'d like to use for your bot. Click the button below to open the authorisation prompt, and allow access to the account. If you accidentally reject access, click the button again.</p><p>After you\'ve granted FediBooks access from your instance, it should automatically continue.</p></body></html>", None, -1))
 		self.btn_auth_code.setText(QtWidgets.QApplication.translate("wzdCreateBot", "Request access", None, -1))
-		self.txt_auth_code.setPlaceholderText(QtWidgets.QApplication.translate("wzdCreateBot", "Authorisation code", None, -1))
 		self.label_26.setText(QtWidgets.QApplication.translate("wzdCreateBot", "<html><head/><body><p>FediBooks needs access to the account you\'d like to use for your bot. Enter your username and password below, then click <span style=\" font-weight:600;\">Next</span> to continue.</p></body></html>", None, -1))
 		self.txt_username.setPlaceholderText(QtWidgets.QApplication.translate("wzdCreateBot", "Username", None, -1))
 		self.txt_password.setPlaceholderText(QtWidgets.QApplication.translate("wzdCreateBot", "Password", None, -1))

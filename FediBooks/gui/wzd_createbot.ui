@@ -23,7 +23,7 @@
       <item>
        <widget class="QStackedWidget" name="stk_main">
         <property name="currentIndex">
-         <number>0</number>
+         <number>4</number>
         </property>
         <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -448,7 +448,7 @@
                  </sizepolicy>
                 </property>
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;FediBooks needs access to the account you'd like to use for your bot. Click the button below to open the authorisation prompt, and allow access to the account. If you accidentally reject access, click the button again.&lt;br/&gt;&lt;/p&gt;&lt;p&gt;When you've authorised access to the account, you will be given a code. Copy that code and paste it in the box below the button, then click &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; to continue.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;FediBooks needs access to the account you'd like to use for your bot. Click the button below to open the authorisation prompt, and allow access to the account. If you accidentally reject access, click the button again.&lt;/p&gt;&lt;p&gt;After you've granted FediBooks access from your instance, it should automatically continue.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -462,13 +462,6 @@
                <widget class="QPushButton" name="btn_auth_code">
                 <property name="text">
                  <string>Request access</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="txt_auth_code">
-                <property name="placeholderText">
-                 <string>Authorisation code</string>
                 </property>
                </widget>
               </item>

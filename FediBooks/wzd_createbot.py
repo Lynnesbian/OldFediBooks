@@ -16,14 +16,18 @@
 
 from PySide2.QtWidgets import QApplication, QMainWindow, QDialog
 from PySide2.QtCore import QFile, Signal, Slot, QObject, QThread
-import sys, re, json
-import xml.etree.ElementTree as ElementTree
+
 import requests
-from .fixtodon import Fixtodon
 from Misskey import Misskey
 import diaspy
 
+import sys, re, json, urllib
+import xml.etree.ElementTree as ElementTree
+from http import server
+from multiprocessing import Pipe
+
 from .functions import *
+from .fixtodon import Fixtodon
 from .uic.ui_wzd_createbot import Ui_wzdCreateBot
 from .uic.ui_dlg_wzd_error import Ui_dlgWzdError
 
@@ -42,6 +46,47 @@ class dlgWzdError(QDialog):
 	def present(self, text):
 		self.ui.label.setText("There were some problems with the data you entered. Please rectify the following issues and try again.\n\n{}\n\nIf you believe this to be a problem with FediBooks itself, please open a GitHub issue, or notify Lynne (@lynnesbian.fedi.lynnesbian.space)".format(text))
 		self.exec()
+
+class srvOauthResponseServer(server.BaseHTTPRequestHandler):
+	def __init__(self, thr, *args):
+		self.thr = thr
+		server.BaseHTTPRequestHandler.__init__(self, *args)
+
+	def do_GET(self):
+		self.send_response(200)
+		self.end_headers()
+		p = urllib.parse.parse_qs(self.path[2:])
+		if "code" in p or "token" in p:
+			#this is the response we're looking for
+			self.thr.params = p
+			
+
+class thrOauthResponseServer(QThread):
+	send_code = Signal(str)
+	# send_error = Signal(str)
+	send_true = Signal(bool)
+	send_port = Signal(int)
+	
+	def __init__(self, wzd):
+		self.wzd = wzd
+		self.params = None
+		super(thrOauthResponseServer, self).__init__()
+
+	def __del__(self):
+		self.exiting = True
+		self.wait()
+
+	def run(self):
+		server_address = ('127.0.0.1', 0)
+		def handler(*args):
+			srvOauthResponseServer(self, *args)
+		httpd = server.ThreadingHTTPServer(server_address, handler)
+		self.send_port.emit(httpd.server_port)
+		print(httpd.server_port)
+		while self.params == None or ("code" not in self.params and "token" not in self.params):
+			httpd.handle_request()
+		print(self.params)
+		self.send_code.emit(self.params)
 
 class thrOauthCodeRequester(QThread):
 	send_url = Signal(str)
@@ -75,7 +120,10 @@ class thrOauthCodeRequester(QThread):
 					appSecret = self.wzd.app['credentials']['app_secret'],
 					appId = self.wzd.app['credentials']['app_id']
 				)
-				self.wzd.app['credentials']['api_token'] = True #MAKE IT GENERATE THE API CREDS
+				self.wzd.app['credentials']['api_token'] = Misskey.auth_session_generate(
+					instanceAddress="https://misskey.xyz", 
+					appSecret = self.wzd.app['credentials']['app_secret']
+				)
 			except:
 				self.send_error.emit("An error ocurred while requesting authorisation.")
 			return
@@ -261,12 +309,12 @@ class thrWzdPageValidator(QThread):
 				elif self.wzd.instance['type'] == "misskey":
 					try:
 						app['permissions'] = ["account-read","account/read","note-read","note-write","notification-read"]
-						mk_app = json.loads(Misskey.create_app(
+						mk_app = Misskey.create_app(
 							instanceAddress = self.wzd.instance['url'],
 							appName = "FediBooks",
 							description = "https://github.com/Lynnesiban/FediBooks",
 							permission = app['permissions']
-						))
+						)
 						# PROTIP: the misskey documentation won't tell you much about what this call returns -- it just tells you that you'll get three strings, an array, and a string that can sometimes be null. see here: https://misskey.xyz/docs/en-US/api/endpoints/app/create
 						# however, this is wrong. these docs don't tell you that you'll get information such as createdAt or iconUrl, so the docs are no help
 						# but by creating an app and dumping the json it returns, we can roughly figure out what's gonig on
@@ -331,9 +379,10 @@ class wzdCreateBot(QMainWindow):
 		super(wzdCreateBot, self).__init__()
 		self.ui = Ui_wzdCreateBot()
 		self.ui.setupUi(self)
-		self.pageCount = self.ui.stk_main.count()
+		self.page_count = self.ui.stk_main.count()
+		self.server_port = None
+		self.app = None
 		self.on_stk_main_currentChanged()
-		self.app = "None"
 
 		#########################
 		#     TESTING STUFF     #
@@ -405,8 +454,6 @@ class wzdCreateBot(QMainWindow):
 		if self.page_name() == "choose_an_instance":
 			self.ui.pbr_instance.setFormat("Ready")
 			self.ui.pbr_instance.setValue(0)
-		if self.page_name() == "authorise_fedibooks":
-			self.ui.txt_auth_code.setEnabled(False)
 		self.set_pbr_visibility(False)
 
 	def set_control_buttons_enabled(self, state):
@@ -439,7 +486,7 @@ class wzdCreateBot(QMainWindow):
 	@Slot(int)
 	def on_stk_main_currentChanged(self, page=None):
 		# print(self.ui.stk_main.currentWidget().objectName())
-		if self.ui.stk_main.currentIndex() == self.pageCount - 1:
+		if self.ui.stk_main.currentIndex() == self.page_count - 1:
 			self.ui.btn_next.setText("Finish")
 		else:
 			self.ui.btn_next.setText("Next")
@@ -447,7 +494,11 @@ class wzdCreateBot(QMainWindow):
 		self.ui.btn_back.setEnabled(self.ui.stk_main.currentIndex() != 0)
 
 		if self.page_name() == "registering_app":
-			self.next_page()
+			self.set_control_buttons_enabled(False)
+			s = thrOauthResponseServer()
+			s.send_code.connect(self.on_code_received)
+			s.send_port.connect(self.on_port_opened)
+			s.start()
 
 		if self.page_name() == "authorise_fedibooks":
 			# self.app = None
@@ -476,6 +527,13 @@ class wzdCreateBot(QMainWindow):
 		else:
 			open_url(u)
 
+	# CREATE APP
+
+	@Slot(int)
+	def on_port_opened(self, port):
+		self.server_port = port
+		self.next_page()
+
 	# AUTHENTICATION
 
 	@Slot()
@@ -483,7 +541,10 @@ class wzdCreateBot(QMainWindow):
 		self.requester = thrOauthCodeRequester(self)
 		self.requester.send_url.connect(self.open_oauth_page)
 		self.requester.send_error.connect(self.validate_page_result)
-		# self.requester.update_pbr.connect(self.set_pbr_state)
-		# self.requester.set_pbr_visibility.connect(self.set_pbr_visibility)
 		self.requester.start()
+
+	@Slot(str)
+	def on_code_received(self, code):
+		# auth code recieved
+		pass
 

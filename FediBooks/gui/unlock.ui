@@ -122,7 +122,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="btn_ok">
+       <widget class="QPushButton" name="btn_unlock">
         <property name="text">
          <string>&amp;Unlock</string>
         </property>

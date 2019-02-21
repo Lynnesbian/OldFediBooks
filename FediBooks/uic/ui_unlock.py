@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'FediBooks/gui/unlock.ui',
 # licensing of 'FediBooks/gui/unlock.ui' applies.
 #
-# Created: Tue Feb 19 16:37:30 2019
+# Created: Fri Feb 22 01:19:54 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -62,10 +62,10 @@ class Ui_MainWindow(object):
 		self.hbx_button_box.addWidget(self.btn_help)
 		spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
 		self.hbx_button_box.addItem(spacerItem1)
-		self.btn_ok = QtWidgets.QPushButton(self.centralwidget)
-		self.btn_ok.setIcon(icon)
-		self.btn_ok.setObjectName("btn_ok")
-		self.hbx_button_box.addWidget(self.btn_ok)
+		self.btn_unlock = QtWidgets.QPushButton(self.centralwidget)
+		self.btn_unlock.setIcon(icon)
+		self.btn_unlock.setObjectName("btn_unlock")
+		self.hbx_button_box.addWidget(self.btn_unlock)
 		self.verticalLayout.addLayout(self.hbx_button_box)
 		MainWindow.setCentralWidget(self.centralwidget)
 
@@ -79,5 +79,5 @@ class Ui_MainWindow(object):
 		self.lineEdit.setPlaceholderText(QtWidgets.QApplication.translate("MainWindow", "Password", None, -1))
 		self.btn_cancel.setText(QtWidgets.QApplication.translate("MainWindow", "&Cancel", None, -1))
 		self.btn_help.setText(QtWidgets.QApplication.translate("MainWindow", "&Help", None, -1))
-		self.btn_ok.setText(QtWidgets.QApplication.translate("MainWindow", "&Unlock", None, -1))
+		self.btn_unlock.setText(QtWidgets.QApplication.translate("MainWindow", "&Unlock", None, -1))
 
