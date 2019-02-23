@@ -318,7 +318,7 @@ class thrWzdPageValidator(QThread):
 						return
 				elif self.wzd.instance['type'] == "misskey":
 					try:
-						app['permissions'] = ["account-read","account/read","note-read","note-write","notification-read"]
+						app['permissions'] = ["account-read", "account/read", "drive-write", "following-read", "following-write", "note-read", "note-write", "notification-read"]
 						mk_app = Misskey.create_app(
 							instanceAddress = self.wzd.instance['url'],
 							appName = "FediBooks",

@@ -39,11 +39,14 @@ This section aims to explain why FediBooks requests the account permissions it d
  - read:notifications - Monitor notifications for mentions
  - read:statuses - Read replies
  - write:follows - Follow accounts from the bot
- - write:media - Eventually, the bots will (probably) be able to post images/videos
+ - write:media - Upload media (Eventually, the bots will (probably) be able to post images/videos)
  - write:statuses - Create posts
 ### Misskey
  - account-read - Get account info
  - account/read - I don't know what the difference between this and the above one is, and there's no documentation, so I'm adding this one to be safe
+ - drive-write - Upload media
+ - following-read - Check if we're following a user
+ - following-write - Follow accounts from the bot
  - note-read - Read replies
  - note-write - Create posts
  - notification-read - Monitor notifications for mentions
