@@ -54,7 +54,7 @@ This section aims to explain why FediBooks requests the account permissions it d
 ### Osada and Hubzilla
 -->
 ### Diaspora*
-FediBooks uses your account credentials to log in to Diaspora*. As no special "app tokens" are requested, it is impossible for FediBooks to only request certain permissions. FediBooks' Diaspora* integration therefore operates with full access to your Diaspora* account.
+FediBooks uses your account credentials to log in to Diaspora* (this is currently the only way to authenticate with Diaspora*.). As no special "app tokens" are requested, it is impossible for FediBooks to only request certain permissions. FediBooks therefore operates with full access to your account.
 
 ## The User Interface (UI)
 FediBooks provides a robust, intuitive graphical user interface (GUI) to aid the user in creating and maintaining their bot(s). No knowledge of the command line is required to use FediBooks, although there are some optional features that make use of it. This section of the manual will explain the UI in greater detail.
