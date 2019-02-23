@@ -70,7 +70,7 @@
         <property name="currentIndex">
          <number>0</number>
         </property>
-        <widget class="QWidget" name="tabWidgetPage1" native="true">
+        <widget class="QWidget" name="tabWidgetPage1">
          <attribute name="title">
           <string>Status</string>
          </attribute>
@@ -78,7 +78,7 @@
           <item>
            <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[bot name] is &lt;span style=&quot; font-weight:600;&quot;&gt;active&lt;/span&gt;, and replies are &lt;span style=&quot; font-weight:600;&quot;&gt;enabled&lt;/span&gt;. Its most recent post was 12 minutes ago.&lt;/p&gt;&lt;p&gt;[bot name] posts &lt;span style=&quot; font-weight:600;&quot;&gt;every 30 minutes&lt;/span&gt;. Filtering is &lt;span style=&quot; font-weight:600;&quot;&gt;disabled&lt;/span&gt;. There are &lt;span style=&quot; font-weight:600;&quot;&gt;0&lt;/span&gt; custom posting rules, and &lt;span style=&quot; font-weight:600;&quot;&gt;0&lt;/span&gt; custom reply rules.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[bot name] is &lt;span style=&quot; font-weight:600;&quot;&gt;active&lt;/span&gt;, and replies are &lt;span style=&quot; font-weight:600;&quot;&gt;enabled&lt;/span&gt;. Its most recent post was 12 minutes ago.&lt;/p&gt;&lt;p&gt;There are &lt;span style=&quot; font-weight:600;&quot;&gt;0&lt;/span&gt; posting rulesets, and &lt;span style=&quot; font-weight:600;&quot;&gt;0&lt;/span&gt; reply rulesets.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -117,7 +117,7 @@
             <item>
              <widget class="QPushButton" name="pushButton_7">
               <property name="text">
-               <string>Specify rules</string>
+               <string>Specify rules (Advanced)</string>
               </property>
               <property name="icon">
                <iconset theme="preferences-other">
@@ -129,66 +129,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tabWidgetPage2" native="true">
-         <attribute name="title">
-          <string>Database</string>
-         </attribute>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The database your bot uses to post contains &lt;span style=&quot; font-weight:600;&quot;&gt;0&lt;/span&gt; entries. This is below the recommended minimum of &lt;span style=&quot; font-weight:600;&quot;&gt;100&lt;/span&gt;. Your bot may fail to post, or post repetitive content. The database for all bots is &lt;span style=&quot; font-weight:600;&quot;&gt;32KiB&lt;/span&gt; in size.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout">
-            <item>
-             <widget class="QPushButton" name="pushButton">
-              <property name="text">
-               <string>Open database location</string>
-              </property>
-              <property name="icon">
-               <iconset theme="zoom">
-                <normaloff>.</normaloff>.</iconset>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_2">
-              <property name="text">
-               <string>Browse</string>
-              </property>
-              <property name="icon">
-               <iconset theme="document-open">
-                <normaloff>.</normaloff>.</iconset>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="tabWidgetPage3" native="true">
+        <widget class="QWidget" name="tabWidgetPage3">
          <attribute name="title">
           <string>Replies</string>
          </attribute>
@@ -247,7 +188,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tabWidgetPage4" native="true">
+        <widget class="QWidget" name="tabWidgetPage4">
          <attribute name="title">
           <string>Sources</string>
          </attribute>
@@ -255,7 +196,7 @@
           <item>
            <widget class="QLabel" name="label_5">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Your bot is currently learning from &lt;span style=&quot; font-weight:600;&quot;&gt;1&lt;/span&gt; source. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Your bot is currently learning from &lt;span style=&quot; font-weight:600;&quot;&gt;1&lt;/span&gt; source. However, your bot has &lt;span style=&quot; font-weight:600;&quot;&gt;no rules that use the Markov engine&lt;/span&gt;, which means these sources aren't currently being used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -278,7 +219,38 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tabWidgetPage5" native="true">
+        <widget class="QWidget" name="tabWidgetPage6">
+         <attribute name="title">
+          <string>Timing</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_8">
+          <item>
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Your bot posts every &lt;span style=&quot; font-weight:600;&quot;&gt;30 minutes&lt;/span&gt;, and learns from its sources every &lt;span style=&quot; font-weight:600;&quot;&gt;30 minutes&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_10">
+            <property name="text">
+             <string>Customise</string>
+            </property>
+            <property name="icon">
+             <iconset theme="preferences-other">
+              <normaloff>.</normaloff>.</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tabWidgetPage5">
          <attribute name="title">
           <string>Content warnings</string>
          </attribute>
@@ -336,15 +308,15 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tabWidgetPage6" native="true">
+        <widget class="QWidget" name="tabWidgetPage2">
          <attribute name="title">
-          <string>Timing</string>
+          <string>Database</string>
          </attribute>
-         <layout class="QVBoxLayout" name="verticalLayout_8">
+         <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
-           <widget class="QLabel" name="label_7">
+           <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Your bot posts every &lt;span style=&quot; font-weight:600;&quot;&gt;30 minutes&lt;/span&gt;, and learns from its sources every &lt;span style=&quot; font-weight:600;&quot;&gt;30 minutes&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The database your bot uses to post contains &lt;span style=&quot; font-weight:600;&quot;&gt;0&lt;/span&gt; entries. This is below the recommended minimum of &lt;span style=&quot; font-weight:600;&quot;&gt;100&lt;/span&gt;. Your bot may fail to post, or post repetitive content. The FediBooks database, which stores data for all the bots as well as configuration for FediBooks itself, is &lt;span style=&quot; font-weight:600;&quot;&gt;32KiB&lt;/span&gt; in size.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -355,19 +327,47 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_10">
-            <property name="text">
-             <string>Customise</string>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
             </property>
-            <property name="icon">
-             <iconset theme="preferences-other">
-              <normaloff>.</normaloff>.</iconset>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
             </property>
-           </widget>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QPushButton" name="pushButton">
+              <property name="text">
+               <string>Open database location</string>
+              </property>
+              <property name="icon">
+               <iconset theme="zoom">
+                <normaloff>.</normaloff>.</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_2">
+              <property name="text">
+               <string>Browse</string>
+              </property>
+              <property name="icon">
+               <iconset theme="document-open">
+                <normaloff>.</normaloff>.</iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tabWidgetPage7" native="true">
+        <widget class="QWidget" name="tabWidgetPage7">
          <attribute name="title">
           <string>Testing</string>
          </attribute>

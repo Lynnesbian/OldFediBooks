@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Custom Rule Manager</string>
+   <string>Action/Condition Manager</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -29,7 +29,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Custom Rule Manager</string>
+       <string>Action/Condition Manager</string>
       </property>
       <property name="textFormat">
        <enum>Qt::AutoText</enum>
@@ -99,10 +99,71 @@
      </layout>
     </item>
     <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Ruleset:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox_3"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_ruleset_manage">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Manage</string>
+        </property>
+        <property name="icon">
+         <iconset theme="preferences-other"/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_ruleset_new">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>New</string>
+        </property>
+        <property name="icon">
+         <iconset theme="add">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QComboBox" name="comboBox_4">
+      <item>
+       <property name="text">
+        <string>Conditions</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Actions</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
      <widget class="QTableWidget" name="tableWidget">
       <column>
        <property name="text">
-        <string>Name</string>
+        <string>Enabled</string>
        </property>
       </column>
       <column>
@@ -112,7 +173,7 @@
       </column>
       <column>
        <property name="text">
-        <string>Enabled</string>
+        <string>Name</string>
        </property>
       </column>
      </widget>
@@ -120,7 +181,7 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="btn_delete">
         <property name="text">
          <string>Delete</string>
         </property>
@@ -131,9 +192,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="btn_deactivate">
         <property name="text">
-         <string>Disable</string>
+         <string>Deactivate</string>
         </property>
         <property name="icon">
          <iconset theme="system-run">
@@ -142,7 +203,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="btn_edit">
         <property name="text">
          <string>Edit</string>
         </property>
@@ -153,7 +214,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="btn_new">
         <property name="text">
          <string>New</string>
         </property>
