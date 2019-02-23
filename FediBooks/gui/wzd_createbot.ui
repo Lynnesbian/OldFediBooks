@@ -23,7 +23,7 @@
       <item>
        <widget class="QStackedWidget" name="stk_main">
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -197,7 +197,7 @@
             <property name="currentIndex">
              <number>0</number>
             </property>
-            <widget class="QWidget" name="page_3">
+            <widget class="QWidget" name="create_an_account">
              <layout class="QVBoxLayout" name="verticalLayout_9">
               <item>
                <widget class="QLabel" name="label_5">

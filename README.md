@@ -19,7 +19,7 @@ The manual can be accessed [here](https://github.com/Lynnesbian/FediBooks/blob/m
 Donations can be provided via [LiberaPay](https://liberapay.com/lynnesbian) (recurring), [PayPal](https://paypal.me/lynnesbian) (singular), or [Ko-fi](https://ko-fi.com/lynnesbian) (singular). Don't feel obligated to donate!
 
 ## License
-Copyright (C)2019 Lynnesbian (https://fedi.lynnesbian.space/@lynnesbian)
+Copyright (C)2019 Lynnesbian (https://fedi.lynnesbian.space/@LynnearSoftware)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (C)2019 Lynnesbian (https://fedi.lynnesbian.space/@lynnesbian)
+# Copyright (C)2019 Lynnesbian (https://fedi.lynnesbian.space/@LynnearSoftware)
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published
@@ -44,7 +44,7 @@ class dlgWzdError(QDialog):
 		self.done(1)
 
 	def present(self, text):
-		self.ui.label.setText("There were some problems with the data you entered. Please rectify the following issues and try again.\n\n{}\n\nIf you believe this to be a problem with FediBooks itself, please open a GitHub issue, or notify Lynne (@lynnesbian.fedi.lynnesbian.space)".format(text))
+		self.ui.label.setText("There were some problems with the data you entered. Please rectify the following issues and try again.\n\n{}\n\nIf you believe this to be a problem with FediBooks itself, please open a GitHub issue, or notify Lynne (@LynnearSoftware.fedi.lynnesbian.space)".format(text))
 		self.exec()
 
 class srvOauthResponseServer(server.BaseHTTPRequestHandler):
@@ -67,9 +67,10 @@ class thrOauthResponseServer(QThread):
 	send_true = Signal(bool)
 	send_port = Signal(int)
 	
-	def __init__(self, wzd):
+	def __init__(self, wzd, port = 0):
 		self.wzd = wzd
 		self.params = None
+		self.port = port
 		super(thrOauthResponseServer, self).__init__()
 
 	def __del__(self):
@@ -77,12 +78,21 @@ class thrOauthResponseServer(QThread):
 		self.wait()
 
 	def run(self):
-		server_address = ('127.0.0.1', 0)
+		# i've encountered a very, very strange bug
+		# the whole program will freeze while waiting to receive the port number.
+		# send_port.emit() will do nothing, and the program won't respond until this thread ends.
+		# so it's necessary to return the port, and then start the server up again later with the same port.
+		# why? i don't know
+		# i tried to debug this issue using python's trace module, but when using python3 -m trace, the error disappears
+
+		server_address = ('127.0.0.1', self.port)
 		def handler(*args):
-			srvOauthResponseServer(self, *args)
+			srvOauthResponseServer(None, *args)
 		httpd = server.ThreadingHTTPServer(server_address, handler)
-		self.send_port.emit(httpd.server_port)
-		print(httpd.server_port)
+		if self.port == 0:
+			self.send_port.emit(httpd.server_port)
+			return
+
 		while self.params == None or ("code" not in self.params and "token" not in self.params):
 			httpd.handle_request()
 		print(self.params)
@@ -366,8 +376,6 @@ class thrWzdPageValidator(QThread):
 					
 					# diaspy.streams.Activity(connection).post()
 
-
-
 		#end authorise_fedibooks
 
 		else:
@@ -495,9 +503,9 @@ class wzdCreateBot(QMainWindow):
 
 		if self.page_name() == "registering_app":
 			self.set_control_buttons_enabled(False)
-			s = thrOauthResponseServer()
-			s.send_code.connect(self.on_code_received)
-			s.send_port.connect(self.on_port_opened)
+			s = thrOauthResponseServer(self)
+			s.send_code.connect(self.code_received)
+			s.send_port.connect(self.port_opened)
 			s.start()
 
 		if self.page_name() == "authorise_fedibooks":
@@ -508,6 +516,7 @@ class wzdCreateBot(QMainWindow):
 				self.ui.stk_authorise_fedibooks.setCurrentIndex(0)
 
 		self.reset_page()
+		# print(self.page_name())
 
 	# CREATE ACCOUNT
 
@@ -530,21 +539,23 @@ class wzdCreateBot(QMainWindow):
 	# CREATE APP
 
 	@Slot(int)
-	def on_port_opened(self, port):
+	def port_opened(self, port):
 		self.server_port = port
+		print(port)
 		self.next_page()
 
 	# AUTHENTICATION
 
 	@Slot()
 	def on_btn_auth_code_pressed(self):
+		print("beep")
 		self.requester = thrOauthCodeRequester(self)
 		self.requester.send_url.connect(self.open_oauth_page)
 		self.requester.send_error.connect(self.validate_page_result)
 		self.requester.start()
 
 	@Slot(str)
-	def on_code_received(self, code):
+	def code_received(self, code):
 		# auth code recieved
 		pass
 
