@@ -483,7 +483,7 @@ class wzdCreateBot(QMainWindow):
 		if page in ["welcome", "done"]:
 			# no specific help for these pages, just direct to the general wizard help instead
 			page = "bot-creation-wizard"
-		open_url("https://github.com/Lynnesbian/FediBooks/tree/master/MANUAL.md# {}".format(page))
+		open_url("https://github.com/Lynnesbian/FediBooks/tree/master/MANUAL.md#{}".format(page))
 	@Slot()
 	def on_btn_back_pressed(self):
 		self.previous_page()
