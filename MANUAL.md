@@ -5,6 +5,7 @@ FediBooks is free software, both gratis (free of charge, as in "free car") and l
 
 # Donations
 While FediBooks is provided free of charge, it is still possible to donate to the project. Provided below are various donation methods.
+- [Patreon](https://patreon.com/lynnesbian)
 - [LiberaPay](https://liberapay.com/lynnesbian/)
 - [PayPal](https://paypal.me/Lynnesbian)
 - [Ko-fi](https://ko-fi/Lynnesbian)
