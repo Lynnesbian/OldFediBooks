@@ -1,7 +1,7 @@
 FediBooks
 ==========
 
-A Python-based multiplatform markov fediverse bot creator and manager with an intuitive Qt-based GUI. It's **not ready or usable yet**, but it will be eventually.
+A Python-based multiplatform fediverse bot creator and manager with an intuitive Qt-based GUI. It's **not ready or usable yet**, but it will be eventually.
 
 ## Installing (WIP)
 Python 3 is necessary. FediBooks (and some of its dependencies) will not work with Python 2.

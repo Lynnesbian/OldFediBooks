@@ -88,7 +88,8 @@ class thrOauthResponseServer(QThread):
 		server_address = ('127.0.0.1', self.port)
 		def handler(*args):
 			srvOauthResponseServer(None, *args)
-		httpd = server.ThreadingHTTPServer(server_address, handler)
+		# httpd = server.ThreadingHTTPServer(server_address, handler)
+		httpd = server.HTTPServer(server_address, handler) # don't use a threading server because it requires python 3.7
 		if self.port == 0:
 			self.send_port.emit(httpd.server_port)
 			return
