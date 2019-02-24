@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'FediBooks/gui/wzd_createbot.ui',
 # licensing of 'FediBooks/gui/wzd_createbot.ui' applies.
 #
-# Created: Sat Feb 23 11:55:35 2019
+# Created: Sun Feb 24 16:59:24 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -104,11 +104,11 @@ class Ui_wzdCreateBot(object):
 		self.verticalLayout_4.setObjectName("verticalLayout_4")
 		self.stk_create_account = QtWidgets.QStackedWidget(self.create_account)
 		self.stk_create_account.setObjectName("stk_create_account")
-		self.page_3 = QtWidgets.QWidget()
-		self.page_3.setObjectName("page_3")
-		self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.page_3)
+		self.create_an_account = QtWidgets.QWidget()
+		self.create_an_account.setObjectName("create_an_account")
+		self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.create_an_account)
 		self.verticalLayout_9.setObjectName("verticalLayout_9")
-		self.label_5 = QtWidgets.QLabel(self.page_3)
+		self.label_5 = QtWidgets.QLabel(self.create_an_account)
 		sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
 		sizePolicy.setHorizontalStretch(0)
 		sizePolicy.setVerticalStretch(0)
@@ -122,7 +122,7 @@ class Ui_wzdCreateBot(object):
 		self.label_5.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
 		self.label_5.setObjectName("label_5")
 		self.verticalLayout_9.addWidget(self.label_5)
-		self.label_6 = QtWidgets.QLabel(self.page_3)
+		self.label_6 = QtWidgets.QLabel(self.create_an_account)
 		sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.MinimumExpanding)
 		sizePolicy.setHorizontalStretch(0)
 		sizePolicy.setVerticalStretch(0)
@@ -132,10 +132,10 @@ class Ui_wzdCreateBot(object):
 		self.label_6.setWordWrap(True)
 		self.label_6.setObjectName("label_6")
 		self.verticalLayout_9.addWidget(self.label_6)
-		self.btn_create_account = QtWidgets.QPushButton(self.page_3)
+		self.btn_create_account = QtWidgets.QPushButton(self.create_an_account)
 		self.btn_create_account.setObjectName("btn_create_account")
 		self.verticalLayout_9.addWidget(self.btn_create_account)
-		self.stk_create_account.addWidget(self.page_3)
+		self.stk_create_account.addWidget(self.create_an_account)
 		self.page_4 = QtWidgets.QWidget()
 		self.page_4.setObjectName("page_4")
 		self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.page_4)

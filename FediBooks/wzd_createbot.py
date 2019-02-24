@@ -67,35 +67,29 @@ class thrOauthResponseServer(QThread):
 	send_true = Signal(bool)
 	send_port = Signal(int)
 	
-	def __init__(self, wzd, port = 0):
-		self.wzd = wzd
+	def __init__(self, port = 0):
 		self.params = None
 		self.port = port
 		super(thrOauthResponseServer, self).__init__()
 
-	def __del__(self):
-		self.exiting = True
-		self.wait()
+	# def __del__(self):
+	# 	self.exiting = True
+	# 	self.wait()
 
 	def run(self):
-		# i've encountered a very, very strange bug
-		# the whole program will freeze while waiting to receive the port number.
-		# send_port.emit() will do nothing, and the program won't respond until this thread ends.
-		# so it's necessary to return the port, and then start the server up again later with the same port.
-		# why? i don't know
-		# i tried to debug this issue using python's trace module, but when using python3 -m trace, the error disappears
 
 		server_address = ('127.0.0.1', self.port)
 		def handler(*args):
-			srvOauthResponseServer(None, *args)
+			srvOauthResponseServer(self, *args)
 		# httpd = server.ThreadingHTTPServer(server_address, handler)
 		httpd = server.HTTPServer(server_address, handler) # don't use a threading server because it requires python 3.7
 		if self.port == 0:
 			self.send_port.emit(httpd.server_port)
-			return
+			# return
 
 		while self.params == None or ("code" not in self.params and "token" not in self.params):
 			httpd.handle_request()
+			print("test")
 		print(self.params)
 		self.send_code.emit(self.params)
 
@@ -298,6 +292,7 @@ class thrWzdPageValidator(QThread):
 						"access_token": None
 					}
 				}
+				redirect_url = "http://localhost:{}".format(self.wzd.server_port)
 				# for information on why FediBooks requests the permissions it does, see https://github.com/Lynnesbian/FediBooks/blob/master/MANUAL.md# permissions
 				if self.wzd.instance['type'] in ["mastodon", "pleroma"]:
 					# pleroma supports the mastodon API so we'll use that
@@ -309,13 +304,14 @@ class thrWzdPageValidator(QThread):
 							client_name = "FediBooks",
 							api_base_url = self.wzd.instance['url'],
 							scopes = app['permissions'],
-							website = "https://github.com/Lynnesbian/FediBooks"
+							website = "https://github.com/Lynnesbian/FediBooks",
+							redirect_uris = redirect_url
 						)
 						self.wzd.app = app
 						self.send_true.emit(True)
 						return
 					except:
-						self.send_text.emit("Failed to create {} app.".format(i.title()))
+						self.send_text.emit("Failed to create {} app.".format(self.wzd.instance['type'].title()))
 						return
 				elif self.wzd.instance['type'] == "misskey":
 					try:
@@ -324,7 +320,8 @@ class thrWzdPageValidator(QThread):
 							instanceAddress = self.wzd.instance['url'],
 							appName = "FediBooks",
 							description = "https://github.com/Lynnesiban/FediBooks",
-							permission = app['permissions']
+							permission = app['permissions'],
+							callbackUrl = redirect_url
 						)
 						# PROTIP: the misskey documentation won't tell you much about what this call returns -- it just tells you that you'll get three strings, an array, and a string that can sometimes be null. see here: https://misskey.xyz/docs/en-US/api/endpoints/app/create
 						# however, this is wrong. these docs don't tell you that you'll get information such as createdAt or iconUrl, so the docs are no help
@@ -504,10 +501,10 @@ class wzdCreateBot(QMainWindow):
 
 		if self.page_name() == "registering_app":
 			self.set_control_buttons_enabled(False)
-			s = thrOauthResponseServer(self)
-			s.send_code.connect(self.code_received)
-			s.send_port.connect(self.port_opened)
-			s.start()
+			self.s = thrOauthResponseServer()
+			self.s.send_code.connect(self.code_received)
+			self.s.send_port.connect(self.port_opened)
+			self.s.start()
 
 		if self.page_name() == "authorise_fedibooks":
 			# self.app = None
