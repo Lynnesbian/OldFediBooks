@@ -77,7 +77,6 @@ class thrOauthResponseServer(QThread):
 	# 	self.wait()
 
 	def run(self):
-
 		server_address = ('127.0.0.1', self.port)
 		def handler(*args):
 			srvOauthResponseServer(self, *args)
@@ -85,7 +84,6 @@ class thrOauthResponseServer(QThread):
 		httpd = server.HTTPServer(server_address, handler) # don't use a threading server because it requires python 3.7
 		if self.port == 0:
 			self.send_port.emit(httpd.server_port)
-			# return
 
 		while self.params == None or ("code" not in self.params and "token" not in self.params):
 			httpd.handle_request()
@@ -113,7 +111,8 @@ class thrOauthCodeRequester(QThread):
 					client_secret = self.wzd.app['credentials']['app_secret'],
 					api_base_url=self.wzd.instance['url']
 				)
-				self.send_url.emit(client.auth_request_url(scopes=self.wzd.app['permissions']))
+				redirect_url = "http://localhost:{}".format(self.wzd.server_port)
+				self.send_url.emit(client.auth_request_url(scopes=self.wzd.app['permissions'], redirect_uris=redirect_url))
 			except:
 				self.send_error.emit("An error ocurred while requesting authorisation.")
 			return
@@ -297,6 +296,7 @@ class thrWzdPageValidator(QThread):
 				if self.wzd.instance['type'] in ["mastodon", "pleroma"]:
 					# pleroma supports the mastodon API so we'll use that
 					# however, Mastodon.py is a bit fucky-wucky, and makes the same mistake as toot! did by converting post IDs to integers, which breaks with pleroma's new, non-integer IDs.
+					# that's why i use fixtodon instead, which is a quick and dirty wrapper around mastodon.py that sort of semi-fixes this
 					app["type"] = "mastodon" # overwrite type with "mastodon" in case this is a pleroma instance
 					try:
 						app['permissions'] = ["read:accounts", "read:follows", "read:notifications", "read:statuses", "write:media", "write:statuses"]
@@ -351,11 +351,11 @@ class thrWzdPageValidator(QThread):
 		elif pn == "authorise_fedibooks":
 			self.set_pbr_visibility(True)
 			if self.wzd.instance['type'] in ["mastodon", "pleroma", "misskey"]:
-				if self.wzd.instance['type'] == "misskey":
-					# misskey
+				if self.wzd.instance['type'] in ["mastodon", "pleroma"]:
+					# mastodon/pleroma
 					pass
 				else:
-					# mastodon/pleroma
+					# misskey
 					pass
 				pass
 			else:
@@ -370,7 +370,11 @@ class thrWzdPageValidator(QThread):
 					try:
 						connection.login()
 					except diaspy.errors.LoginError:
-						self.send_text("Login failed. Did you make a typo?")
+						self.send_text.emit("Login failed. Did you make a typo?")
+						return
+
+			self.send_true.emit(True)
+			return
 					
 					# diaspy.streams.Activity(connection).post()
 
@@ -442,8 +446,7 @@ class wzdCreateBot(QMainWindow):
 		self.set_control_buttons_enabled(False)
 		self.ui.stk_main.setEnabled(False)
 		self.validate_page()
-		# thread.join(30)
-			
+
 	def previous_page(self):
 		if self.page_name() == "authorise_fedibooks" and self.app != None:
 			# we've already registered, skip this page
@@ -554,6 +557,6 @@ class wzdCreateBot(QMainWindow):
 
 	@Slot(str)
 	def code_received(self, code):
-		# auth code recieved
-		pass
+		self.app['credentials']['access_token'] = code
+		self.next_page()
 

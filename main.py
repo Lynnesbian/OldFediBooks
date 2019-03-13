@@ -48,8 +48,6 @@ if __name__ == "__main__":
 
 	# window = MainMenu()
 	window = wzdCreateBot()
-	print("done")
 	window.show()
-	print("show")
 
 	sys.exit(app.exec_())
