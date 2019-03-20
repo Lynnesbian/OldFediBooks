@@ -77,8 +77,14 @@ FediBooks needs access to your bot's account in order to post, reply, and so on.
 
 For more information on the permissions requested by FediBooks, click [here](#permissions).
 
+#### Choose Bot Type
+This page is where you set the type of your bot. At the time of writing, there are three options:
+- Markov bot: This is the type most ebooks bots are. They download your posts and use them to "learn" from and generate posts using similar methods to predictive text on your phone keyboard.
+- Command output: FediBooks will run a command and post the output.
+- Blank (Advanced): The bot will do nothing by default, leaving you to set things up manually later.
+
 #### Select Sources
-You must now provide at least one source for your bot to learn from. This can be a fediverse account (an account on Mastodon, Pleroma, Misskey...) or a text file on your computer. You can add as many sources as you like.
+If you chose the Markov bot type, you must now provide at least one source for your bot to learn from. This can be a fediverse account (an account on Mastodon, Pleroma, Misskey...) or a text file on your computer. You can add as many sources as you like.
 
 #### Configure your Bot
 There are various options to choose from here. You can leave the defaults if you'd like. 

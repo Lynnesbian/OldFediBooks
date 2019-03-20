@@ -349,7 +349,7 @@ class thrWzdPageValidator(QThread):
 		# end registering_app
 
 		elif pn == "authorise_fedibooks":
-			self.set_pbr_visibility(True)
+			self.set_pbr_visibility.emit(True)
 			if self.wzd.instance['type'] in ["mastodon", "pleroma", "misskey"]:
 				if self.wzd.instance['type'] in ["mastodon", "pleroma"]:
 					# mastodon/pleroma
@@ -375,10 +375,22 @@ class thrWzdPageValidator(QThread):
 
 			self.send_true.emit(True)
 			return
-					
-					# diaspy.streams.Activity(connection).post()
 
 		#end authorise_fedibooks
+
+		elif pn == "choose_bot_type":
+			bot_type = self.wzd.ui.tab_botType.currentWidget().objectName()
+			self.wzd.bot = {
+				"type": bot_type
+			}
+			if bot_type != "markov":
+				# skip the sources page
+				# TODO: also skip while paging back
+				index = self.wzd.ui.stk_main.currentIndex()
+				self.wzd.ui.stk_main.setCurrentIndex(index + 1)
+			self.send_true.emit(True)
+			return
+
 
 		else:
 			self.send_true.emit(True)
@@ -392,6 +404,7 @@ class wzdCreateBot(QMainWindow):
 		self.page_count = self.ui.stk_main.count()
 		self.server_port = None
 		self.app = None
+		self.bot = None
 		self.on_stk_main_currentChanged()
 
 		#########################
@@ -557,6 +570,10 @@ class wzdCreateBot(QMainWindow):
 
 	@Slot(str)
 	def code_received(self, code):
-		self.app['credentials']['access_token'] = code
+		if code is not None:
+			self.app['credentials']['access_token'] = code
+		else:
+			# malformed response
+			pass
 		self.next_page()
 
