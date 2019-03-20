@@ -30,6 +30,7 @@ from .functions import *
 from .fixtodon import Fixtodon
 from .uic.ui_wzd_createbot import Ui_wzdCreateBot
 from .uic.ui_dlg_wzd_error import Ui_dlgWzdError
+from .uic.ui_dlg_addsrc_fedi import Ui_dlgAddSrcFedi
 
 class dlgWzdError(QDialog):
 	def __init__(self):
@@ -391,6 +392,18 @@ class thrWzdPageValidator(QThread):
 			self.send_true.emit(True)
 			return
 
+		# end choose_bot_type
+
+		elif pn == "select_sources":
+			if self.wzd.ui.tbl_sources.rowCount() > 0:
+				self.send_true.emit(True)
+				return
+			else:
+				self.send_text.emit("You must specify at least one source.")
+				return
+
+		# end select_sources
+
 
 		else:
 			self.send_true.emit(True)
@@ -576,4 +589,16 @@ class wzdCreateBot(QMainWindow):
 			# malformed response
 			pass
 		self.next_page()
+
+	# ADDING SOURCES
+	@Slot()
+	def on_btn_add_fedi_pressed(self):
+		pass
+
+	def on_btn_add_text_pressed(self):
+		pass
+
+	def on_btn_source_delete_pressed(self):
+		pass
+	
 
