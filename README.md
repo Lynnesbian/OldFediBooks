@@ -5,10 +5,15 @@ A Python-based multiplatform fediverse bot creator and manager with an intuitive
 
 ## Installing (WIP)
 Python 3 is necessary. FediBooks (and some of its dependencies) will not work with Python 2.
+
+When installing FediBooks from source, it is recommended you used venv. To install FediBooks from source run the commands below.
+
 ```
 git clone https://github.com/Lynnesbian/FediBooks
 cd FediBooks
-pip3 install -r requirements.txt
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install -r requirements.txt
 ./main.py
 ```
 
