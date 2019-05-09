@@ -23,7 +23,7 @@
       <item>
        <widget class="QStackedWidget" name="stk_main">
         <property name="currentIndex">
-         <number>6</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="welcome">
          <layout class="QVBoxLayout" name="verticalLayout_2">

@@ -3,8 +3,8 @@
 # Form implementation generated from reading ui file 'FediBooks/gui/wzd_createbot.ui',
 # licensing of 'FediBooks/gui/wzd_createbot.ui' applies.
 #
-# Created: Wed Mar 20 12:13:50 2019
-#      by: pyside2-uic  running on PySide2 5.12.1
+# Created: Tue Mar 26 15:58:19 2019
+#      by: pyside2-uic  running on PySide2 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -568,7 +568,7 @@ class Ui_wzdCreateBot(object):
 		wzdCreateBot.setCentralWidget(self.centralwidget)
 
 		self.retranslateUi(wzdCreateBot)
-		self.stk_main.setCurrentIndex(6)
+		self.stk_main.setCurrentIndex(0)
 		self.stk_create_account.setCurrentIndex(0)
 		self.stk_authorise_fedibooks.setCurrentIndex(0)
 		self.tab_botType.setCurrentIndex(0)
