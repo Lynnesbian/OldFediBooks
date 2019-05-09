@@ -46,7 +46,24 @@ class dlgWzdError(QDialog):
 
 	def present(self, text):
 		self.ui.label.setText("There were some problems with the data you entered. Please rectify the following issues and try again.\n\n{}\n\nIf you believe this to be a problem with FediBooks itself, please open a GitHub issue, or notify Lynne (@LynnearSoftware.fedi.lynnesbian.space)".format(text))
-		self.exec()
+		self.exec() # TODO: use open() instead
+
+class dlgAddSrcFedi(QDialog):
+	send_src = Signal(str)
+
+	def __init__(self):
+		super(dlgAddSrcFedi, self).__init__()
+		self.ui = Ui_dlgAddSrcFedi()
+		self.ui.setupUi(self)
+
+	def rejected(self):
+		self.accepted # :blobderpy:
+
+	def accepted(self):
+		self.done(1)
+
+	def present(self, text):
+		self.exec() # TODO: use open() instead
 
 class srvOauthResponseServer(server.BaseHTTPRequestHandler):
 	def __init__(self, thr, *args):
@@ -60,14 +77,14 @@ class srvOauthResponseServer(server.BaseHTTPRequestHandler):
 		if "code" in p or "token" in p:
 			#this is the response we're looking for
 			self.thr.params = p
-			
+
 
 class thrOauthResponseServer(QThread):
 	send_code = Signal(str)
 	# send_error = Signal(str)
 	send_true = Signal(bool)
 	send_port = Signal(int)
-	
+
 	def __init__(self, port = 0):
 		self.params = None
 		self.port = port
@@ -126,13 +143,13 @@ class thrOauthCodeRequester(QThread):
 					appId = self.wzd.app['credentials']['app_id']
 				)
 				self.wzd.app['credentials']['api_token'] = Misskey.auth_session_generate(
-					instanceAddress="https://misskey.xyz", 
+					instanceAddress="https://misskey.xyz",
 					appSecret = self.wzd.app['credentials']['app_secret']
 				)
 			except:
 				self.send_error.emit("An error ocurred while requesting authorisation.")
 			return
-		
+
 
 class thrWzdPageValidator(QThread):
 	send_true = Signal(bool)
@@ -170,20 +187,6 @@ class thrWzdPageValidator(QThread):
 			except:
 				self.send_text.emit("The instance URL you provided is not a valid URL.")
 				return
-			# valid URL, check if it's actually an instance
-			# afaik the best way to do this is to check for a host-meta file containing a link rel="lrdd"
-			# mastodon refuses to federate with non-HTTPS websites, and you can set up HTTPS for free in ten minutes, so there's really no reason not to enforce it
-			try:
-				r = requests.get("https://{}/.well-known/host-meta".format(self.wzd.instance['name']), timeout=30)
-			except requests.exceptions.Timeout:
-				self.send_text.emit("Timed out while trying to load {}. Is the instance down?").format(self.wzd.instance['name'])
-				return
-			except requests.exceptions.SSLError:
-				self.send_text.emit("An SSL error ocurred. Has the HTTPS certificate for {} expired?").format(self.wzd.instance['name'])
-				return
-			except:
-				self.send_text.emit("An unknown error ocurred while trying to validate {}.").format(self.wzd.instance['name'])
-				return
 
 			# VERIFYING
 
@@ -193,20 +196,9 @@ class thrWzdPageValidator(QThread):
 			# where to find a given user's activitypub outbox, and
 			# the true base URL of a given instance
 			# for example, mastodon lets you run an instance at subdomain.example.com but still appear as @user@example.com. we need subdomain.example.com.
-			self.wzd.instance['webfinger_uri'] = None
-			try:
-				xml = ElementTree.fromstring(r.text)
-				for child in xml:
-					if child.tag.lower() in [r"{http://docs.oasis-open.org/ns/xri/xrd-1.0}link", "link"]:
-						if child.attrib['rel'] == 'lrdd':
-							self.wzd.instance['webfinger_uri'] = child.attrib['template']
-							
-			except:
-				self.send_text.emit("Failed to parse host-meta as XML")
-				return
-			
-			if self.wzd.instance['webfinger_uri'] == None:
-				self.send_text.emit("host-meta did not specify WebFinger URI.")
+			error, self.wzd.instance['webfinger_uri'] = self.wzd.getWebfingerUri(self.wzd.instance['name'])
+			if error != None:
+				self.send_text(error)
 				return
 
 			# use the webfinger URI to determine the instance's actual URL
@@ -220,7 +212,7 @@ class thrWzdPageValidator(QThread):
 			try:
 				r = requests.get("https://{}/.well-known/nodeinfo".format(self.wzd.instance['name']))
 				r.raise_for_status()
-			except requests.exceptions.HTTPError: 
+			except requests.exceptions.HTTPError:
 				# no nodeinfo file! this part is the mastodon way, used by mastodon!
 				# (it might also be GNU social, but we'll cross that bridge when we come to it)
 				# (it could also be a different type of website altogether -- trying to use "google.com" will also lead down this path)
@@ -249,10 +241,10 @@ class thrWzdPageValidator(QThread):
 						self.send_text.emit("This instance type is not supported by FediBooks.")
 						return
 					pass
-			
+
 			try:
 				j = r.json()
-			except: 
+			except:
 				self.send_text.emit("Failed to parse nodeinfo as JSON.")
 				return
 
@@ -305,7 +297,7 @@ class thrWzdPageValidator(QThread):
 							client_name = "FediBooks",
 							api_base_url = self.wzd.instance['url'],
 							scopes = app['permissions'],
-							website = "https://github.com/Lynnesbian/FediBooks",
+							website = "https://fedibooks.com",
 							redirect_uris = redirect_url
 						)
 						self.wzd.app = app
@@ -320,7 +312,7 @@ class thrWzdPageValidator(QThread):
 						mk_app = Misskey.create_app(
 							instanceAddress = self.wzd.instance['url'],
 							appName = "FediBooks",
-							description = "https://github.com/Lynnesiban/FediBooks",
+							description = "https://fedibooks.com",
 							permission = app['permissions'],
 							callbackUrl = redirect_url
 						)
@@ -467,7 +459,7 @@ class wzdCreateBot(QMainWindow):
 		self.validator.update_pbr.connect(self.set_pbr_state)
 		self.validator.set_pbr_visibility.connect(self.set_pbr_visibility)
 		self.validator.start()
-		
+
 	def next_page(self):
 		self.set_control_buttons_enabled(False)
 		self.ui.stk_main.setEnabled(False)
@@ -498,6 +490,41 @@ class wzdCreateBot(QMainWindow):
 	@Slot(str)
 	def open_oauth_page(self, url):
 		open_url(url)
+
+	# FUNCTIONS
+	def getWebfingerUri(self, name):
+		webfinger_uri = None
+		error = None
+
+		# valid URL, check if it's actually an instance
+		# afaik the best way to do this is to check for a host-meta file containing a link rel="lrdd"
+		# mastodon refuses to federate with non-HTTPS websites, and you can set up HTTPS for free in ten minutes, so there's really no reason not to enforce it
+		try:
+			r = requests.get("https://{}/.well-known/host-meta".format(name), timeout=30)
+		except requests.exceptions.Timeout:
+			error = "Timed out while trying to load {}. Is the instance down?".format(name)
+		except requests.exceptions.SSLError:
+			error = "An SSL error ocurred. Has the HTTPS certificate for {} expired?".format(name)
+		except:
+			error = "An unknown error ocurred while trying to validate {}.".format(name)
+
+		if error != None:
+			return error, webfinger_uri
+
+		try:
+			xml = ElementTree.fromstring(r.text)
+			for child in xml:
+				if child.tag.lower() in [r"{http://docs.oasis-open.org/ns/xri/xrd-1.0}link", "link"]:
+					if child.attrib['rel'] == 'lrdd':
+						webfinger_uri = child.attrib['template']
+
+		except:
+			error = "Failed to parse host-meta as XML"
+
+		if webfinger_uri == None:
+			error = "host-meta did not specify WebFinger URI."
+
+		return error, webfinger_uri
 
 	# EVENT HANDLERS
 	# GENERAL
@@ -600,5 +627,5 @@ class wzdCreateBot(QMainWindow):
 
 	def on_btn_source_delete_pressed(self):
 		pass
-	
+
 
